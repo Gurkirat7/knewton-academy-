@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>KNEWTON ACADEMY</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="#"><span>Knewton Academy</span></a></h1> 
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#about">About Us</a></li>
+          <li><a href="#Courses">Courses Offered</a></li>
+          <li><a href="#contactus">Contact Us</a></li>
+          <li><a href="#">Test Link</a></li>
+          <li><a class="btn btn-outline-info my-2 my-sm-0" onclick="document.getElementById('modal-wrapper').style.display='block'">Login</a></li>
+          <li><a href="/signup" class="btn btn-outline-info my-2 my-sm-0">Signup</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+    <div id="modal-wrapper" class="modal"  >
+
+    <form class="modal-content animate" style="margin-top: 100px" action="">
+
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">X</span>
+        <img src="../../assets/img/logo1.png" alt="Avatar" class="avatar">
+        <h1 style="text-align:center;color:#fff;font-size:50px">LOGIN</h1>
+      </div>
+
+      <div class="container">
+        <form [formGroup]="form" (ngSubmit)="login()">
+        <input type="text" placeholder="Enter Username" name="username" formControlName="username">
+        <input type="password" placeholder="Enter Password" name="password" formControlName="password">
+        <select >
+        	<option value="none" selected disabled hidden>User Type ID</option>
+        	<option value="1">1.Student</option>
+        	<option value="2">2.Teacher</option>
+        	<option value="3">3.Employee</option>
+        	<option value="4">4.HR</option>
+        	<option value="5">5.Sub Admin</option>
+        </select>
+        <button type="submit">Login</button><br><br>
+        <h5 style="text-align:center;color:#fff;font-size:20px">Not have an account...??<a href="/signup" style="color:#4CAF50; font-weight:900;" onclick="document.getElementById('modal-wrapper').style.display='none'">SignUp Here</a></h5>
+      </form>
+      </div>
+
+    </form>
+
+  </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro" class="clearfix">
+
+     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="first-slide" src="img/intro-img.svg" class="img-fluid" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption text-left">
+              <h1>We provide<br><span>solutions</span><br>for your education problems!</h1>
+              <p>
+                <a class="btn btn-lg signup" href="Signup/signup.html" role="button">Sign up today</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="second-slide" src="img/portfolio/card3.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <p>
+                <a class="btn btn-lg get-started" href="#about" role="button">Get Started</a>
+                <a class="btn btn-lg Courses" href="#Courses" role="button">Courses Offered</a>
+              </p>              
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="third-slide" src="img/portfolio/card1.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption text-right">
+              <p>
+                <a class="btn btn-lg Courses" href="#Courses" role="button">Courses Offered</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </section><!-- #intro -->
+ 
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>About Us</h3>
+          <p>To Learn is to know, to know is to grow.</p>
+        </header>
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+            <img src="img/about-extra-2.jpg" class="img-fluid" style="width: 100%"alt="">
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 ">
+            <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
+            <p>
+              Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe. Numquam mollitia recusandae non ad at et a.
+            </p>
+            <p>
+              Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus quia sit. Porro rerum eum eum.
+            </p>
+          </div>
+          
+        </div>
+        <div class="row about-extra">
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="img/about-extra-1.jpg" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0 order-2 order-lg-1">
+            <h4>OUR VISION</h4>
+            <p>
+             We as Knewton Academy is committed to provide best of the professional training for competative exams like <i>IIT-JEE, NEET, KVPY, Olympiads, NTSE etc</i>. 
+            </p>
+            <p>
+              We deliver programme for each Student to cultivate the learning skills necessary for life success which is supported by a <i><strong>Highly Qualified Faculity</strong></i> of professionals who understands need of each student and meet with <i>Best of possible offer</i>.
+            </p>
+            <p>
+              We are also committed for every individual student Growth with proper <i>Guidance to their Future</i>. We aim for Students to <i><strong>Outshine others and Fly High</strong></i> to achieve their dreams in this competitive world.
+            </p>
+          </div>
+        </div>
+
+        
+        <div class="row about-container about-extra">
+          <div class="col-lg-6 content wow">
+            <h4>Why Choose Us</h4>
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="">Assured Results</a></h4>
+              <p class="description">We provide every Student with the Study Material and <i>Assure Good Results</i> with the help of <strong><i>Highly Experienced & Qualified Faculty</i></strong></p>
+            </div>
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="fas fa-school"></i></div>
+              <h4 class="title"><a href="">Small Batches</a></h4>
+              <p class="description">We Teach the classes in <i>Small Batches</i>, so each Student can get <i>Proper Attention</i> which will increase their productivity.</p>
+            </div>
+            <div class="icon-box wow fadeInUp">
+              <div class="icon"><i class="  fas fa-temperature-low"></i></div>
+              <h4 class="title"><a href="">Fully Air Conditioned Classrooms</a></h4>
+              <p class="description">We Teach the classes in fully <i>AC Classrooms</i> so the outer Temperature don't affect Student's studing capability.</p>
+            </div>
+            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+              <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+              <h4 class="title"><a href="">Stress Free Classes</a></h4>
+              <p class="description">We Create a <i>Friendly Environment</i> for each of our Students so they can learn without getting Stressed</p>
+            </div>            
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+            <img src="img/about-extra-3.jpg" class="img-fluid" alt="">
+          </div>
+        </div>
+      </div>
+    </section><!-- #about -->
+
+    <!--==========================
+      Courses Section
+    ============================-->
+    <section id="Courses" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Courses Offered</h3>
+          <p>We have variety of Courses to offer according to your need.</p>
+        </header>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fa fa-diamond" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="">IIT - JEE</a></h4>
+              <p class="description"><i>Mains + Advance</i>
+              <ul class="description">
+                <li>FOUR Year Classroom</li>
+                <li>TWO Year Classroom</li>
+                <li>CRASH Course</li>
+                <li>DROP OUT Course <i>(1 Year)</i></li>
+              </ul>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fas fa-dice-d20" style="color: #d6ff22;"></i></div>
+              <h4 class="title"><a href="">NDA</a></h4>
+              <p class="description"><i>Written + Interview</i>
+                <ul class="description">
+                <li>Classroom Course</li>
+                <li>CRASH Course</li>
+                <li>DROP OUT Course <i>(6 Months)</i></li>
+              </ul>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">NEET</a></h4>
+              <p class="description"><ul class="description">
+                <li>FOUR Year Classroom</li>
+                <li>TWO Year Classroom</li>
+                <li>CRASH Course</li>
+                <li>DROP OUT Course <i>(1 Year)</i></li>
+              </ul></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.3s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fas fa-user-graduate" style="color:#41cf2e;"></i></div>
+              <h4 class="title"><a href="">11<sup>th</sup> + 12<sup>th</sup></a></h4>
+              <p class="description"><i>All Streams</i>
+                <ul class="description">
+                  <li>SCIENCE<i>(Physics, Chemistry, Maths, Biology)</i></li>
+                  <li>COMMERCE<i>(Accounts, Maths, Economics, BusinessStudies)</i></li>
+                  <li>HUMANITIES<i>(PoliticalScience, History, Geography, Economics)</i></li>
+                </ul>
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.4s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fas fa-book-open" style="color:#41cf2e;"></i></div>
+              <h4 class="title"><a href="">9<sup>th</sup> & 10<sup>th</sup></a></h4>
+              <p class="description">
+                <ul class="description">
+                  <li>Science</li>
+                  <li>Mathematics</li>
+                  <li>Social Science</li>
+                  <li>English</li>
+                </ul></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.4s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fas fa-school" style="color:#3fcdc7;"></i></div>
+              <h4 class="title"><a href="">5<sup>th</sup> - 8<sup>th</sup></a></h4>
+              <p class="description"><i>All Subjects</i>
+              <ul class="description">
+                  <li>Science</li>
+                  <li>Mathematics</li>
+                  <li>EVS</li>
+                  <li>English</li>
+                  <li>Hindi</li>
+                </ul></p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.3s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class=" fa fa-language" style="color: #4680ff;"></i></div>
+              <h4 class="title"><a href="">PERSONALITY DEVELOPMENT</a></h4>
+              <p class="description"><i>Communication Skills & Career Counselling</i>
+              <ul class="description">
+                  <li>Speaking fluently</li>
+                  <li>Vocabulary</li>
+                  <li>Boosting Confidence</li>
+                  <li>Enlighting the Right Path</li>
+                </ul></p>
+            </div>
+          </div>          
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fa fa-flask" style="color: #d6ff22;"></i></div>
+              <h4 class="title"><a href="">OLYMPIADS</a></h4>
+              <p class="description">Olympiad exams are competitive examination conducted at school level. It is totally based on the school curriculum and we train acording to courses level
+              <ul class="description">
+                  <li>Regional</li>
+                  <li>National</li>
+                  <li>International</li>
+                </ul></p>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="ion-ios-world-outline" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="">KVPY</a></h4>
+              <p class="description"><i>Kishore Vaigyanik Protsahan Yojana</i><br>
+                The Kishore Vaigyanik Protsahan Yojana (KVPY) is an on-going National Program of Fellowship in Basic Sciences. We give coaching for both:
+                <ul class="description">
+                  <li>Aptitude Test</li>
+                  <li>Interview</li>
+                </ul></p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+            <div class="box">
+              <div class="icon"><i class="fas fa-award" style="color:#ff689b;"></i></div>
+              <h4 class="title"><a href="">NTSE</a></h4>
+              <p class="description"><i>National Talent Search Examination</i><br>
+                NTSE was established by the Government with a view of bringing about qualitative improvement in school education. We give coachin of:
+             <ul class="description">
+                  <li>Mental Ability Test (MAT)</li>
+                  <li>Scholastic Aptitude Test (SAT)</li>
+                </ul></p>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+    </section><!-- #Courses -->
+
+   
+
+    <!--==========================
+      Contact Section
+    ============================-->
+    <section id="contactus">
+      <div class="container">
+        <div class="section-header">
+          <h3>Contact Us</h3>
+          
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-12 wow fadeInUp" onclick="document.getElementById('map').style.display='block'">
+            <div class="member">
+              <h1>MADANGIR BRANCH</h1>
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4> <i class="ion-ios-location-outline"></i>
+                <p>5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor) Above Kharbanda Clinic Gali No. 5, D.D.A Flats, Madangir, New Delhi-110062</p></h4>
+                  <span> <i class="ion-ios-telephone-outline"></i>
+                <p>+91 9873889037 <br> +91 9911625728</p></span>
+                  <div class="social">
+                    <i class="ion-ios-email-outline"></i>
+                    <p>info@example.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-12 wow fadeInUp" onclick="document.getElementById('map1').style.display='block'">
+            <div class="member">
+              <h1>MALVIYA <BR> NAGAR BRANCH</h1>
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4> <i class="ion-ios-location-outline"></i>
+                <p>5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor) Above Kharbanda Clinic Gali No. 5, D.D.A Flats, Madangir, New Delhi-110062</p></h4>
+                  <span> <i class="ion-ios-telephone-outline"></i>
+                <p>+91 9873889037 <br> +91 9911625728</p></span>
+                  <div class="social">
+                    <i class="ion-ios-email-outline"></i>
+                    <p>info@example.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-12 wow fadeInUp" onclick="document.getElementById('map2').style.display='block'">
+            <div class="member">
+              <h1>CHIRAG <BR> DELHI BRANCH</h1>
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4> <i class="ion-ios-location-outline"></i>
+                <p>5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor) Above Kharbanda Clinic Gali No. 5, D.D.A Flats, Madangir, New Delhi-110062</p></h4>
+                  <span> <i class="ion-ios-telephone-outline"></i>
+                <p>+91 9873889037 <br> +91 9911625728</p></span>
+                  <div class="social">
+                    <i class="ion-ios-email-outline"></i>
+                    <p>info@example.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="map" class="modal"  >
+        <div class="modal-content animate" style="margin-top: 100px">
+        <div class="display">
+            <span onclick="document.getElementById('map').style.display='none'" class="close" title="Close PopUp">X</span>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1105.8686971874859!2d77.22811026462811!3d28.520571901465935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce18e343a29a1%3A0xbd87edca371d3cba!2sKnewton+Academy!5e0!3m2!1sen!2sin!4v1561442763380!5m2!1sen!2sin"></iframe>
+        </div>
+        </div>
+      </div>
+      <div id="map1" class="modal"  >
+        <div class="modal-content animate" style="margin-top: 100px">
+        <div class="display">
+            <span onclick="document.getElementById('map1').style.display='none'" class="close" title="Close PopUp">X</span>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1105.8686971874859!2d77.22811026462811!3d28.520571901465935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce18e343a29a1%3A0xbd87edca371d3cba!2sKnewton+Academy!5e0!3m2!1sen!2sin!4v1561442763380!5m2!1sen!2sin"></iframe>
+        </div>
+        </div>
+      </div>
+      <div id="map2" class="modal"  >
+        <div class="modal-content animate" style="margin-top: 100px">
+        <div class="display">
+            <span onclick="document.getElementById('map2').style.display='none'" class="close" title="Close PopUp">X</span>
+             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1105.8686971874859!2d77.22811026462811!3d28.520571901465935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce18e343a29a1%3A0xbd87edca371d3cba!2sKnewton+Academy!5e0!3m2!1sen!2sin!4v1561442763380!5m2!1sen!2sin"></iframe>
+        </div>
+        </div>
+      </div>
+    </section><!-- #contact -->
+
+  </main>
+
+  <!--==========================
+    Footer
+  ============================-->
+  <footer id="footer">
+    <div class="footer-top">
+        <div class="row">
+
+          <div class="col-lg-4 offset-lg-1 col-md-11 offset-md-1 footer-info">
+            <h3>KNEWTON ACADEMY</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact">
+            <h4>HEAD OFFICE</h4>
+            <p>
+              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
+               Above Kharbanda Clinic Gali No. 5, <br>
+               D.D.A Flats, Madangir,<br>
+                New Delhi-110062<br><br>
+              <strong>Phone:</strong>+91 9873889037<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <section id="contact">  
+              <div class="col-lg-6">
+                <h4> For Any Queries : </h4>
+              <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-12">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+              </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <div id="preloader"></div>
+
+  <!-- JavaScript Libraries -->
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="lib/wow/wow.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/counterup/counterup.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="lib/lightbox/js/lightbox.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="contactform/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

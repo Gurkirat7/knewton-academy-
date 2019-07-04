@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sub Admin Portal</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Libraries CSS Files -->
+<link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+ 
+<!--===============================================================================================-->
+
+<!--PROFILE-->
+<link rel="stylesheet" href="css/Sub_Admin.css">
+</head>
+<body>
+  <!--navbar-->
+ <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1> 
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li><a class="btn btn-outline-info my-2 my-sm-0" href="index.html">Logout</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+ </header><!-- #header -->
+  <!--PROFILE-->
+<div class="container-fluid" style="margin-top: 100px;">
+  <div class="rowP">
+      <div class="col-12">
+     <div class="card card-inverse" style="background-color: #333; border-color: #333; border-radius:20%;">
+            <div class="card-block">
+        <div class="rowP">
+                    <div class="col-md-8 col-sm-8">
+          <h2 class="card-title">Sub Admin Name:</h2>
+          <p class="card-text"><strong>Branch: </strong>  </p>
+        </div>
+   <img src="img/sub_ad_img.jpg" alt="" height="150px">    </div>
+              </div>
+          </div>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+	<!--search bar-->
+  <form class="search"> 
+      <div class=" container">
+          <input type="text" class="form-control col-md-offset-2 col-md-4" placeholder="Student ID">
+            <select class="form-control col-md-2" id="type">
+              <option value="none" selected disabled hidden>Class</option> 
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+            <select class="form-control col-md-2" id="type">
+              <option value="none" selected disabled hidden>Course</option> 
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          <button type="submit" class="btn btn-default" id="searchSubmit">Submit</button>
+      </div>
+  </form>
+	<!--Add student details-->
+  <form>
+	<div class="modal fade" id="studentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+
+        <h4 class="modal-title w-100 font-weight-bold">Add Student Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text" class="form-control validate">
+          <label data-error="wrong" data-success="right">Student ID</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Student Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Class</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Father's Name</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Mother's Name</label>
+        </div>
+		    <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}" required>
+          <label data-error="wrong" data-success="right" >Contact Details</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="email"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Email ID</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Address</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Branch ID</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Test Login ID</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Total Fees</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Fee 1</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Fee 2</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Fee 3</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--edit button-->
+<form>
+<div class="modal fade" id="editStudentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Student Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Class</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Father's Name</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Mother's Name</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}" required>
+          <label data-error="wrong" data-success="right" >Contact Details</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="email"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Email ID</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Address</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Branch ID</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Test Login ID</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Total Fees</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Fee 1</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Fee 2</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Fee 3</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				    <div class="fright">
+						<button type="button" data-toggle="modal" data-target="#studentDetail" style="background-color: cyan"><span class="glyphicon glyphicon-plus"> Add Student</span></button>
+					</div>
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+								Student Name
+							</div>
+							<div class="cell">
+								Attendance
+							</div>
+							<div class="cell">
+								Total Fees
+							</div> 
+							<div class="cell">
+								Fee 1
+							</div>
+              <div class="cell">
+                Fee 2
+              </div>
+              <div class="cell">
+                Fee 3
+              </div>
+              <div class="cell">
+                Phone No.
+              </div>
+              <div class="cell">
+                Action
+              </div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Student Name">
+								Vincent Williamson
+							</div>
+							<div class="cell" data-title="Attendance">
+								25/40
+							</div>
+							<div class="cell" data-title="Total Fees">
+								21
+							</div>
+              <div class="cell" data-title="Fee 1">
+                Paid
+              </div>
+              <div class="cell" data-title="Fee 2">
+                15-07-2019
+              </div>
+              <div class="cell" data-title="Fee 3">
+                15-08-2019
+              </div>
+              <div class="cell" data-title="Phone No">
+                98*******3
+              </div>
+							<div class="cell" data-title="Action">
+								<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail">  </span>
+								<span class="glyphicon glyphicon-trash">  </span>
+							</div>
+							
+						</div>
+
+						
+
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+      <!--Notice starts-->
+    <div id = "notice" class="row">
+                
+                    <div class="notice-board">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               
+                                <ul style="padding-left:0px;list-style:none;">
+                                    <marquee direction="up">
+                                      <li>
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-map-marker text-danger" ></span>
+                                        Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                         <span class="label label-danger" > 35 USD </span>
+                                            </a>
+                                    </li>
+                                     <li>
+                                            <a href="#">
+                                     <span class="glyphicon glyphicon-align-left text-success" ></span> 
+                                                  Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                                 <span class="label label-warning" > Just now </span>
+                                            </a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-info-sign text-danger" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-info" > 2 min chat</span>
+                                            </a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-comment  text-warning" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-success" >GO ! </span>
+                                            </a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-edit  text-danger" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-success" >Let's have it </span>
+                                            </a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-headphones  text-success" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-danger" >789.0 v </span>
+                                            </a>
+                                    </li>
+                                    </marquee>
+                                </ul>
+                            </div>
+                            <div class="panel-footer" data-toggle="modal" data-target="#uploadNotice">
+                                <a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                    <!--popup upload notice-->
+      <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Notice Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Heading</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <textarea id="noticeContent"></textarea>
+          <label data-error="wrong" data-success="right" >Content</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Post">
+      </div>
+    </div>
+  </div>
+</div>
+    <!--Notice Ends-->
+         <!--==========================
+    Footer
+  ============================-->
+  <div class="footer-container">
+  <div class="container-fluid">
+  <footer id="footer">
+    <div class="footer-top">
+        <div class="row rowf">
+
+          <div class="col-lg-4 offset-lg-1 col-md-12 footer-info">
+            <h3>KNEWTON ACADEMY</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact">
+            <h4>HEAD OFFICE</h4>
+            <p>
+              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
+               Above Kharbanda Clinic Gali No. 5, <br>
+               D.D.A Flats, Madangir,<br>
+                New Delhi-110062<br><br>
+              <strong>Phone:</strong>+91 9873889037<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <section id="contact">  
+              <div class="col-lg-6">
+                <h4> For Any Queries : </h4>
+              <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-12">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+              </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="copyright">
+        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+  <!-- #footer -->
+  
+   <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+
+</body>
+</html>

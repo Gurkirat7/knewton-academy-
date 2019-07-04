@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Employee Details</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="table/css/util.css">
+	<link rel="stylesheet" type="text/css" href="table/css/Employee_Table.css">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+</head>
+<body>
+  <!--navbar-->
+ <!--  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        
+        <a class="navbar-brand" href="#">Logo</a>
+        
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link 2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link 3</a>
+          </li>
+        </ul>
+      </nav> -->
+	<!--search bar-->
+  <form class="search"> 
+      <div class=" container">
+          <input type="text" class="form-control col-md-offset-2 col-md-6" placeholder="Search Employee ID">
+            <select class="form-control col-md-1" id="type">
+              <option value="none" selected disabled hidden>Type</option> 
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+            
+          <button type="submit" class="btn btn-default" id="searchSubmit">Submit</button>
+      </div>
+  </form>
+	<!--Add employee details-->
+  <form>
+	<div class="modal fade" id="employeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+
+        <h4 class="modal-title w-100 font-weight-bold">Add Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Employee ID</label>
+        </div>
+
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >User Type ID</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}" required>
+          <label data-error="wrong" data-success="right" >Contact Number</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="email"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Email ID</label>
+        </div>
+		<div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Address</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Salary</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--edit button-->
+<div class="modal fade" id="editEmployeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Name</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >User Type ID</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}" required>
+          <label data-error="wrong" data-success="right" >Contact Number</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="email"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Email ID</label>
+        </div>
+		<div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Address</label>
+        </div>
+        <div class="md-form mb-4">
+          <i class="prefix grey-text"></i>
+          <input type="number"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Salary</label>
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				    <div class="fright">
+						<button type="button" data-toggle="modal" data-target="#employeeDetail" style="background-color: cyan"><span class="glyphicon glyphicon-plus"> Add Employee</span></button>
+					</div>
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+								Full Name
+							</div>
+							<div class="cell">
+								Type
+							</div>
+							<div class="cell">
+								Phone No
+							</div> 
+							<div class="cell">
+								Action
+							</div>
+							
+						</div>
+
+						<div class="row">
+							<div class="cell" data-title="Full Name">
+								Vincent Williamson
+							</div>
+							<div class="cell" data-title="Type">
+								HR
+							</div>
+							<div class="cell" data-title="Phone No">
+								99******67
+							</div>
+							<div class="cell" data-title="Action">
+								<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail">  </span>
+								<span class="glyphicon glyphicon-trash">  </span>
+							</div>
+							
+						</div>
+                <div class="row">
+              <div class="cell" data-title="Full Name">
+                Vincent Williamson
+              </div>
+              <div class="cell" data-title="Type">
+                HR
+              </div>
+              <div class="cell" data-title="Phone No">
+                99******67
+              </div>
+              <div class="cell" data-title="Action">
+                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail">  </span>
+                <span class="glyphicon glyphicon-trash">  </span>
+              </div>
+              
+            </div>    <div class="row">
+              <div class="cell" data-title="Full Name">
+                Vincent Williamson
+              </div>
+              <div class="cell" data-title="Type">
+                HR
+              </div>
+              <div class="cell" data-title="Phone No">
+                99******67
+              </div>
+              <div class="cell" data-title="Action">
+                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail">  </span>
+                <span class="glyphicon glyphicon-trash">  </span>
+              </div>
+              
+            </div>    <div class="row">
+              <div class="cell" data-title="Full Name">
+                Vincent Williamson
+              </div>
+              <div class="cell" data-title="Type">
+                HR
+              </div>
+              <div class="cell" data-title="Phone No">
+                99******67
+              </div>
+              <div class="cell" data-title="Action">
+                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail">  </span>
+                <span class="glyphicon glyphicon-trash">  </span>
+              </div>
+              
+            </div>    <div class="row">
+              <div class="cell" data-title="Full Name">
+                Vincent Williamson
+              </div>
+              <div class="cell" data-title="Type">
+                HR
+              </div>
+              <div class="cell" data-title="Phone No">
+                99******67
+              </div>
+              <div class="cell" data-title="Action">
+                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail">  </span>
+                <span class="glyphicon glyphicon-trash">  </span>
+              </div>
+              
+            </div>    <div class="row">
+              <div class="cell" data-title="Full Name">
+                Vincent Williamson
+              </div>
+              <div class="cell" data-title="Type">
+                HR
+              </div>
+              <div class="cell" data-title="Phone No">
+                99******67
+              </div>
+              <div class="cell" data-title="Action">
+                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail">  </span>
+                <span class="glyphicon glyphicon-trash">  </span>
+              </div>
+              
+            </div>
+
+						
+
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

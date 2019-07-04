@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Portal</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Libraries CSS Files -->
+<link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+
+</head>
+<body>
+<header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1> 
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li><a class="btn btn-outline-info my-2 my-sm-0" href="index.html">Logout</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+ </header><!-- #header -->
+      
+      <!--popup upload notice-->
+      <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Notice Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Heading</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <textarea id="noticeContent"></textarea>
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Content</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Post">
+      </div>
+    </div>
+  </div>
+</div>
+        
+      
+        <div class="container">
+                <div class="row">
+                        <div class="column zoom" id="c1" onclick="openTab('b1');">
+                          <div class="card card1">
+                            <h3>Branch 1</h3>
+                            <p>Madangir</p>
+                            <p>Some text</p>
+                          </div>
+                        </div>
+                      
+                        <div class="column zoom" id="c2" onclick="openTab('b2');">
+                          <div class="card card2">
+                            <h3>Branch 2</h3>
+                            <p>Malviya Nagar</p>
+                            <p>Some text</p>
+                          </div>
+                        </div>
+                        
+                        <div class="column zoom " id="c3" onclick="openTab('b3')">
+                          <div class="card card3">
+                            <h3>Branch 3</h3>
+                            <p>Chirag Dili</p>
+                            <p>Some text</p>
+                          </div>
+                        </div>
+                        
+                        
+                      </div>
+                      <div id="b1" class="containerTab" style="display:none;margin-top:10px; ">
+                            <div class="row">
+                                    <div class="column zoom col2" >
+                                      <a href="/Student_Table.html">
+                                      <div class="card card1">
+                                        <h3>Student</h3>
+                                        <p>Madangir</p>
+                                        <p>Some text</p>
+                                      </div>
+                                    </a>
+                                    </div>
+                                  
+                                    <div class="column zoom col2" >
+                                      <a href="/Employee_Table.html">
+                                      <div class="card card1">
+                                        <h3>Employee</h3>
+                                        <p>Malviya Nagar</p>
+                                        <p>Some text</p>
+                                      </div>
+                                      </a>
+                                    </div>
+                                    
+                                    <div class="column zoom col2">
+                                      <a href="/SignUp_Table.html">
+                                      <div class="card card1">
+                                        <h3>SignUp Details</h3>
+                                        <p>Chirag Dili</p>
+                                        <p>Some text</p>
+                                      </div>
+                                      </a>
+                                    </div>
+                                    
+                                    <div class="column zoom col2">
+                                      <a href="Login_Table.html">
+                                            <div class="card card1">
+                                              <h3>Login Details</h3>
+                                              <p>Chirag Dili</p>
+                                              <p>Some text</p>
+                                            </div>
+                                          </div>
+                                        </a>    
+                                    
+                                    
+                                  </div>
+                            
+                            
+                            
+                          </div>
+
+
+                          <div id="b2" class="containerTab" style="display:none;margin-top:10px; ">
+                                <div class="row">
+                                        <div class="column zoom col2" >
+                                          <a href="/Student_Table.html">
+                                          <div class="card card2">
+                                            <h3>Student</h3>
+                                            <p>Madangir</p>
+                                            <p>Some text</p>
+                                          </div>
+                                          </a>
+                                        </div>
+                                      
+                                        <div class="column zoom col2" >
+                                          <a href="Employee_Table.html">
+                                          <div class="card card2">
+                                            <h3>Employee</h3>
+                                            <p>Malviya Nagar</p>
+                                            <p>Some text</p>
+                                          </div>
+                                          </a>
+                                        </div>
+                                        
+                                        <div class="column zoom col2">
+                                            <a href="SignUp_Table.html">
+                                          <div class="card card2">
+                                            <h3>SignUp Details</h3>
+                                            <p>Chirag Dili</p>
+                                            <p>Some text</p>
+                                          </div>
+                                          </a>
+                                        </div>
+                                        
+                                            <div class="column zoom col2">
+                                              <a href="Login_Table.html">
+                                                    <div class="card card2">
+                                                      <h3>Login Details</h3>
+                                                      <p>Chirag Dili</p>
+                                                      <p>Some text</p>
+                                                    </div>
+                                                    </a>
+                                            </div>
+                                        
+                                        
+                                        </div>
+                                
+                                
+                                
+                              </div>
+                              <div id="b3" class="containerTab" style="display:none;margin-top:10px; ">
+                              <div class="row">
+                                    <div class="column zoom col2" >
+                                      <a href="Student_Table.html">
+                                      <div class="card card3">
+                                        <h3>Student</h3>
+                                        <p>Madangir</p>
+                                        <p>Some text</p>
+                                      </div>
+                                    </a>
+                                    </div>
+                                  
+                                    <div class="column zoom col2" >
+                                      <a href="Employee_Table.html">
+                                      <div class="card card3">
+                                        <h3>Employee</h3>
+                                        <p>Malviya Nagar</p>
+                                        <p>Some text</p>
+                                      </div>
+                                      </a>
+                                    </div>
+                                    
+                                    <div class="column zoom col2">
+                                      <a href="SignUp_Table.html">
+                                      <div class="card card3">
+                                        <h3>SignUp Details</h3>
+                                        <p>Chirag Dili</p>
+                                        <p>Some text</p>
+                                      </div>
+                                      </a>
+                                    </div>
+                                    
+                                    <div class="column zoom col2">
+                                      <a href="Login_Table.html">
+                                            <div class="card card3">
+                                              <h3>Login Details</h3>
+                                              <p>Chirag Dili</p>
+                                              <p>Some text</p>
+                                            </div>
+                                          </div>
+                                        </a>    
+                                    </div>
+                                  </div>
+        </div>
+
+        <div id = "notice" class="row">
+                
+                    <div class="notice-board">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               
+                                <ul style="padding-left:0px;list-style:none;">
+                                    <marquee direction="up">
+                                      <li>
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-map-marker text-danger" ></span>
+                                        Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                         <span class="label label-danger" > 35 USD </span>
+                                            </a>
+                                    </li>
+                                     <li>
+                                            <a href="#">
+                                     <span class="glyphicon glyphicon-align-left text-success" ></span> 
+                                                  Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                                 <span class="label label-warning" > Just now </span>
+                                            </a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-info-sign text-danger" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-info" > 2 min chat</span>
+                                            </a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-comment  text-warning" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-success" >GO ! </span>
+                                            </a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-edit  text-danger" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-success" >Let's have it </span>
+                                            </a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-headphones  text-success" ></span>  
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet
+                                          <span class="label label-danger" >789.0 v </span>
+                                            </a>
+                                    </li>
+                                    </marquee>
+                                </ul>
+                            </div>
+                            <div class="panel-footer" data-toggle="modal" data-target="#uploadNotice">
+                                <a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+         <!--==========================
+    Footer
+  ============================-->
+  <div class="footer-container">
+  <div class="container-fluid">
+  <footer id="footer">
+    <div class="footer-top">
+        <div class="row">
+
+          <div class="col-lg-4 offset-lg-1 col-md-12 footer-info">
+            <h3>KNEWTON ACADEMY</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact">
+            <h4>HEAD OFFICE</h4>
+            <p>
+              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
+               Above Kharbanda Clinic Gali No. 5, <br>
+               D.D.A Flats, Madangir,<br>
+                New Delhi-110062<br><br>
+              <strong>Phone:</strong>+91 9873889037<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <section id="contact">  
+              <div class="col-lg-6">
+                <h4> For Any Queries : </h4>
+              <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-12">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+              </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="copyright">
+        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+  <!-- #footer -->
+        <script >
+                function openTab(tabName) {
+                  var i, x;
+                  var n = parseInt(tabName[1])-1;
+                  x = document.getElementsByClassName("containerTab");
+                  for (i = 0; i < x.length; i++) {
+                    if(i!=n)
+                    	x[i].style.display = "none";
+                  }
+                  // document.getElementById(tabName).style.display = "block";
+                  $("#"+tabName).fadeToggle(1500);
+                }
+        </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="js/cardFade.js"></script>
+
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+        </body>
+        </html>
