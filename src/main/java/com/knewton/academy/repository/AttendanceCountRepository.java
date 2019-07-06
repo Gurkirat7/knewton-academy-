@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.knewton.academy.model.AttendanceCount;
 
 @Repository
-public interface AttendanceCountRepository extends CrudRepository<AttendanceCount,Integer>  {
+public interface AttendanceCountRepository extends CrudRepository<AttendanceCount,String>  {
 
 }

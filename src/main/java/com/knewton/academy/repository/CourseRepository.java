@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.knewton.academy.model.Course;
 
 @Repository
-public interface CourseRepository CrudRepository<Course,Integer>{
+public interface CourseRepository extends CrudRepository<Course,Integer>{
 
 }

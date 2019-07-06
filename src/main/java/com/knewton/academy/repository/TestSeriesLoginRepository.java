@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.knewton.academy.model.TestSeriesLogin;
 
 @Repository
-public interface TestSeriesLoginRepository extends CrudRepository<TestSeriesLogin,Integer>{
+public interface TestSeriesLoginRepository extends CrudRepository<TestSeriesLogin,String>{
 
 }

@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.knewton.academy.model.TeacherBatchMapping;
 
 @Repository
-public interface TeacherBatchMappingRepository extends CrudRepository<TeacherBatchMapping,Integer>{
+public interface TeacherBatchMappingRepository extends CrudRepository<TeacherBatchMapping,String>{
 
 }

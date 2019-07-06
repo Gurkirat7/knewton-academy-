@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.knewton.academy.model.EmployeeTable;
 
 @Repository
-public interface EmployeeTableRepository extends CrudRepository<EmployeeTable,Integer>{
+public interface EmployeeTableRepository extends CrudRepository<EmployeeTable,String>{
 
 }

@@ -8,6 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import com.knewton.academy.model.ResultAssignment;
 
 @Repository
-public interface ResultAssignmentRepository extends CrudRepository<ResultAssignment,Integer>{
+public interface ResultAssignmentRepository extends CrudRepository<ResultAssignment,String>{
 
 }
