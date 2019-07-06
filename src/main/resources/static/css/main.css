@@ -293,7 +293,7 @@ a:not([href]):not([tabindex]):hover {
   position: relative;
   background: url("../img/intro-bg.png") center bottom no-repeat;
   background-size: cover;
-  padding: 8% 2% 3% 2%;
+  padding: 8% 2% 2% 2%;
 }
 
 #intro h1 span {
@@ -1095,7 +1095,7 @@ a:not([href]):not([tabindex]):hover {
   }
 
   #intro {
-    padding: 8% 2% 3% 2%;
+    padding: 12% 2% 2% 2%;
   }
 
   #intro .intro-img {

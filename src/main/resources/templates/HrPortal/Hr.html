@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>HR portal</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+  <!-- Libraries CSS Files -->
+<link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+ 
+<!--===============================================================================================-->
+
+<!--PROFILE-->
+<link rel="stylesheet" href="css/hr.css">
+</head>
+<body>
+  <!--navbar-->
+ <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1> 
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li><a class="btn btn-outline-info my-2 my-sm-0" href="index.html">Logout</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+ </header><!-- #header -->
+  <!--PROFILE-->
+<div class="container-fluid" style="margin-top: 100px;">
+  <div class="rowP">
+      <div class="col-12">
+     <div class="card card-inverse" style="background-color: #333; border-color: #333; background-color:rgb(31,11,74);">
+            <div class="card-block">
+        <div class="rowP">
+                    <div class="col-md-8 col-sm-8">
+          <h2 class="card-title">HR Admin Name:</h2>
+          <p class="card-text"><strong>Branch: </strong>  </p>
+          </div>
+  </div>
+  </div>
+</div>
+
+<div class="container">
+	<!--search bar-->
+  <form class="search"> 
+      <div class=" container">
+          <input type="text" id="myInput" class="form-control col-md-offset-2 col-md-4" placeholder="employee name">
+            
+           <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
+      </div>
+  </form>
+	<!--Add student details-->
+  <form>
+	<div class="modal fade" id="employeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+
+        <h4 class="modal-title w-100 font-weight-bold">Add employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right">Employee ID</label>
+          <input type="text" class="form-control validate" maxlength="7" minlength="7" required>
+        </div>
+
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Name</label>
+           <input type="text"  class="form-control validate" required>
+        </div>
+          <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >User Type</label>
+           <input type="text"  class="form-control validate" required>
+        </div>
+		    <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Contact Details</label>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Email ID</label>
+            <input type="email"  class="form-control validate">
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Address</label>
+           <input type="text"  class="form-control validate">
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Salary</label>
+           <input type="number"  class="form-control validate">
+        </div>
+       
+        
+
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+<!--edit button-->
+<form>
+<div class="modal fade" id="editStudentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Edit Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+      <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Employee name</label>
+            <input type="text"  class="form-control validate">
+        </div>
+          <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Contact Details</label>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Email ID</label>
+            <input type="email"  class="form-control validate">
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Address</label>
+           <input type="text"  class="form-control validate">
+        </div>
+        
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >User Type</label>
+           <input type="text"  class="form-control validate">
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Salary</label>
+           <input type="number"  class="form-control validate">
+        </div>
+        </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				    <div class="fright">
+						<button type="button" data-toggle="modal" data-target="#employeeDetail"><h3><span class="glyphicon glyphicon-plus"></span></h3></button>
+					</div>
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+								employee Name
+							</div>
+							<div class="cell">
+								employee Id
+							</div>
+							<div class="cell">
+								contact number
+							</div> 
+							<div class="cell">
+								empployee type
+							</div>
+              <div class="cell">
+                salary
+              </div>
+              <div class="cell">
+                Action
+              </div>
+							
+						</div>
+
+						<div class="row myTable">
+							<div class="cell" data-title="employee Name">
+								Vincent Williamson
+							</div>
+							<div class="cell" data-title="employee id">
+								256
+							</div>
+							<div class="cell" data-title="contact number">
+								9867765363
+							</div>
+              <div class="cell" data-title="employee type">
+                Non-teaching 
+              </div>
+              <div class="cell" data-title="salary">
+                152019
+              </div>
+							<div class="cell" data-title="Action">
+								<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail">  </span>
+								<span class="glyphicon glyphicon-trash">  </span>
+							</div>
+							
+						</div>
+            <div class="row myTable">
+              <div class="cell" data-title="employee Name">
+                prabhat
+              </div>
+              <div class="cell" data-title="employee id">
+                007
+              </div>
+              <div class="cell" data-title="contact number">
+                9878667697
+              </div>
+              <div class="cell" data-title="employee type">
+                teaching 
+              </div>
+              <div class="cell" data-title="salary">
+                1000019
+              </div>
+              <div class="cell" data-title="Action">
+                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail">  </span>
+                <span class="glyphicon glyphicon-trash">  </span>
+              </div>
+              
+            </div>
+
+						
+
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+      <!--Notice starts-->
+   <div id = "notice" class="row">
+                
+                    <div class="notice-board">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               
+                                <ul style="padding-left:0px;list-style:none;">
+                                    <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()">
+                                      <li>
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-expand text-success" ></span>
+                                        <span class="label label-danger" >Header </span><br>
+                                        Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                     <li>
+                                            <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
+                                     <span class="label label-danger" >Header </span><br>
+                                                  Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
+                                     <span class="label label-danger" >Header </span><br>
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
+                                     <span class="label label-danger" >Header </span><br> 
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
+                                     <span class="label label-danger" >Header </span><br>
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
+                                     <span class="label label-danger" >Header </span><br>
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                    </marquee>
+                                </ul>
+                            </div>
+                            <div class="panel-footer" data-toggle="modal" data-target="#uploadNotice">
+                                <a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+                    <!--popup upload notice-->
+      <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Notice Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text"  class="form-control validate">
+          <label data-error="wrong" data-success="right" >Heading</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <textarea id="noticeContent"></textarea>
+          <label data-error="wrong" data-success="right" >Content</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Post">
+      </div>
+    </div>
+  </div>
+</div>
+    <!--Notice Ends-->
+         <!--==========================
+    Footer
+  ============================-->
+  <div class="footer-container">
+  <div class="container-fluid">
+  <footer id="footer">
+    <div class="footer-top">
+        <div class="row rowf">
+
+          <div class="col-lg-4 offset-lg-1 col-md-12 footer-info">
+            <h3>KNEWTON ACADEMY</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact">
+            <h4>HEAD OFFICE</h4>
+            <p>
+              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
+               Above Kharbanda Clinic Gali No. 5, <br>
+               D.D.A Flats, Madangir,<br>
+                New Delhi-110062<br><br>
+              <strong>Phone:</strong>+91 9873889037<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <section id="contact">  
+              <div class="col-lg-6">
+                <h4> For Any Queries : </h4>
+              <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-12">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+              </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="copyright">
+        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+  <!-- #footer -->
+  
+   <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  
+<script type="text/javascript">
+  $(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".row.myTable").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+</body>
+</html>

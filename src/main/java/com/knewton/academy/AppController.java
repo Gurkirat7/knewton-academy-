@@ -39,12 +39,28 @@ public class AppController {
 	    public String parent() {
 	        return "ParentPortal/parentportal_index";
 	    }
-	 @GetMapping("/parentportal_attandance.html")
-	    public String parentportal_attandance() {
-	        return "ParentPortal/parentportal_attandance";
+	 @GetMapping("/parentportal_attendance.html")
+	    public String parentportal_attendance() {
+	        return "ParentPortal/parentportal_attendance";
 	    }
-	 @GetMapping("/parentportal_dropdown.html")
-	    public String parentportal_dropdown() {
-	        return "ParentPortal/parentportal_dropdown";
+	 @GetMapping("/parentportal_perf.html")
+	    public String parentportal_perf() {
+	        return "ParentPortal/parentportal_perf";
 	    }
+	 @GetMapping("/teacher")
+	    public String teacher() {
+	        return "TeacherPortal/teacherportal";
+	 }
+	 @GetMapping("/attendance.html")
+	    public String attendance() {
+	        return "TeacherPortal/attendance";
+	 }
+	 @GetMapping("/assignmentMarks.html")
+	    public String assignment() {
+	        return "TeacherPortal/assignmentMarks";
+	 }
+	 @GetMapping("/hr")
+	    public String hr() {
+	        return "HrPortal/hr";
+	 }
 }

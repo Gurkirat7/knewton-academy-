@@ -18,17 +18,18 @@
 </head>
 <body>
 	<!--search bar-->
+	<!--search bar-->
 	<form class="search"> 
       <div class=" container">
-          <input type="text" class="form-control col-md-offset-2 col-md-6" placeholder="Search ID">
-            <select class="form-control col-md-1" id="type">
+          <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-6" placeholder="Search..">
+            <select class="form-control col-md-2 col-md-offset-1" id="type">
               <option value="none" selected disabled hidden>Type</option> 
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
             </select>
-          <button type="submit" class="btn btn-default" id="searchSubmit">Submit</button>
+          <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
 
@@ -37,7 +38,7 @@
 			<div class="wrap-table100">
 					<div class="table">
 
-					<div class="row header">
+						<div class="row header">
 							<div class="cell">
 								Id
 							</div>
@@ -47,26 +48,36 @@
 							<div class="cell">
 								TypeId
 							</div>
-							
-					</div>
-						
-				     <div class="row">
-                        <div class="cell" data-title="Id">
-                          ST55555
-                         </div>
-                       <div class="cell" data-title="Password">
-                         55544565grgrg
-                         </div>
-                        <div class="cell" data-title="TypeId">
-                          3
-                        </div>
-                     </div>
+						</div>
+						<div class="row myTable">
+							<div class="cell" data-title="Id">
+								ST001232
+							</div>
+							<div class="cell" data-title="Password">
+								asdnkjka@333vv#
+							</div>
+							<div class="cell" data-title="TypeId">
+								90909102
+							</div>
+						</div>
+						<div class="row myTable">
+							<div class="cell" data-title="Id">
+								LI98976
+							</div>
+							<div class="cell" data-title="Password">
+								cghfc@3$
+							</div>
+							<div class="cell" data-title="TypeId">
+								5585858
+							</div>
+						</div>
 
 						
 					</div>
 			</div>
 		</div>
 	</div>
+<script src="table/js/Login_Table.js"></script>
 
 </body>
 </html>

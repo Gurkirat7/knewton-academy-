@@ -1,0 +1,419 @@
+<html lang="en">
+<head>
+<title>Teacher Portal</title>
+<!--PROFILE-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--PROFILE--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
+
+
+
+
+<!--TIME TABLE CSS-->
+<!--CSS for tt-->
+<link rel="icon" type="image/png" href="img/icons/favicon.ico"/>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/header-footer.css">
+<!--assignment marks-->
+<link rel="stylesheet" href="css/teacherportal.css">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+  <!--==========================
+    Header Section
+  ============================-->
+<header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1> 
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+          <li><a class="btn btn-outline-info my-2 my-sm-0" href="index.html">Logout</a></li>
+        </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+ </header><!-- #header -->
+
+<!--PROFILE-->
+
+<div class="container-fluid" style="margin-top:100px;">
+  <div class="row">
+      <div class="col-12">
+     <div class="profilecard card-inverse" style="background-color: #4169e1;  
+	 font-size: 15px;">
+            <div class="card-block">
+			  <div class="row">
+            				<div class="col-md-8 col-sm-8">
+					<h2 class="card-title">Teacher Name:</h2>
+					<p class="card-text"><strong>Class: </strong>  </p>
+          <p class="card-text"><strong>Address: </strong> </p>
+					<p><strong>Courses: </strong>
+						<span class="badge bg-primary">Physics</span>
+						<span class="badge bg-info">Chemistry</span>
+						<span class="badge bg-warning">Biology</span>
+						<span class="badge bg-success">Maths</span>
+					</p>
+				</div>
+   	  </div>
+              </div>
+          </div>
+  </div>
+  </div>
+</div>
+<!--NOTICE-->
+<!--popup upload notice-->
+      <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true" width="100%">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Notice Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <input type="text" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Heading</label>
+        </div>
+        <div class="md-form mb-5">
+          <i class="prefix grey-text"></i>
+          <textarea id="noticeContent" style="width:100%;"></textarea>
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Content</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Post">
+      </div>
+    </div>
+  </div>
+</div>
+        <div id = "notice" class="row">
+                
+                    <div class="notice-board">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               
+                                <ul style="padding-left:0px;list-style:none;">
+                                    <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()">
+                                      <li>
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-expand text-success" ></span>
+                                        <span class="label label-danger" >Header </span><br>
+                                        Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                     <li>
+                                            <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
+                                     <span class="label label-danger" >Header </span><br>
+                                                  Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
+                                     <span class="label label-danger" >Header </span><br>
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                     <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
+                                     <span class="label label-danger" >Header </span><br> 
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
+                                     <span class="label label-danger" >Header </span><br>
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                    <li>
+                                          <a href="#">
+                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
+                                     <span class="label label-danger" >Header </span><br>
+                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
+                                    </li>
+                                    </marquee>
+                                </ul>
+                            </div>
+                            <div class="panel-footer" data-toggle="modal" data-target="#uploadNotice">
+                                <a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+
+                                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<!--TIME TABLE-->
+<div class="limiter">
+  <div class="container-table100">
+    <div class="wrap-table100">
+      <div class="table100 ver6 m-b-110" style= "margin-right:30%; margin-left:3%">
+        <table data-vertable="ver6">
+          <thead>
+            <tr class="row100 head">
+              <th class="column100 column1" data-column="column1"></th>
+              <th class="column100 column2" data-column="column2">Sunday</th>
+              <th class="column100 column3" data-column="column3">Monday</th>
+              <th class="column100 column4" data-column="column4">Tuesday</th>
+              <th class="column100 column5" data-column="column5">Wednesday</th>
+              <th class="column100 column6" data-column="column6">Thursday</th>
+              <th class="column100 column7" data-column="column7">Friday</th>
+              <th class="column100 column8" data-column="column8">Saturday</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Lawrence Scott</td>
+              <td class="column100 column2" data-column="column2">8:00 AM</td>
+              <td class="column100 column3" data-column="column3">--</td>
+              <td class="column100 column4" data-column="column4">--</td>
+              <td class="column100 column5" data-column="column5">8:00 AM</td>
+              <td class="column100 column6" data-column="column6">--</td>
+              <td class="column100 column7" data-column="column7">5:00 PM</td>
+              <td class="column100 column8" data-column="column8">8:00 AM</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Jane Medina</td>
+              <td class="column100 column2" data-column="column2">--</td>
+              <td class="column100 column3" data-column="column3">5:00 PM</td>
+              <td class="column100 column4" data-column="column4">5:00 PM</td>
+              <td class="column100 column5" data-column="column5">--</td>
+              <td class="column100 column6" data-column="column6">9:00 AM</td>
+              <td class="column100 column7" data-column="column7">--</td>
+              <td class="column100 column8" data-column="column8">--</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Billy Mitchell</td>
+              <td class="column100 column2" data-column="column2">9:00 AM</td>
+              <td class="column100 column3" data-column="column3">--</td>
+              <td class="column100 column4" data-column="column4">--</td>
+              <td class="column100 column5" data-column="column5">--</td>
+              <td class="column100 column6" data-column="column6">--</td>
+              <td class="column100 column7" data-column="column7">2:00 PM</td>
+              <td class="column100 column8" data-column="column8">8:00 AM</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Beverly Reid</td>
+              <td class="column100 column2" data-column="column2">--</td>
+              <td class="column100 column3" data-column="column3">5:00 PM</td>
+              <td class="column100 column4" data-column="column4">5:00 PM</td>
+              <td class="column100 column5" data-column="column5">--</td>
+              <td class="column100 column6" data-column="column6">9:00 AM</td>
+              <td class="column100 column7" data-column="column7">--</td>
+              <td class="column100 column8" data-column="column8">--</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Tiffany Wade</td>
+              <td class="column100 column2" data-column="column2">8:00 AM</td>
+              <td class="column100 column3" data-column="column3">--</td>
+              <td class="column100 column4" data-column="column4">--</td>
+              <td class="column100 column5" data-column="column5">8:00 AM</td>
+              <td class="column100 column6" data-column="column6">--</td>
+              <td class="column100 column7" data-column="column7">5:00 PM</td>
+              <td class="column100 column8" data-column="column8">8:00 AM</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Sean Adams</td>
+              <td class="column100 column2" data-column="column2">--</td>
+              <td class="column100 column3" data-column="column3">5:00 PM</td>
+              <td class="column100 column4" data-column="column4">5:00 PM</td>
+              <td class="column100 column5" data-column="column5">--</td>
+              <td class="column100 column6" data-column="column6">9:00 AM</td>
+              <td class="column100 column7" data-column="column7">--</td>
+              <td class="column100 column8" data-column="column8">--</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Rachel Simpson</td>
+              <td class="column100 column2" data-column="column2">9:00 AM</td>
+              <td class="column100 column3" data-column="column3">--</td>
+              <td class="column100 column4" data-column="column4">--</td>
+              <td class="column100 column5" data-column="column5">--</td>
+              <td class="column100 column6" data-column="column6">--</td>
+              <td class="column100 column7" data-column="column7">2:00 PM</td>
+              <td class="column100 column8" data-column="column8">8:00 AM</td>
+            </tr>
+
+            <tr class="row100">
+              <td class="column100 column1" data-column="column1">Mark Salazar</td>
+              <td class="column100 column2" data-column="column2">8:00 AM</td>
+              <td class="column100 column3" data-column="column3">--</td>
+              <td class="column100 column4" data-column="column4">--</td>
+              <td class="column100 column5" data-column="column5">8:00 AM</td>
+              <td class="column100 column6" data-column="column6">--</td>
+              <td class="column100 column7" data-column="column7">5:00 PM</td>
+              <td class="column100 column8" data-column="column8">8:00 AM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    	<script src="vendor/bootstrap/js/popper.js"></script>
+    	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    	<script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    	<script src="main.js"
+      ></script>
+
+
+<!--CARDS-->
+<div class="car" style="margin-top:20px;">
+<div class="container" style="font-size:12px;">
+                <div class="row">
+                        <div class="column zoom " onclick="openTab('b1');">
+                          <div class="card card1">
+                            <h3>Course 1</h3>
+                            <p>Attendance</p>
+							<!--attandance-->
+							<a href="attendance.html">click here</a>
+                            
+							<p>Assignment Marks</p>
+							<!--assignment marks-->
+							<a href="assignmentMarks.html">click here</a>
+                          </div>
+                        </div>
+
+                        <div class="column zoom " onclick="openTab('b2');">
+                          <div class="card card2">
+                            <h3>Course 2</h3>
+                            <p>Attendance</p>
+							<!--attandance-->
+							<a href="attendance.html">click here</a>
+                            <p>Assignmen Marks</p>
+							<!--assignment marks-->
+							<a href="assignmentMarks.html">click here</a>
+							
+
+                          </div>
+                        </div>
+
+                        <div class="column zoom " onclick="openTab()">
+                          <div class="card card3">
+                            <h3>Course 3</h3>
+                            <p>Attendance</p>
+							<!--attandance-->
+							<a href="attendance.html">click here</a>
+                            <p>Assignmen Marks</p>
+							<!--assignment marks-->
+							<a href="assignmentMarks.html">click here</a>
+                          </div>
+                        </div>
+</div>
+</div>
+</div>
+
+<div class="footer-container">
+<!--==========================
+    Footer
+  ============================-->
+  
+  <footer id="footer">
+    <div class="footer-top">
+        <div class="row">
+
+          <div class="col-lg-4 offset-lg-1 col-md-12 footer-info">
+            <h3>KNEWTON ACADEMY</h3>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-12 footer-contact">
+            <h4>HEAD OFFICE</h4>
+            <p>
+              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
+               Above Kharbanda Clinic Gali No. 5, <br>
+               D.D.A Flats, Madangir,<br>
+                New Delhi-110062<br><br>
+              <strong>Phone:</strong>+91 9873889037<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 col-md-12 footer-newsletter">
+            <section id="contact">  
+              <div class="col-lg-6">
+                <h4> For Any Queries : </h4>
+              <div class="form">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form action="" method="post" role="form" class="contactForm">
+                <div class="form-row">
+                  <div class="form-group col-lg-12">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div class="validation"></div>
+                  </div>
+                  <div class="form-group col-lg-12">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  <div class="validation"></div>
+                </div>
+                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
+              </form>
+              </div>
+              </div>
+            </section>
+          </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
+      </div>
+    </div>
+  </footer><!-- #footer -->
+  </div>
+</div>
+
+      
+ <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+    </body>
+
+                           </html>

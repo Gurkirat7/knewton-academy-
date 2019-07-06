@@ -7,9 +7,8 @@
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
-
 	<link rel="stylesheet" type="text/css" href="table/css/util.css">
-	<link rel="stylesheet" type="text/css" href="table/css/Student_Table.css">
+	<link rel="stylesheet" type="text/css" href="table/css/Student_Table.css">	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -19,22 +18,22 @@
 	<!--search bar-->
   <form class="search"> 
       <div class=" container">
-          <input type="text" class="form-control col-md-offset-2 col-md-5" placeholder="Student ID">
-            <select class="form-control col-md-1" id="type">
+          <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-4" placeholder="Search..">
+            <select class="form-control col-md-2 col-md-offset-1" id="type">
               <option value="none" selected disabled hidden>Class</option> 
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
             </select>
-            <select class="form-control col-md-1" id="type">
+            <select class="form-control col-md-2" id="type">
               <option value="none" selected disabled hidden>Course</option> 
               <option>1</option>
               <option>2</option>
               <option>3</option>
               <option>4</option>
             </select>
-          <button type="submit" class="btn btn-default" id="searchSubmit">Submit</button>
+            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
 
@@ -44,6 +43,9 @@
 					<div class="table">
 
 						<div class="row header">
+							<div class="cell">
+								Student Id
+							</div>
 							<div class="cell">
 								Full Name
 							</div>
@@ -58,10 +60,12 @@
 							</div>
 							<div class="cell">
 									Performance
-								</div>
+							</div>
 						</div>
-
-						<div class="row">
+						<div class="row myTable">
+							<div class="cell" data-title="Student Id">
+								ST002882
+							</div>
 							<div class="cell" data-title="Full Name">
 								Vincent Williamson
 							</div>
@@ -78,15 +82,52 @@
 									0%
 							</div>
 						</div>
-
-						
-
-						
-
+						<div class="row myTable">
+							<div class="cell" data-title="Student Id">
+								ST001232
+							</div>
+							<div class="cell" data-title="Full Name">
+								asdnkjkas	
+							</div>
+							<div class="cell" data-title="Phone No">
+								90909102	
+							</div>
+							<div class="cell" data-title="Class">
+								10th
+							</div>
+							<div class="cell" data-title="Courses">
+								 lol
+							</div>
+							<div class="cell" data-title="Performance">
+									50%
+							</div>
+						</div>
+						<div class="row myTable">
+							<div class="cell" data-title="Student Id">
+								ST00123412
+							</div>
+							<div class="cell" data-title="Full Name">
+								gutjekek
+							</div>
+							<div class="cell" data-title="Phone No">
+								990909222
+							</div>
+							<div class="cell" data-title="Class">
+								9th
+							</div>
+							<div class="cell" data-title="Courses">
+								mains
+							</div>
+							<div class="cell" data-title="Performance">
+									100%
+							</div>
+						</div>
 					</div>
 			</div>
 		</div>
 	</div>
+
+<script src="table/js/Student_Table.js"></script>
 
 </body>
 </html>

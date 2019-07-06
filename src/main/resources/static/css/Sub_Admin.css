@@ -225,7 +225,7 @@ iframe {
   width: 100% !important;
 }
 
-.row:hover {
+.row:not(:first-child):hover {
   background-color: #ececff;
   cursor: pointer;
 }
@@ -282,7 +282,8 @@ iframe {
   margin-top: 5%;
 }
 #header .container{
-  margin-top: 0px;
+  margin: 0px;
+  margin-left:10%;
 }
 
 .container .dropdown{
@@ -335,6 +336,10 @@ iframe {
   width:100%;
 }
 
+div#notice.row{
+	padding: 0px;
+}
+
 .container-fluid
 {
 width:100%;
@@ -352,4 +357,18 @@ margin-top: 40px;
 .rowf:hover{
   cursor: default;
   background:#004a99;
+}
+
+.field-wrap {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+}
+.field-wrap input {
+  width: 100%;
+  flex-grow: 1;
+}
+label {
+  margin-right: 20px;
+  width: 50%;
 }

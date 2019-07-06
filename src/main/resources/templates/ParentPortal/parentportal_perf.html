@@ -1,0 +1,238 @@
+
+<html lang="en">
+<head>
+	<title>Performance</title>
+	<!--HEADER FOOTER-->
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+	<!--search-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/parentassign.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<!-- HEADER-->
+	<header id="header" class="fixed-top">
+			<div class="container">
+				<div class="logo float-left">
+					<h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1>
+				</div>
+
+				<nav class="main-nav float-right d-none d-lg-block">
+					<ul>
+						<li><a class="btn btn-outline-info my-2 my-sm-0" href="/parent">Back To Portal</a></li>
+					</ul>
+				</nav><!-- .main-nav -->
+			</div>
+	 </header><!-- #header -->
+
+
+	<!--search bar-->
+	<h2 style="margin-top:10%;"><center> Assignments</center></h2>
+  <form class="search" style="margin-top:50px;">
+      <div id="searchform" class=" container">
+          <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-5" placeholder="Search Assignment">
+            <select class="form-control col-md-1 col-md-offset-2" id="type">
+              <option value="none" selected disabled hidden>Class</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+            <select class="form-control col-md-1" id="type">
+              <option value="none" selected disabled hidden>Course</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
+      </div>
+  </form>
+
+	<div id="firstsearch" class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+					<div class="table">
+
+						<div class="row header">
+							<div class="cell">
+								Assignment Name
+							</div>
+							<div class="cell">
+								Maximum Marks
+							</div>
+							<div class="cell">
+								Obtained Marks
+							</div>
+							<div class="cell">
+								Percentage
+							</div>
+						</div>
+						<div class="row myTable">
+							<div class="cell" data-title="Assignment Id">
+								AS002882
+							</div>
+							<div class="cell" data-title="No">
+								100
+							</div>
+							<div class="cell" data-title="Marks">
+							  78
+							</div>
+							<div class="cell" data-title="per">
+								78%
+							</div>
+
+						</div>
+						<div class="row myTable">
+							<div class="cell" data-title="Assignment Id">
+								AS001232
+							</div>
+							<div class="cell" data-title="No">
+								100
+							</div>
+							<div class="cell" data-title="Marks">
+								99
+							</div>
+							<div class="cell" data-title="per">
+								99%
+							</div>
+						</div>
+
+						<div class="row myTable">
+							<div class="cell" data-title="Assignment Id">
+								AS00123412
+							</div>
+							<div class="cell" data-title="No">
+								100
+							</div>
+							<div class="cell" data-title="Marks">
+								78
+							</div>
+							<div class="cell" data-title="per">
+								78%
+							</div>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+ <script src="js/pp_search.js"></script>
+
+
+		<!--Test Series-->
+		<h2 style="margin-top:10%; margin-bottom: 20px;"><center> Test Series</center></h2>
+		<form class="search" style="margin-top:10px;">
+	      <div id="searchform" class=" container">
+	          <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-5" placeholder="Search Assignment">
+	            <select class="form-control col-md-1 col-md-offset-2" id="type">
+	              <option value="none" selected disabled hidden>Class</option>
+	              <option>1</option>
+	              <option>2</option>
+	              <option>3</option>
+	              <option>4</option>
+	            </select>
+	            <select class="form-control col-md-1" id="type">
+	              <option value="none" selected disabled hidden>Course</option>
+	              <option>1</option>
+	              <option>2</option>
+	              <option>3</option>
+	              <option>4</option>
+	            </select>
+	            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
+	      </div>
+	  </form>
+
+
+		<div id="testseriestab" class="limiter">
+			<div class="container-table100">
+				<div class="wrap-table100">
+						<div class="table">
+
+							<div class="row header">
+								<div class="cell">
+									Test Name
+								</div>
+								<div class="cell">
+									Test Description
+								</div>
+								<div class="cell">
+									Maximum Marks
+								</div>
+
+								<div class="cell">
+									Obtained Marks
+								</div>
+								<div class="cell">
+									Percentage
+								</div>
+							</div>
+							<div class="row myTable">
+								<div class="cell" data-title="Test Id">
+									TS002882
+								</div>
+								<div class="cell" data-title="Test Name">
+									Physics
+								</div>
+								<div class="cell" data-title="total No">
+									100
+								</div>
+								<div class="cell" data-title="Marks">
+									90
+								</div>
+								<div class="cell" data-title="per">
+									90%
+								</div>
+							</div>
+							<div class="row myTable">
+								<div class="cell" data-title="Test Id">
+									TS001232
+								</div>
+								<div class="cell" data-title="Test Name">
+									Chemistry
+								</div>
+								<div class="cell" data-title=" No">
+									100
+								</div>
+								<div class="cell" data-title="Marks">
+									89
+								</div>
+								<div class="cell" data-title="per">
+									89%
+								</div>
+							</div>
+
+							<div class="row myTable">
+								<div class="cell" data-title="Test Id">
+									TS00123412
+								</div>
+								<div class="cell" data-title="Test Name">
+									Maths
+								</div>
+								<div class="cell" data-title="No">
+									100
+								</div>
+								<div class="cell" data-title="marks">
+									78
+								</div>
+								<div class="cell" data-title="per">
+									78%
+								</div>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+
+</body>
+</html>
