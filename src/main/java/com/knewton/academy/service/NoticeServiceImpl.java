@@ -25,6 +25,7 @@ public class NoticeServiceImpl implements NoticeService {
 		Notice noticeNew = new Notice();
 		noticeNew = (Notice) noticeRepository.findOne(notice.getTitle());
 		System.out.println(noticeNew);
+		System.out.println("idk");
 	}
 	
 }

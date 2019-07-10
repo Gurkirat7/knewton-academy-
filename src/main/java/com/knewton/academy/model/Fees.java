@@ -20,7 +20,7 @@ public class Fees {
 	@Column
 	private int installment2;
 	@Column
-	private String installment;
+	private String installment3;
 	
 	@OneToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
@@ -58,12 +58,22 @@ public class Fees {
 		this.installment2 = installment2;
 	}
 
-	public String getInstallment() {
-		return installment;
+	
+
+	public String getInstallment3() {
+		return installment3;
 	}
 
-	public void setInstallment(String installment) {
-		this.installment = installment;
+	public void setInstallment3(String installment3) {
+		this.installment3 = installment3;
+	}
+
+	public StudentTable getStudenttable() {
+		return studenttable;
+	}
+
+	public void setStudenttable(StudentTable studenttable) {
+		this.studenttable = studenttable;
 	}
 
 	public Fees() {
