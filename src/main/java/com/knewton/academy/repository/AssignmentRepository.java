@@ -9,5 +9,4 @@ import com.knewton.academy.model.Assignment;
 
 @Repository
 public interface AssignmentRepository extends CrudRepository<Assignment,Integer> {
-	List<Assignment>findByassignmentId(String batchId,String description);
 }

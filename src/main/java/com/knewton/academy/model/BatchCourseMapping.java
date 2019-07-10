@@ -16,8 +16,19 @@ public class BatchCourseMapping {
 	@Column
 	private int courseId;
 	
+	@OneToOne(mappedBy="batchcoursemapping")
+	private Assignment assignment;
+	@OneToOne(mappedBy="batchcoursemapping")
+	private AttendanceCount attendancecount;
+	@OneToOne(mappedBy="batchcoursemapping")
+	private ClassDelivered classdelivered;
+	@OneToOne(mappedBy="batchcoursemapping")
+	private StudentBatchMapping studentbatchmapping;
+	@OneToOne(mappedBy="batchcoursemapping")
+	private TeacherBatchMapping teacherbatchmapping;
+	
 	@OneToOne
-	@JoinColumn(name="courseId", referencedColumnName="courseId")
+	@JoinColumn(name="courseId", referencedColumnName="courseId", insertable=false,updatable=false)
 	private Course course;
 	
 	
@@ -48,6 +59,55 @@ public class BatchCourseMapping {
 
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+	
+
+	public Assignment getAssignment() {
+		return assignment;
+	}
+
+
+	public void setAssignment(Assignment assignment) {
+		this.assignment = assignment;
+	}
+
+	public AttendanceCount getAttendancecount() {
+		return attendancecount;
+	}
+
+
+	public void setAttendancecount(AttendanceCount attendancecount) {
+		this.attendancecount = attendancecount;
+	}
+
+
+	public ClassDelivered getClassdelivered() {
+		return classdelivered;
+	}
+
+
+	public void setClassdelivered(ClassDelivered classdelivered) {
+		this.classdelivered = classdelivered;
+	}
+
+
+	public StudentBatchMapping getStudentbatchmapping() {
+		return studentbatchmapping;
+	}
+
+
+	public void setStudentbatchmapping(StudentBatchMapping studentbatchmapping) {
+		this.studentbatchmapping = studentbatchmapping;
+	}
+
+
+	public TeacherBatchMapping getTeacherbatchmapping() {
+		return teacherbatchmapping;
+	}
+
+
+	public void setTeacherbatchmapping(TeacherBatchMapping teacherbatchmapping) {
+		this.teacherbatchmapping = teacherbatchmapping;
 	}
 
 

@@ -1,44 +1,37 @@
 package com.knewton.academy.model;
 
-
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="attendancecount")
 public class AttendanceCount {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String studentId;
-	@Column
-	private String batchId;
+	@EmbeddedId
+	private AttendanceCountId attendancecountid;
 	@Column
 	private int totalCount;
 	@Column
 	private int presentCount;
 	
+	@OneToOne
+	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
+	private StudentTable studenttable;
 
-	public String getStudentId() {
-		return studentId;
+	@OneToOne
+	@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
+	private BatchCourseMapping batchcoursemapping;
+
+	public AttendanceCountId getAttendancecountid() {
+		return attendancecountid;
 	}
 
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
-	}
-
-
-	public String getBatchId() {
-		return batchId;
-	}
-
-
-	public void setBatchId(String batchId) {
-		this.batchId = batchId;
+	public void setAttendancecountid(AttendanceCountId attendancecountid) {
+		this.attendancecountid = attendancecountid;
 	}
 
 
@@ -60,10 +53,28 @@ public class AttendanceCount {
 	public void setPresentCount(int presentCount) {
 		this.presentCount = presentCount;
 	}
+	
+	public StudentTable getStudenttable() {
+		return studenttable;
+	}
 
+	public void setStudenttable(StudentTable studenttable) {
+		this.studenttable = studenttable;
+	}
 
+	public BatchCourseMapping getBatchcoursemapping() {
+		return batchcoursemapping;
+	}
+
+	public void setBatchcoursemapping(BatchCourseMapping batchcoursemapping) {
+		this.batchcoursemapping = batchcoursemapping;
+	}
 	public AttendanceCount() {
 		// TODO Auto-generated constructor stub
 	}
-
+	public AttendanceCount(AttendanceCountId attendancecountid, int totalCount, int presentCount) {
+		this.attendancecountid = attendancecountid;
+		this.totalCount = totalCount;
+		this.presentCount = presentCount;
+	}
 }

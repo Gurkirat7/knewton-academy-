@@ -2,6 +2,7 @@ package com.knewton.academy.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -9,7 +10,7 @@ import javax.persistence.Table;
 public class Signup {
 	@Column
 	private String name;
-	@Column
+	@Id
 	private String emailID;
 	@Column
 	private String password;

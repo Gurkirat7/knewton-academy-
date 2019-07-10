@@ -19,8 +19,8 @@ public class Login {
 	private int userTypeId;
 	
 	@OneToOne
-	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId")
-	private EmployeeTable employeetable;
+	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
+	private Usertype usertype;
 
 	public String getId() {
 		return id;
@@ -44,12 +44,13 @@ public class Login {
 	public void setUserTypeId(int userTypeId) {
 		this.userTypeId = userTypeId;
 	}
-	public EmployeeTable getEmployeetable() {
-		return employeetable;
+	
+	public Usertype getUsertype() {
+		return usertype;
 	}
 
-	public void setEmployeetable(EmployeeTable employeetable) {
-		this.employeetable = employeetable;
+	public void setUsertype(Usertype usertype) {
+		this.usertype = usertype;
 	}
 
 	public Login() {

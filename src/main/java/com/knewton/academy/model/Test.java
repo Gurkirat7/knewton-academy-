@@ -31,8 +31,11 @@ public class Test {
 	@Column
 	private int totalMarks;
 	
+	@OneToOne(mappedBy="test")
+	private ResultTest resulttest;
+	
 	@OneToOne
-	@JoinColumn(name="courseId", referencedColumnName="courseId")
+	@JoinColumn(name="courseId", referencedColumnName="courseId", insertable=false, updatable=false)
 	private Course course;
 	
 	
@@ -117,6 +120,18 @@ public class Test {
 
 	public void setCourse(Course course) {
 		this.course = course;
+	}
+
+
+
+	public ResultTest getResulttest() {
+		return resulttest;
+	}
+
+
+
+	public void setResulttest(ResultTest resulttest) {
+		this.resulttest = resulttest;
 	}
 
 

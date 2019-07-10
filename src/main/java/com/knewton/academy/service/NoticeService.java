@@ -1,5 +1,7 @@
 package com.knewton.academy.service;
 
-public interface NoticeService {
+//import org.springframework.stereotype.Service;
 
+public interface NoticeService {
+	public void addnotice();
 }

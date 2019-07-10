@@ -3,9 +3,9 @@ package com.knewton.academy.model;
 import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -13,13 +13,18 @@ import javax.persistence.Table;
 @Table(name="classdelivered")
 public class ClassDelivered {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
     private int classDeliveredId;
 	@Column 
 	private String batchId;
     @Column
     private Date date;
     
+    @OneToOne(mappedBy="classdelivered")
+    private Attendance attendance;
+    
+    @OneToOne
+	@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
+	private BatchCourseMapping batchcoursemapping;
     
 	public int getClassDeliveredId() {
 		return classDeliveredId;
@@ -38,11 +43,27 @@ public class ClassDelivered {
 		return date;
 	}
 
-
 	public void setDate(Date date) {
 		this.date = date;
 	}
 
+	public BatchCourseMapping getBatchcoursemapping() {
+		return batchcoursemapping;
+	}
+
+	public void setBatchcoursemapping(BatchCourseMapping batchcoursemapping) {
+		this.batchcoursemapping = batchcoursemapping;
+	}
+	
+
+
+	public Attendance getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Attendance attendance) {
+		this.attendance = attendance;
+	}
 
 	public ClassDelivered() {
 		// TODO Auto-generated constructor stub

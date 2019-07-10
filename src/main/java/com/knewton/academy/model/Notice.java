@@ -4,12 +4,13 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="notice")
 public class Notice {
-	@Column
+	@Id
 	private String title;
 	@Column
 	private Date date;
@@ -28,6 +29,10 @@ public class Notice {
 	} 
 	public Notice() {
 		
+	}
+	@Override
+	public String toString() {
+		return "Notice [title=" + title + ", date=" + date + "]";
 	}
 	
 }

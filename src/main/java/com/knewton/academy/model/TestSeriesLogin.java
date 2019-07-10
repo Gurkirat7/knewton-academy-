@@ -3,6 +3,7 @@ package com.knewton.academy.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +14,9 @@ public class TestSeriesLogin {
 	
 	@Column
 	private String password;
+	
+	@OneToOne(mappedBy="testserieslogin")
+	private StudentTable studenttable;
 	
 	public String getTestLoginId() {
 		return testLoginId;
@@ -28,6 +32,14 @@ public class TestSeriesLogin {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public StudentTable getStudenttable() {
+		return studenttable;
+	}
+
+	public void setStudenttable(StudentTable studenttable) {
+		this.studenttable = studenttable;
 	}
 
 	public TestSeriesLogin() {

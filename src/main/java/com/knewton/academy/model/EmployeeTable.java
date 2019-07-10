@@ -3,6 +3,8 @@ package com.knewton.academy.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -26,6 +28,12 @@ public class EmployeeTable {
 	@Column
 	private int salary;
 	
+	@OneToOne(mappedBy="employeetable")
+	private TeacherBatchMapping teacherbatchmapping;
+	
+	@OneToOne
+	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
+	private Usertype usertype;
 	
 	public String getEmployeeId() {
 		return employeeId;
@@ -94,6 +102,27 @@ public class EmployeeTable {
 
 	public void setSalary(int salary) {
 		this.salary = salary;
+	}
+
+
+
+	public TeacherBatchMapping getTeacherbatchmapping() {
+		return teacherbatchmapping;
+	}
+
+
+	public void setTeacherbatchmapping(TeacherBatchMapping teacherbatchmapping) {
+		this.teacherbatchmapping = teacherbatchmapping;
+	}
+
+
+	public Usertype getUsertype() {
+		return usertype;
+	}
+
+
+	public void setUsertype(Usertype usertype) {
+		this.usertype = usertype;
 	}
 
 

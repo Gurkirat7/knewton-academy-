@@ -6,6 +6,8 @@ package com.knewton.academy.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +35,27 @@ public class StudentTable {
 	@Column
 	private String testLoginId;
 	
+	@OneToOne(mappedBy="studenttable")
+	private Attendance attendance;
+	@OneToOne(mappedBy="studenttable")
+	private AttendanceCount attendancecount; 
+	@OneToOne(mappedBy="studenttable")
+	private Fees fees;
+	@OneToOne(mappedBy="studenttable")
+	private ResultTest resulttest;
+	@OneToOne(mappedBy="studenttable")
+	private ResultAssignment resultassignment;
+	@OneToOne(mappedBy="studenttable")
+	private StudentBatchMapping studentbatchmapping;
+	
+	
+	@OneToOne
+	@JoinColumn(name="branchId", referencedColumnName="branchId", insertable=false,updatable=false)
+	private Branch branch;
+	
+	@OneToOne
+	@JoinColumn(name="testLoginId", referencedColumnName="testLoginId", insertable=false,updatable=false)
+	private TestSeriesLogin testserieslogin;
 	
 	public String getName() {
 		return name;
@@ -116,6 +139,79 @@ public class StudentTable {
 		this.testLoginId = testLoginId;
 	}
 
+	
+	public String getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
+	}
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+	
+	
+	public Attendance getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(Attendance attendance) {
+		this.attendance = attendance;
+	}
+
+	public AttendanceCount getAttendancecount() {
+		return attendancecount;
+	}
+
+	public void setAttendancecount(AttendanceCount attendancecount) {
+		this.attendancecount = attendancecount;
+	}
+
+	public Fees getFees() {
+		return fees;
+	}
+
+	public void setFees(Fees fees) {
+		this.fees = fees;
+	}
+
+	public ResultTest getResulttest() {
+		return resulttest;
+	}
+
+	public void setResulttest(ResultTest resulttest) {
+		this.resulttest = resulttest;
+	}
+
+	public ResultAssignment getResultassignment() {
+		return resultassignment;
+	}
+
+	public void setResultassignment(ResultAssignment resultassignment) {
+		this.resultassignment = resultassignment;
+	}
+
+	public StudentBatchMapping getStudentbatchmapping() {
+		return studentbatchmapping;
+	}
+
+	public void setStudentbatchmapping(StudentBatchMapping studentbatchmapping) {
+		this.studentbatchmapping = studentbatchmapping;
+	}
+
+	public TestSeriesLogin getTestserieslogin() {
+		return testserieslogin;
+	}
+
+	public void setTestserieslogin(TestSeriesLogin testserieslogin) {
+		this.testserieslogin = testserieslogin;
+	}
 
 	public StudentTable() {
 		// TODO Auto-generated constructor stub

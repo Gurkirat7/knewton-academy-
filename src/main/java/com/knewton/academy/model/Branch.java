@@ -3,21 +3,26 @@ package com.knewton.academy.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="branch")
 public class Branch {
 	@Id
-    private int brachId;
+    private int branchId;
 	@Column
 	private String name;
-	public int getBrachId() {
-		return brachId;
+	
+	@OneToOne(mappedBy="branch")
+	private StudentTable studenttable;
+	
+	public int getBranchId() {
+		return branchId;
 	}
 
-	public void setBrachId(int brachId) {
-		this.brachId = brachId;
+	public void setBranchId(int branchId) {
+		this.branchId = branchId;
 	}
 
 	public String getName() {

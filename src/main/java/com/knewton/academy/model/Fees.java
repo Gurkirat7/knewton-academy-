@@ -23,7 +23,7 @@ public class Fees {
 	private String installment;
 	
 	@OneToOne
-	@JoinColumn(name="studentId", referencedColumnName="studentId")
+	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
 
 	public String getStudentId() {

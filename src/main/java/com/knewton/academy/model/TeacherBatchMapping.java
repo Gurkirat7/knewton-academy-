@@ -1,7 +1,7 @@
 package com.knewton.academy.model;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -9,54 +9,49 @@ import javax.persistence.Table;
 @Entity
 @Table(name="teacherbatchmapping")
 public class TeacherBatchMapping {
-	@Id
-	private String employeeId;
 	
-	@Id
-	private String batchId;
+	@EmbeddedId
+	private TeacherBatchMappingId teacherbatchmappingid;
 	
 	@OneToOne
-	@JoinColumn(name="employeeId", referencedColumnName="employeeId")
+	@JoinColumn(name="employeeId", referencedColumnName="employeeId",insertable=false, updatable=false)
 	private EmployeeTable employeetable;
 	
 	@OneToOne
-	@JoinColumn(name="batchId", referencedColumnName="batchId")
+	@JoinColumn(name="batchId", referencedColumnName="batchId",insertable=false, updatable=false)
 	private BatchCourseMapping batchcoursemapping;
 
-	public String getEmployeeId() {
-		return employeeId;
+	
+	public TeacherBatchMappingId getTeacherbatchmappingid() {
+		return teacherbatchmappingid;
 	}
-
-	public void setEmployeeId(String employeeId) {
-		this.employeeId = employeeId;
+	public void setTeacherbatchmappingid(TeacherBatchMappingId teacherbatchmappingid) {
+		this.teacherbatchmappingid = teacherbatchmappingid;
 	}
-
-	public String getBatchId() {
-		return batchId;
-	}
-
-	public void setBatchId(String batchId) {
-		this.batchId = batchId;
-	}
-
-
+	
 	public EmployeeTable getEmployeetable() {
 		return employeetable;
 	}
+
 
 	public void setEmployeetable(EmployeeTable employeetable) {
 		this.employeetable = employeetable;
 	}
 
+
 	public BatchCourseMapping getBatchcoursemapping() {
 		return batchcoursemapping;
 	}
 
+
 	public void setBatchcoursemapping(BatchCourseMapping batchcoursemapping) {
 		this.batchcoursemapping = batchcoursemapping;
 	}
+
 	public TeacherBatchMapping() {
 		
 	}
-	
+	public TeacherBatchMapping(TeacherBatchMappingId teacherbatchmappingid) {
+		this.teacherbatchmappingid = teacherbatchmappingid;
+	}
 }

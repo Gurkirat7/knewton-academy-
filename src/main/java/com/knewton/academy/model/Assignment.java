@@ -4,9 +4,9 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -14,7 +14,6 @@ import javax.persistence.Table;
 @Table(name="assignment")
 public class Assignment {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column
     private int assignmentId;
 	@Column
@@ -25,7 +24,14 @@ public class Assignment {
 	private int totalMarks;
 	@Column
 	private Date date;
-
+	
+	@OneToOne(mappedBy="assignment")
+	private ResultAssignment resultassignment;
+	
+	@OneToOne
+	@JoinColumn(name="batchId",referencedColumnName="batchId", insertable=false,updatable=false)
+	private BatchCourseMapping batchcoursemapping;
+	
 	public int getAssignmentId() {
 		return assignmentId;
 	}
@@ -66,7 +72,22 @@ public class Assignment {
 		this.date = date;
 	}
 
-	
+	public BatchCourseMapping getBatchcoursemapping() {
+		return batchcoursemapping;
+	}
+
+	public void setBatchcoursemapping(BatchCourseMapping batchcoursemapping) {
+		this.batchcoursemapping = batchcoursemapping;
+	}
+
+	public ResultAssignment getResultassignment() {
+		return resultassignment;
+	}
+
+	public void setResultassignment(ResultAssignment resultassignment) {
+		this.resultassignment = resultassignment;
+	}
+
 	public Assignment() {
 		// TODO Auto-generated constructor stub
 	}
