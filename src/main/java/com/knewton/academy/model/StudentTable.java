@@ -34,6 +34,8 @@ public class StudentTable {
 	private int branchId;
 	@Column
 	private String testLoginId;
+	@Column
+	private boolean status;
 	
 	@OneToOne(mappedBy="studenttable")
 	private Attendance attendance;
@@ -211,6 +213,15 @@ public class StudentTable {
 
 	public void setTestserieslogin(TestSeriesLogin testserieslogin) {
 		this.testserieslogin = testserieslogin;
+	}
+	
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public StudentTable() {

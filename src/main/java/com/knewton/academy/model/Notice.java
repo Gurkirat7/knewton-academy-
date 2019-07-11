@@ -11,15 +11,33 @@ import javax.persistence.Table;
 @Table(name="notice")
 public class Notice {
 	@Id
+	private int serialNo;
+	
+	@Column
 	private String title;
+	@Column
+	private String content;
 	@Column
 	private Date date;
 	
+	
+	public int getSerialNo() {
+		return serialNo;
+	}
+	public void setSerialNo(int serialNo) {
+		this.serialNo = serialNo;
+	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public Date getDate() {
 		return date;
