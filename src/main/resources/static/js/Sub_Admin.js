@@ -6,3 +6,13 @@ $(document).ready(function(){
     });
   });
 });
+
+$(document).ready(function(){
+	  $("#type ").change( function() {
+//	    var value = $(this).val().toLowerCase();
+//	    $(".row.myTable").filter(function() {
+//	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//	    });
+		  alert("tghyu");
+	  });		 
+	});

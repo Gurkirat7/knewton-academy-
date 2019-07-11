@@ -372,3 +372,14 @@ label {
   margin-right: 20px;
   width: 50%;
 }
+.try{
+	position:relative;
+	left:80%;
+	word-spacing:-20px;
+}
+@media(max-width:650px){
+	.try{
+	margin-top:10px;
+	left:0%;
+	}
+}
