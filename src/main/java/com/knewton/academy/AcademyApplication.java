@@ -23,8 +23,7 @@ public class AcademyApplication {
 //	ResultSet sr =st.executeQuery("select * from student");
 //	while(sr.next())
 //	System.out.println(sr.getString(1)+" "+ sr.getString(2));
-//	con.close();  
-	        
+//	con.close();          
 	        
 	        
 		

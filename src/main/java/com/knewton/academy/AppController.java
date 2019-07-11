@@ -1,12 +1,15 @@
 package com.knewton.academy;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.knewton.academy.service.NoticeServiceImpl;
 
 @Controller
 public class AppController {
+	
+	@Autowired
+	NoticeServiceImpl noticeserviceimpl;
 	 @GetMapping("/signup")
 	    public String signup() {
 	        return "signup";
@@ -63,4 +66,36 @@ public class AppController {
 	    public String hr() {
 	        return "HrPortal/hr";
 	 }
+//	 @RestController
+//	 public class Notice{
+//		 @Autowired
+//		 private NoticeRepository noticeRepository;
+//		 @GetMapping("/notice")
+//		 public Iterable<com.knewton.academy.model.Notice> retrieveNotice(){
+//			 return noticeRepository.findAll();
+//		 }
+//	 }
+	 
+//	@RequestMapping(value="/notice",method=RequestMethod.GET)
+//	public class NoticeController{
+//		@Autowired
+//		private NoticeServiceImpl noticeserviceimpl;
+//		noticeserviceimpl.getNotice();
+//	}
+	
+//	@ResponseBody
+//	public List<Notice> getNotice() {
+//		NoticeServiceImpl noticeserviceimpl = new NoticeServiceImpl();
+//		List<Notice> noticeList = (List<Notice>)noticeserviceimpl.getNotice();
+//		return noticeList;
+//	}
+	 
+//	
+//	void NoticeController(){
+//		NoticeServiceImpl noticeserviceimpl = new NoticeServiceImpl();
+//		List<Notice> noticeList = (List<Notice>)noticeserviceimpl.getNotice();
+//		System.out.println(noticeList);
+//	}
+//
 }
+
