@@ -9,5 +9,5 @@ import com.knewton.academy.model.Login;
 
 @Repository
 public interface LoginRepository extends CrudRepository<Login,String>{
-
+	List<Login> findByTypeId(int typeid);
 }
