@@ -18,11 +18,11 @@ public class NoticeServiceImpl implements NoticeService {
 	
 
 	@Override
-	public void addnotice(Notice notice) {
-//		Notice notice = new Notice();
-//		Calendar calendar = Calendar.getInstance();
-//		notice.setTitle("Good Afternoon");
-//		notice.setDate(new java.sql.Date(calendar.getTime().getTime()));
+	public void addnotice(){
+		Notice notice = new Notice();
+		Calendar calendar = Calendar.getInstance();
+		notice.setTitle("Good Evening Part 3");
+		notice.setDate(new java.sql.Date(calendar.getTime().getTime()));
 		noticeRepository.save(notice);
 //		Notice noticeNew = new Notice();
 //		noticeNew = (Notice) noticeRepository.findOne(notice.getTitle());

@@ -7,6 +7,6 @@ import com.knewton.academy.model.Notice;
 //import org.springframework.stereotype.Service;
 
 public interface NoticeService {
-	public void addnotice(Notice notice);
+	public void addnotice();
 	public List<Notice> getNotice();
 }
