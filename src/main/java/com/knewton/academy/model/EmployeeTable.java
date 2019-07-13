@@ -27,6 +27,8 @@ public class EmployeeTable {
 	private String address;
 	@Column
 	private int salary;
+	@Column
+	private boolean status;
 	
 	@OneToOne(mappedBy="employeetable")
 	private TeacherBatchMapping teacherbatchmapping;
@@ -123,6 +125,16 @@ public class EmployeeTable {
 
 	public void setUsertype(Usertype usertype) {
 		this.usertype = usertype;
+	}
+
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 
