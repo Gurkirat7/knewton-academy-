@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +13,7 @@ import javax.persistence.Table;
 @Table(name="notice")
 public class Notice {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int serialNo;
 	
 	@Column
@@ -50,7 +53,7 @@ public class Notice {
 	}
 	@Override
 	public String toString() {
-		return "Notice [title=" + title + ", date=" + date + "]";
+		return "Notice [serialNo.=" + serialNo + ",title=" + title + ",Content:" + content + ",date=" + date + "]";
 	}
 	
 }

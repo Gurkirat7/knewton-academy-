@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.knewton.academy.model.Notice;
 import com.knewton.academy.repository.NoticeRepository;
 
@@ -18,10 +19,11 @@ public class NoticeServiceImpl implements NoticeService {
 	
 
 	@Override
-	public void addnotice(){
+	public void addnotice(String title,String content){
 		Notice notice = new Notice();
 		Calendar calendar = Calendar.getInstance();
-		notice.setTitle("Good Evening Part 3");
+		notice.setTitle(title);
+		notice.setContent(content);
 		notice.setDate(new java.sql.Date(calendar.getTime().getTime()));
 		noticeRepository.save(notice);
 //		Notice noticeNew = new Notice();
@@ -35,7 +37,6 @@ public class NoticeServiceImpl implements NoticeService {
 		Iterable<Notice> it= noticeRepository.findAll();
 	 ArrayList<Notice> users = new ArrayList<Notice>();
         it.forEach(e -> users.add(e));
-
         return users;
 	}
 }
