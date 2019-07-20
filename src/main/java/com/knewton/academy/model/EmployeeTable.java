@@ -4,8 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -29,11 +34,11 @@ public class EmployeeTable {
 	private int salary;
 	@Column
 	private boolean status;
-	
 	@OneToOne(mappedBy="employeetable")
 	private TeacherBatchMapping teacherbatchmapping;
-	
-	@OneToOne
+//	@JsonIgnore
+	@ManyToOne
+//	@JoinTable(joinColumns=@JoinColumn(name="userTypeId"),inverseJoinColumns=@JoinColumn(name="userTypeId"))
 	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
 	private Usertype usertype;
 	
@@ -57,6 +62,7 @@ public class EmployeeTable {
 	}
 
 
+	
 	public int getUserTypeId() {
 		return userTypeId;
 	}

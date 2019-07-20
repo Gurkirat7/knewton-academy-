@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="result_test")
 public class ResultTest {
@@ -14,11 +16,11 @@ public class ResultTest {
 	private ResultTestId resulttestid;
 	@Column
 	private int obtainedMarks;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="studentId",referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="testId",referencedColumnName="testId", insertable=false,updatable=false)
 	private Test test;

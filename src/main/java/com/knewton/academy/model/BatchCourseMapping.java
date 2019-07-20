@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="batchcoursemapping")
 public class BatchCourseMapping {
@@ -15,7 +17,6 @@ public class BatchCourseMapping {
 	
 	@Column
 	private int courseId;
-	
 	@OneToOne(mappedBy="batchcoursemapping")
 	private Assignment assignment;
 	@OneToOne(mappedBy="batchcoursemapping")
@@ -26,7 +27,7 @@ public class BatchCourseMapping {
 	private StudentBatchMapping studentbatchmapping;
 	@OneToOne(mappedBy="batchcoursemapping")
 	private TeacherBatchMapping teacherbatchmapping;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="courseId", referencedColumnName="courseId", insertable=false,updatable=false)
 	private Course course;
@@ -61,7 +62,6 @@ public class BatchCourseMapping {
 		this.course = course;
 	}
 	
-
 	public Assignment getAssignment() {
 		return assignment;
 	}
@@ -70,6 +70,7 @@ public class BatchCourseMapping {
 	public void setAssignment(Assignment assignment) {
 		this.assignment = assignment;
 	}
+
 
 	public AttendanceCount getAttendancecount() {
 		return attendancecount;

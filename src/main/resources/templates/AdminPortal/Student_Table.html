@@ -40,7 +40,7 @@
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-					<div class="table">
+					<div class="table" id="studentlist"> 
 
 						<div class="row header">
 							<div class="cell">
@@ -62,66 +62,27 @@
 									Performance
 							</div>
 						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST002882
-							</div>
-							<div class="cell" data-title="Full Name">
-								Vincent Williamson
-							</div>
-							<div class="cell" data-title="Phone No">
-								976*****23
-							</div>
-							<div class="cell" data-title="Class">
-								12th
-							</div>
-							<div class="cell" data-title="Courses">
-									JEE-Adv
-							</div>
-							<div class="cell" data-title="Performance">
-									0%
-							</div>
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST001232
-							</div>
-							<div class="cell" data-title="Full Name">
-								asdnkjkas	
-							</div>
-							<div class="cell" data-title="Phone No">
-								90909102	
-							</div>
-							<div class="cell" data-title="Class">
-								10th
-							</div>
-							<div class="cell" data-title="Courses">
-								 lol
-							</div>
-							<div class="cell" data-title="Performance">
-									50%
-							</div>
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST00123412
-							</div>
-							<div class="cell" data-title="Full Name">
-								gutjekek
-							</div>
-							<div class="cell" data-title="Phone No">
-								990909222
-							</div>
-							<div class="cell" data-title="Class">
-								9th
-							</div>
-							<div class="cell" data-title="Courses">
-								mains
-							</div>
-							<div class="cell" data-title="Performance">
-									100%
-							</div>
-						</div>
+						
+							  <script type="text/javascript">
+      $.getJSON('../admin/student', function(data) {
+          console.log(data[0]['title']);
+          var str= "";
+          
+          $.each(data,function(key,value){
+        	  str+='<div class="row myTable">';
+        	str +=  '<div class="cell" data-title="Student Id">'+value.studentId+'</div>';
+        	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
+        	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
+        	str +=  '<div class="cell" data-title="Class">'+value.stuclass+'</div>';
+        	str +=  '<div class="cell" data-title="Courses">'+'tobe'+'</div>';
+        	str +=  '<div class="cell" data-title="Performance">'+'tobe'+'</div>';
+        	str+='</div>';
+          });
+			
+          $("#studentlist").append(str);
+       });
+      </script>
+						
 					</div>
 			</div>
 		</div>

@@ -14,7 +14,7 @@ public class AcademyApplication {
 		SpringApplication.run(AcademyApplication.class, args);
 //	      Class.forName("com.mysql.cj.jdbc.Driver");
 //	        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/demos","root","");
-//	        Statement st = con.createStatement();
+//	        Statement st = con.createStatement();````````
 //	       // st.execute("create table jp(id varchar(30),pass varchar(50))");
 ////	        st.execute("INSERT INTO `student`(`maths`, `science`) VALUES ('400','30')");
 //	       ResultSet rs =st.executeQuery("select * from student");  

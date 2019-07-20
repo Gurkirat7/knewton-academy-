@@ -9,9 +9,6 @@ import javax.persistence.OneToOne;
 
 @Embeddable
 public class AttendanceCountId implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Column
     private String studentId;

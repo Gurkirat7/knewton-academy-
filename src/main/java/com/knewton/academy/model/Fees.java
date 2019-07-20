@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="fees")
 public class Fees {
@@ -18,10 +20,11 @@ public class Fees {
 	@Column
 	private String installment1;
 	@Column
-	private int installment2;
+	private String installment2;
 	@Column
 	private String installment3;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
@@ -50,15 +53,14 @@ public class Fees {
 		this.installment1 = installment1;
 	}
 
-	public int getInstallment2() {
+	
+	public String getInstallment2() {
 		return installment2;
 	}
 
-	public void setInstallment2(int installment2) {
+	public void setInstallment2(String installment2) {
 		this.installment2 = installment2;
 	}
-
-	
 
 	public String getInstallment3() {
 		return installment3;

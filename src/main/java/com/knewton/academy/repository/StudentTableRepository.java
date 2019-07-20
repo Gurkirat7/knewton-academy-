@@ -9,5 +9,5 @@ import com.knewton.academy.model.StudentTable;
 
 @Repository
 public interface StudentTableRepository extends CrudRepository<StudentTable,String>{
-//List<StudentTable> findByCourseAndClass(String course,String stuclass);
+//List<StudentTable> findByCourseOrClass(String course,String stuclass);
 }

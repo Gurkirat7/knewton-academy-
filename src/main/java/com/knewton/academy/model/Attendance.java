@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="attendance")
 public class Attendance {
@@ -13,10 +15,12 @@ public class Attendance {
 	@EmbeddedId
 	private AttendanceId attendanceid;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="classDeliveredId", referencedColumnName="classDeliveredId", insertable=false,updatable=false)
 	private ClassDelivered classdelivered;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;

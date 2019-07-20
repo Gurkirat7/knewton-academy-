@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="branch")
 public class Branch {
@@ -13,7 +15,6 @@ public class Branch {
     private int branchId;
 	@Column
 	private String name;
-	
 	@OneToOne(mappedBy="branch")
 	private StudentTable studenttable;
 	

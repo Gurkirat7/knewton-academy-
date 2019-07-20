@@ -48,8 +48,11 @@
 
 
 
+
+
+
       <script type="text/javascript">
-      $.getJSON('http://localhost:8080/notice', function(data) {
+      $.getJSON('../notice', function(data) {
           console.log(data[0]['title']);
           var str= "";
           str +='<div class="notice-board" style="width:100%;height:40%;"><div class="panel panel-default"><div class="panel-body"><ul style="padding-left:0px;list-style:none;" id = "noticeListItems"><marquee direction="up" height = "300px" onmouseover="this.stop()" onmouseout="this.start()">';

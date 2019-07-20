@@ -6,6 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="course")
@@ -14,7 +16,6 @@ public class Course {
     private int courseId;
 	@Column
 	private String details;
-	
 	@OneToOne(mappedBy="course")
 	private Test test;
 	@OneToOne(mappedBy="course")

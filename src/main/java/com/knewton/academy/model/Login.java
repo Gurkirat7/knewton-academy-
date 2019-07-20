@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="login")
 public class Login {
@@ -17,7 +19,7 @@ public class Login {
     private String password;
 	@Column
 	private int userTypeId;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
 	private Usertype usertype;

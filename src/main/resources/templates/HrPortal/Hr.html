@@ -42,6 +42,26 @@
       
     </div>
  </header><!-- #header -->
+ 
+ 
+
+      <script type="text/javascript">
+      $.getJSON('../notice', function(data) {
+          console.log(data[0]['title']);
+          var str= "";
+          str +='<div class="notice-board" style="width:100%;height:40%;"><div class="panel panel-default"><div class="panel-body"><ul style="padding-left:0px;list-style:none;" id = "noticeListItems"><marquee direction="up" height = "300px" onmouseover="this.stop()" onmouseout="this.start()">';
+          $.each(data,function(key,value){
+        	str +=  '<li><span class="glyphicon glyphicon-expand text-success" ></span><span class="label label-danger" >'+value.title+'</span><br>'
+            str+= (value.content+'<br>Date:'+value.date+'</li>');
+
+          });
+			str+='</marquee></ul></div></div></div>';
+          $("#notice").append(str);
+       });
+      </script>
+      
+
+ 
   <!--PROFILE-->
 <div class="container-fluid" style="margin-top: 100px;">
   <div class="rowP">
@@ -267,89 +287,8 @@
       <!--Notice starts-->
    <div id = "notice" class="row">
                 
-                    <div class="notice-board">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                               
-                                <ul style="padding-left:0px;list-style:none;">
-                                    <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()">
-                                      <li>
-                                        <a href="#">
-                                        <span class="glyphicon glyphicon-expand text-success" ></span>
-                                        <span class="label label-danger" >Header </span><br>
-                                        Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                     <li>
-                                            <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
-                                     <span class="label label-danger" >Header </span><br>
-                                                  Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                     <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
-                                     <span class="label label-danger" >Header </span><br>
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                     <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
-                                     <span class="label label-danger" >Header </span><br> 
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                    <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
-                                     <span class="label label-danger" >Header </span><br>
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                    <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
-                                     <span class="label label-danger" >Header </span><br>
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                    </marquee>
-                                </ul>
-                            </div>
-                            <div class="panel-footer" data-toggle="modal" data-target="#uploadNotice">
-                                <a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <br>
-                  <br>
-                    <!--popup upload notice-->
-      <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Notice Details</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="prefix grey-text"></i>
-          <input type="text"  class="form-control validate">
-          <label data-error="wrong" data-success="right" >Heading</label>
-        </div>
-        <div class="md-form mb-5">
-          <i class="prefix grey-text"></i>
-          <textarea id="noticeContent"></textarea>
-          <label data-error="wrong" data-success="right" >Content</label>
-        </div>
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Post">
-      </div>
-    </div>
-  </div>
-</div>
-    <!--Notice Ends-->
+   </div> <br> <br>
+                  
          <!--==========================
     Footer
   ============================-->

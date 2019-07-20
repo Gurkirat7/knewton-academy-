@@ -7,17 +7,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="studentbatchmapping")
 public class StudentBatchMapping {
 	
 	@EmbeddedId
 	private StudentBatchMappingId studentbatchmappingid;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
 	private BatchCourseMapping batchcoursemapping;

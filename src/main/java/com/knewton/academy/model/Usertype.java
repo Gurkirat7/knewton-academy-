@@ -1,10 +1,14 @@
 package com.knewton.academy.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="usertype")
@@ -15,8 +19,8 @@ public class Usertype {
 	@Column
 	private String userType;
 	
-	@OneToOne(mappedBy="usertype")
-	private EmployeeTable employeetable;
+//	@OneToOne(mappedBy="usertype")
+//	private EmployeeTable employeetable;
 	@OneToOne(mappedBy="usertype")
 	private Login login;
 	
@@ -36,13 +40,13 @@ public class Usertype {
 		this.userType = userType;
 	}
 
-	public EmployeeTable getEmployeetable() {
-		return employeetable;
-	}
-
-	public void setEmployeetable(EmployeeTable employeetable) {
-		this.employeetable = employeetable;
-	}
+//	public EmployeeTable getEmployeetable() {
+//		return employeetable;
+//	}
+//
+//	public void setEmployeetable(EmployeeTable employeetable) {
+//		this.employeetable = employeetable;
+//	}
 
 	public Login getLogin() {
 		return login;

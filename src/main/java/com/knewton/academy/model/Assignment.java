@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="assignment")
@@ -28,6 +30,7 @@ public class Assignment {
 	@OneToOne(mappedBy="assignment")
 	private ResultAssignment resultassignment;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="batchId",referencedColumnName="batchId", insertable=false,updatable=false)
 	private BatchCourseMapping batchcoursemapping;

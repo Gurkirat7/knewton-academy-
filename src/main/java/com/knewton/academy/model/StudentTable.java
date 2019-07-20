@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="studenttable")
 public class StudentTable {
@@ -36,7 +38,6 @@ public class StudentTable {
 	private String testLoginId;
 	@Column
 	private boolean status;
-	
 	@OneToOne(mappedBy="studenttable")
 	private Attendance attendance;
 	@OneToOne(mappedBy="studenttable")
@@ -50,11 +51,11 @@ public class StudentTable {
 	@OneToOne(mappedBy="studenttable")
 	private StudentBatchMapping studentbatchmapping;
 	
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="branchId", referencedColumnName="branchId", insertable=false,updatable=false)
 	private Branch branch;
-	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="testLoginId", referencedColumnName="testLoginId", insertable=false,updatable=false)
 	private TestSeriesLogin testserieslogin;
