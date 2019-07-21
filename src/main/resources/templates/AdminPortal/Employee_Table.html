@@ -110,43 +110,45 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body mx-3">
-
+      <form th:action="@{/employee/edit}" method="POST">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="employeeId">
+      
        <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Name</label>
-          <input type="text"  class="form-control validate" required>
+          <input type="text"  class="form-control validate" required name="name">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >User Type</label>
-          <select class="form-control validate" style="padding:7.5px;height:100%;">
-            <option value="1">Hr</option>
-            <option value="2">Teacher</option>
-            <option value="3">Sub Admin</option>
-            <option value="4">Admin</option>
-            <option value="5">Other Employees</option>
+          <select class="form-control validate" style="padding:7.5px;height:100%;" name="userTypeId">
+            <option value="1">Admin</option>
+            <option value="2">Sub Admin</option>
+            <option value="3">HR</option>
+            <option value="4">Teacher</option>
+            <option value="5">Employees</option>
           </select>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Contact Number</label>
-          <input type="tel"  class="form-control validate" pattern="[0-9]{10}" maxlength="10" minlength="10" required>
+          <input type="tel"  class="form-control validate" pattern="[0-9]{10}" maxlength="10" minlength="10" required name="contactDetails">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Email ID</label>
-          <input type="email"  class="form-control validate" required>
+          <input type="email"  class="form-control validate" required name="emailId">
         </div>
     <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Address</label>
-          <input type="text"  class="form-control validate" required>
+          <input type="text"  class="form-control validate" required name="address">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Salary</label>
-          <input type="number"  class="form-control validate" max="999999" required>
+          <input type="number"  class="form-control validate" max="999999" required name="salary">
         </div>
 
 
@@ -156,6 +158,7 @@
       <div class="modal-footer d-flex justify-content-center">
         <input type="submit" class="btn btn-default" text="Submit">
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -188,6 +191,7 @@
               </div>
               
             </div>
+          
 
             <script type="text/javascript">
            
@@ -200,11 +204,26 @@
         	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
         	str +=  '<div class="cell" data-title="Type">'+value.usertype.userType+'</div>';
         	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
-        	str +=  '<div class="cell" data-title="Action"><a th:href="@{admin/employee/{id} (id=value.employeeId)}"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash"></span></div>';
+        	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon" th:href="admin/employee/${value.employeeId}"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash"></span></div>';
         	str+='</div>';
           });
-			
           $("#employeelist").append(str);
+          
+          $(".editButtonIcon").click(function () {
+              var eid = $(this).parent().parent()[0].firstChild.innerHTML;
+              var str1 =""
+              $.each(data,function(key,value){
+            	 if (value.employeeId===eid){
+            		$("input[name=employeeId]").val(value.employeeId);
+            		$("input[name=name]").val(value.name);
+            		$("select[name=userTypeId]").val(value.userTypeId);
+            		$("input[name=contactDetails]").val(value.contactDetails);
+            		$("input[name=emailId]").val(value.emailId);
+            		$("input[name=address]").val(value.address);
+            		$("input[name=salary]").val(value.salary);
+            	 } 
+              });
+            });
        });
     </script>            
 

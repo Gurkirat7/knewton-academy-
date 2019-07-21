@@ -68,8 +68,7 @@ public List<EmployeeTable> employeeDisplay() {
 }
 
 @Override
-public void employeeEdit(String id,EmployeeTable employee) {
-	Optional<EmployeeTable> employees = employeetablerepository.findById(id);
+public void employeeEdit(EmployeeTable employee) {
 	employeetablerepository.save(employee);
 }
 
@@ -80,18 +79,9 @@ public void employeeDelete(String id) {
 }
 
 @Override
-public void employeeAdd(String employeeId, String name, int userTypeId,int contactDetails, String emailId,String address,int salary ) {
-	System.out.println("befire seps';'da");
-	EmployeeTable emp = new EmployeeTable();
-	emp.setEmployeeId(employeeId);
-	emp.setAddress(address);
-	emp.setContactDetails(contactDetails);
-	emp.setEmailId(emailId);
-	emp.setName(name);
-	emp.setSalary(salary);
-	emp.setUserTypeId(userTypeId);
-	employeetablerepository.save(emp);
-	System.out.println(name);
+public void employeeAdd(EmployeeTable employee) {
+	
+	employeetablerepository.save(employee);
 	
 }
 

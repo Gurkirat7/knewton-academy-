@@ -148,4 +148,14 @@ public class EmployeeTable {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	@Override
+	public String toString() {
+		return "EmployeeTable [employeeId=" + employeeId + ", name=" + name + ", userTypeId=" + userTypeId
+				+ ", contactDetails=" + contactDetails + ", emailId=" + emailId + ", address=" + address + ", salary="
+				+ salary + ", status=" + status + ", teacherbatchmapping=" + teacherbatchmapping + ", usertype="
+				+ usertype + "]";
+	}
+	
+
 }

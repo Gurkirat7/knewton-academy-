@@ -44,10 +44,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/employee/add",method=RequestMethod.POST)
-	public RedirectView employeeAdd(@RequestParam String employeeId, @RequestParam String name,@RequestParam int userTypeId,@RequestParam int contactDetails,@RequestParam String emailId,@RequestParam String address,@RequestParam int salary ) {
+	public RedirectView employeeAdd(EmployeeTable employee) {
 		System.out.println("Before emplye");
-		adminserviceimpl.employeeAdd(employeeId,name,userTypeId,contactDetails,emailId,address,salary);
+		adminserviceimpl.employeeAdd(employee);
 		System.out.println("aaa");
+		return new RedirectView("/Employee_Table.html");
+	}
+	@RequestMapping(value="/employee/edit",method=RequestMethod.POST)
+	public RedirectView editEmp(EmployeeTable employee) {
+		System.out.println("Before emplye++++++++++++++");
+		adminserviceimpl.employeeEdit(employee);
+		System.out.println("++++++++++++++++++++Before emplye");
 		return new RedirectView("/Employee_Table.html");
 	}
 	}

@@ -9,5 +9,7 @@ import com.knewton.academy.model.EmployeeTable;
 
 @Repository
 public interface EmployeeTableRepository extends CrudRepository<EmployeeTable,String>{
+
+	
 //List<EmployeeTable> findByTypeId(int typeid);
 }
