@@ -37,12 +37,13 @@ public class AdminController {
 		List<EmployeeTable> emp = adminserviceimpl.employeeDisplay();
      return emp;
  }
-//	@GetMapping("/admin/employee/{id}")
-//	public Optional<EmployeeTable> employeefind(@PathVariable String id)
-//	{
-//		return adminserviceimpl.employeefind(id);
-//	}
-	@RequestMapping(value="/Employee_Table.html/add",method=RequestMethod.POST)
+	@GetMapping("/admin/employee/{id}")
+	public Optional<EmployeeTable> employeeFind(@PathVariable String id)
+	{
+		return adminserviceimpl.employeefind(id);
+	}
+	
+	@RequestMapping(value="/employee/add",method=RequestMethod.POST)
 	public RedirectView employeeAdd(@RequestParam String employeeId, @RequestParam String name,@RequestParam int userTypeId,@RequestParam int contactDetails,@RequestParam String emailId,@RequestParam String address,@RequestParam int salary ) {
 		System.out.println("Before emplye");
 		adminserviceimpl.employeeAdd(employeeId,name,userTypeId,contactDetails,emailId,address,salary);

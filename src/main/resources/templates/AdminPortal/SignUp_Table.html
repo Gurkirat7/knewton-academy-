@@ -7,18 +7,41 @@
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
-
+	
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/css/util.css">
 	<link rel="stylesheet" type="text/css" href="table/css/SignUp_Table.css">
 <!--===============================================================================================-->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$.getJSON('/sign', function(data) {
+    var str= "";
+    $.each(data,function(key,value){
+  	  str+='<div class="row myTable">';
+  	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
+  	str +=  '<div class="cell" data-title="Email">'+value.emailID+'</div>';
+  	str +=  '<div class="cell" data-title="Password">'+value.password+'</div>';
+  	str +=  '<div class="cell" data-title="Contact Details">'+value.contactDetails+'</div>';
+  	str +=  '<div class="cell" data-title="Class">'+value.class+'</div>';
+  	str +=  '<div class="cell" data-title="Course">'+value.course+'</div>';
+  	str +=  '<div class="cell" data-title="Parent Name">'+value.parentsName+'</div>';
+  	str +=  '<div class="cell" data-title="Address">'+value.address+'</div>';
+  	str+='</div>';
+    });
+		
+    $("#signupList").append(str);
+ });
+ </script>
+
 </head>
 <body>
 	
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-					<div class="table">
+					<div class="table" id="signupList">
 
 						<div class="row header">
 							<div class="cell">
