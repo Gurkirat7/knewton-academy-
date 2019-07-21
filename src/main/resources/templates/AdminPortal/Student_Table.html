@@ -69,6 +69,7 @@
           var str= "";
           
           $.each(data,function(key,value){
+        	  if(value.status===true){
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Student Id">'+value.studentId+'</div>';
         	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
@@ -77,6 +78,7 @@
         	str +=  '<div class="cell" data-title="Courses">'+'tobe'+'</div>';
         	str +=  '<div class="cell" data-title="Performance">'+'tobe'+'</div>';
         	str+='</div>';
+        	  }
           });
 			
           $("#studentlist").append(str);

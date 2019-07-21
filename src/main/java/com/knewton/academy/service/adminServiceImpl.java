@@ -73,9 +73,12 @@ public void employeeEdit(EmployeeTable employee) {
 }
 
 @Override
-public void employeeDelete(String id) {
-	employeetablerepository.deleteById(id);
-	
+public void employeeDelete(String employeeId) {
+//	employeetablerepository.deleteById(employeeId);
+	Optional<EmployeeTable> emp = employeetablerepository.findById(employeeId);
+	EmployeeTable emp1 = emp.get();
+	emp1.setStatus(false);
+	employeetablerepository.save(emp1);
 }
 
 @Override

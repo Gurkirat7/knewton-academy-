@@ -15,7 +15,7 @@ public interface adminService {
 //    public List<EmployeeTable> employeeSearch(int typeid);
     public List<EmployeeTable> employeeDisplay();
     public void employeeEdit(EmployeeTable employee);
-    public void employeeDelete(String id);
+    public void employeeDelete(String employeeId);
     public void employeeAdd(EmployeeTable employee);
     public List<Signup> signupDisplay();
     public List<Login> loginDisplay();

@@ -162,6 +162,34 @@
     </div>
   </div>
 </div>
+<!-- delete emp -->
+<div class="modal fade" id="deleteEmployeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Delete Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/employee/delete}" method="POST">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="employeeId">
+      
+     
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" style="text-align:center;width:100%!important;font-size:30px;margin-top:5px;" >ARE YOU SURE YOU WANT TO DELETE ???</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default btn-lg btn-danger" value="Y E S">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
   <div class="limiter">
@@ -199,13 +227,15 @@
       $.getJSON('../admin/employee', function(data) {
           var str= "";
           $.each(data,function(key,value){
-        	  str+='<div class="row myTable">';
+        	  if(value.status===true){
+        	  str+='<div class="row myTable">';        	  
         	str +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
         	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
         	str +=  '<div class="cell" data-title="Type">'+value.usertype.userType+'</div>';
         	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
-        	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon" th:href="admin/employee/${value.employeeId}"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash"></span></div>';
+        	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
         	str+='</div>';
+        	  }
           });
           $("#employeelist").append(str);
           
@@ -224,6 +254,11 @@
             	 } 
               });
             });
+          
+          $(".delete").click(function () {
+              var eid = $(this).parent().parent()[0].firstChild.innerHTML;
+              $("#deleteEmployeeDetail input[name=employeeId]").val(eid);
+          });
        });
     </script>            
 

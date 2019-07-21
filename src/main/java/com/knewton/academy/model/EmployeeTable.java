@@ -36,9 +36,7 @@ public class EmployeeTable {
 	private boolean status;
 	@OneToOne(mappedBy="employeetable")
 	private TeacherBatchMapping teacherbatchmapping;
-//	@JsonIgnore
 	@ManyToOne
-//	@JoinTable(joinColumns=@JoinColumn(name="userTypeId"),inverseJoinColumns=@JoinColumn(name="userTypeId"))
 	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
 	private Usertype usertype;
 	

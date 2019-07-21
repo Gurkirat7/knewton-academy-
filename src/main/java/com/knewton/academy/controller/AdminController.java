@@ -37,12 +37,12 @@ public class AdminController {
 		List<EmployeeTable> emp = adminserviceimpl.employeeDisplay();
      return emp;
  }
-	@GetMapping("/admin/employee/{id}")
-	public Optional<EmployeeTable> employeeFind(@PathVariable String id)
-	{
-		return adminserviceimpl.employeefind(id);
-	}
-	
+//	@GetMapping("/admin/employee/{id}")
+//	public Optional<EmployeeTable> employeeFind(@PathVariable String id)
+//	{
+//		return adminserviceimpl.employeefind(id);
+//	}
+//	
 	@RequestMapping(value="/employee/add",method=RequestMethod.POST)
 	public RedirectView employeeAdd(EmployeeTable employee) {
 		System.out.println("Before emplye");
@@ -52,9 +52,12 @@ public class AdminController {
 	}
 	@RequestMapping(value="/employee/edit",method=RequestMethod.POST)
 	public RedirectView editEmp(EmployeeTable employee) {
-		System.out.println("Before emplye++++++++++++++");
 		adminserviceimpl.employeeEdit(employee);
-		System.out.println("++++++++++++++++++++Before emplye");
+		return new RedirectView("/Employee_Table.html");
+	}
+	@RequestMapping(value="/employee/delete",method=RequestMethod.POST)
+	public RedirectView deleteEmp(@RequestParam String employeeId) {
+		adminserviceimpl.employeeDelete(employeeId);
 		return new RedirectView("/Employee_Table.html");
 	}
 	}
