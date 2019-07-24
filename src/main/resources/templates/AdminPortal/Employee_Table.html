@@ -12,6 +12,7 @@
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="js/Sub_Admin.js"></script>
 <!--===============================================================================================-->
 </head>
 <body>
@@ -19,12 +20,13 @@
  <form class="search"> 
       <div class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-6" placeholder="Search..">
-            <select class="form-control col-md-2 col-md-offset-1" id="type">
+            <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Type</option> 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+              <option>Admin</option>
+              <option>Sub Admin</option>
+              <option>HR</option>
+              <option>Teacher</option>
+              <option>Employee</option>
             </select>
             
           <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
@@ -231,7 +233,7 @@
         	  str+='<div class="row myTable">';        	  
         	str +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
         	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
-        	str +=  '<div class="cell" data-title="Type">'+value.usertype.userType+'</div>';
+        	str +=  '<div class="cell clo" data-title="Type">'+value.usertype.userType+'</div>';
         	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
         	str+='</div>';

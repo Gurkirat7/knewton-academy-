@@ -29,13 +29,9 @@ public class StudentTable {
 	@Column
 	private int contactDetails;
 	@Column
-	private String emailID;
+	private String emailId;
 	@Column
 	private String address;
-	@Column
-	private int branchId;
-	@Column
-	private String testLoginId;
 	@Column
 	private boolean status;
 	@OneToOne(mappedBy="studenttable")
@@ -106,13 +102,12 @@ public class StudentTable {
 	}
 
 
-	public String getEmailID() {
-		return emailID;
+	public String getEmailId() {
+		return emailId;
 	}
 
-
-	public void setEmailID(String emailID) {
-		this.emailID = emailID;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getAddress() {
@@ -124,23 +119,6 @@ public class StudentTable {
 		this.address = address;
 	}
 
-
-	public int getBranchId() {
-		return branchId;
-	}
-	
-	public void setBranchId(int branchId) {
-		this.branchId = branchId;
-	}
-
-	public String getTestLoginId() {
-		return testLoginId;
-	}
-
-
-	public void setTestLoginId(String testLoginId) {
-		this.testLoginId = testLoginId;
-	}
 
 	
 	public String getStudentId() {

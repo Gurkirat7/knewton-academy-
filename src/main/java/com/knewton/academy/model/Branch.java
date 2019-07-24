@@ -33,6 +33,15 @@ public class Branch {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public StudentTable getStudenttable() {
+		return studenttable;
+	}
+
+	public void setStudenttable(StudentTable studenttable) {
+		this.studenttable = studenttable;
+	}
+
 	public Branch() {
 		// TODO Auto-generated constructor stub
 	}

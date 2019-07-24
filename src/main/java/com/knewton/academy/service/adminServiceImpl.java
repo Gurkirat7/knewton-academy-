@@ -28,15 +28,6 @@ public class adminServiceImpl implements adminService{
  @Autowired
  LoginRepository loginrepository;
 
-//@Override
-//public List<StudentTable> studentSearch(String course,String stuclass) {
-//	
-//	Iterable<StudentTable> student= studenttablerepository.findByCourseOrClass(course,stuclass);
-//	 ArrayList<StudentTable> students = new ArrayList<StudentTable>();
-//      student.forEach(e -> students.add(e));
-//      return students;
-//	
-//}
 
 @Override
 public List<StudentTable> studentDisplay() {
@@ -47,15 +38,6 @@ public List<StudentTable> studentDisplay() {
        return students;
 	
 }
-
-//@Override
-//public List<EmployeeTable> employeeSearch(int typeid) {
-//	Iterable<EmployeeTable> employee= employeetablerepository.findByTypeId(typeid);
-//	 ArrayList<EmployeeTable> employees = new ArrayList<EmployeeTable>();
-//     employee.forEach(e -> employees.add(e));
-//
-//     return employees;
-//}
 
 @Override
 public List<EmployeeTable> employeeDisplay() {
@@ -113,14 +95,4 @@ public Optional<EmployeeTable> employeefind(String id) {
 	
 	return employeetablerepository.findById(id);
 }
-
-//@Override
-//public List<Login> loginSearch(int typeid) {
-//	Iterable<Login> login= loginrepository.findByTypeId(typeid);
-//	 ArrayList<Login> logins = new ArrayList<Login>();
-//   login.forEach(e -> logins.add(e));
-//
-//   return logins;
-//	
-//}
 }

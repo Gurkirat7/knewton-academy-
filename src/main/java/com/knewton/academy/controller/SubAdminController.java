@@ -5,7 +5,11 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
@@ -29,58 +33,54 @@ public class SubAdminController {
 public Optional<StudentTable> showPersonalDetailOfSubAdmin(){
 	return subadminserviceimp.showPersonalDetailOfSubAdmin("fsg");
 }
-@GetMapping("/subadmin/deletestudent")
-public boolean deleteStudent() {
-	StudentTable stu= new StudentTable();
-	stu.getStudentId();
-	subadminserviceimp.deleteStudent("stu");
-	return true;
+
+@RequestMapping(value="/subadmin/add",method=RequestMethod.POST)
+public RedirectView studentAdd(StudentTable student) {
+	subadminserviceimp.studentAdd(student);
+	return new RedirectView("/subadmin");
 }
-	@GetMapping("/subadmin/update")
-	public boolean updateStudent() {
-		StudentTable stu=new StudentTable();
-		stu.getStudentId();
-		subadminserviceimp.updateStudent(stu);
-		return true;
-			
+
+@RequestMapping(value="/subadmin/edit",method=RequestMethod.POST)
+public RedirectView editStu(StudentTable student) {
+	subadminserviceimp.studentEdit(student);
+	return new RedirectView("/subadmin");
 }
-	@GetMapping("/subadmin/list")
-	public List<StudentTable> showAllStudent() {
-		return subadminserviceimp.showAllStudent();
-	}
-	@GetMapping("/subadmin/add")
-	public boolean addStudent() {
-		StudentTable stu= new StudentTable();
-		stu.setName("raam");
-		stu.setEmailID("raamji");
-		stu.setAddress("ghar hmara");
-		stu.setContactDetails(986376376);
-	    subadminserviceimp.addStudent(stu);
-	    return true;
-	}
-	@GetMapping("/subadmin/addfees")
-	public boolean addfees() {
-		Fees fe=new Fees();
-		fe.setTotalFees("100000");
-		fe.setInstallment1("20000");
-		fe.setInstallment2("10000");
-		fe.setInstallment3("20000");
-		subadminserviceimp.addfees(fe);
-		return true;
-	}
-@GetMapping("/subadmin/deletefees")
-public boolean deleteFees() {
-	Fees fe= new Fees();
-	fe.getStudentId();
-	subadminserviceimp.deleteFees("fe");
-	return true;
+
+@RequestMapping(value="/subadmin/delete",method=RequestMethod.POST)
+public RedirectView deleteStu(@RequestParam String studentId) {
+	subadminserviceimp.studentDelete(studentId);
+	return new RedirectView("/subadmin");
 }
-@GetMapping("/subadmin/updatefees")
-public boolean updateFees() {
-	Fees fe=new Fees();
-	fe.getStudentId();
-	subadminserviceimp.updateFees(fe, "gdh");
-	return true;
-}
+
+	@GetMapping("/subadmin/student")
+	 public List<StudentTable> studentDisplay() {
+		List<StudentTable> stu = subadminserviceimp.studentDisplay();
+      return stu;
+  }
+	
+//	@GetMapping("/subadmin/addfees")
+//	public boolean addfees() {
+//		Fees fe=new Fees();
+//		fe.setTotalFees("100000");
+//		fe.setInstallment1("20000");
+//		fe.setInstallment2("10000");
+//		fe.setInstallment3("20000");
+//		subadminserviceimp.addfees(fe);
+//		return true;
+//	}
+//@GetMapping("/subadmin/deletefees")
+//public boolean deleteFees() {
+//	Fees fe= new Fees();
+//	fe.getStudentId();
+//	subadminserviceimp.deleteFees("fe");
+//	return true;
+//}
+//@GetMapping("/subadmin/updatefees")
+//public boolean updateFees() {
+//	Fees fe=new Fees();
+//	fe.getStudentId();
+//	subadminserviceimp.updateFees(fe, "gdh");
+//	return true;
+//}
 
 }

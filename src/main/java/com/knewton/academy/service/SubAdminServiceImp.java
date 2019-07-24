@@ -1,11 +1,13 @@
 package com.knewton.academy.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.StudentTable;
 import com.knewton.academy.repository.EmployeeTableRepository;
@@ -26,39 +28,43 @@ public Optional<StudentTable> showPersonalDetailOfSubAdmin(String id) {
 		return student;
 }
 @Override
-public boolean deleteStudent(String id) {
-	studenttablerepository.deleteById(id);
-	return true;
+public void studentDelete(String studentId) {
+	Optional<StudentTable> stu = studenttablerepository.findById(studentId);
+	StudentTable stu1 = stu.get();
+	stu1.setStatus(false);
+	studenttablerepository.save(stu1);
 }
 @Override
-public boolean updateStudent(StudentTable student) {
+public void studentEdit(StudentTable student) {
 studenttablerepository.save(student);
-return true;
 }
 @Override
-public List<StudentTable> showAllStudent() {
-List<StudentTable>studentlist=(List<StudentTable>) studenttablerepository.findAll();
-return studentlist;
-}
-@Override
-public boolean addStudent(StudentTable student) {
-	studenttablerepository.save(student);
-	return true;
-}
-@Override
-public boolean addfees(Fees fees) {
-	feesrepository.save(fees);
-	return true;
-}
-@Override
-public boolean deleteFees(String id) {
-	feesrepository.deleteById(id);
-	return true;
+public List<StudentTable> studentDisplay() {
+	Iterable<StudentTable> student= studenttablerepository.findAll();
+	 ArrayList<StudentTable> students = new ArrayList<StudentTable>();
+       student.forEach(e -> students.add(e));
+       return students;	
 }
 
 @Override
-public boolean updateFees(Fees fees,String id) {
-	feesrepository.save(fees);
-return true;
+public void studentAdd(StudentTable student) {
+	studenttablerepository.save(student);
 }
+//@Override
+//public boolean addfees(Fees fees) {
+//	feesrepository.save(fees);
+//	return true;
+//}
+//@Override
+//public boolean deleteFees(String id) {
+//	feesrepository.deleteById(id);
+//	return true;
+//}
+//
+//@Override
+//public boolean updateFees(Fees fees,String id) {
+//	feesrepository.save(fees);
+//return true;
+//}
+
 }

@@ -16,8 +16,8 @@ public class TestSeriesLogin {
 	
 	@Column
 	private String password;
-	@OneToOne(mappedBy="testserieslogin")
-	private StudentTable studenttable;
+//	@OneToOne(mappedBy="testserieslogin")
+//	private StudentTable studenttable;
 	
 	public String getTestLoginId() {
 		return testLoginId;
@@ -35,13 +35,13 @@ public class TestSeriesLogin {
 		this.password = password;
 	}
 	
-	public StudentTable getStudenttable() {
-		return studenttable;
-	}
-
-	public void setStudenttable(StudentTable studenttable) {
-		this.studenttable = studenttable;
-	}
+//	public StudentTable getStudenttable() {
+//		return studenttable;
+//	}
+//
+//	public void setStudenttable(StudentTable studenttable) {
+//		this.studenttable = studenttable;
+//	}
 
 	public TestSeriesLogin() {
 		// TODO Auto-generated constructor stub

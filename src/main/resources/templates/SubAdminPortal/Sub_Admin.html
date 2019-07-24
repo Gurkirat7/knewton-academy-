@@ -129,17 +129,17 @@
   <form class="search"> 
       <div class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-4" placeholder="Search..">
-            <select class="form-control col-md-2 col-md-offset-1" id="type">
+            <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Class</option> 
-              <option>1</option>
-              <option>2</option>
+              <option>10</option>
+              <option>12</option>
               <option>3</option>
               <option>4</option>
             </select>
-            <select class="form-control col-md-2" id="type">
+            <select class="form-control col-md-2" id="type1" onchange="myFunction1()">
               <option value="none" selected disabled hidden>Course</option> 
-              <option>1</option>
-              <option>2</option>
+              <option>tobe</option>
+              <option>jee</option>
               <option>3</option>
               <option>4</option>
             </select>
@@ -148,7 +148,7 @@
   </form>
 
 	<!--Add student details-->
-  <form>
+ <form th:action="@{/subadmin/add}" method="POST">
 	<div class="modal fade" id="studentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -164,18 +164,18 @@
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right">Student ID</label>
-          <input type="text" class="form-control validate" maxlength="7" minlength="7" required>
+          <input type="text" name="studentId" class="form-control validate" maxlength="7" minlength="7" required>
         </div>
 
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Student Name</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="name" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Class</label>
-          <select class="form-control validate" style="padding:7.5px;height:100%;">
+          <select class="form-control validate" name="stuclass" style="padding:7.5px;height:100%;">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -186,61 +186,61 @@
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Father's Name</label>
-          <input type="text"  class="form-control validate" required>
+          <input type="text" name="fatherName" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Mother's Name</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="motherName" class="form-control validate" required>
         </div>
 		    <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Contact Details</label>
-          <input type="tel"  class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
+          <input type="tel" name="contactDetails" class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Email ID</label>
-            <input type="email"  class="form-control validate">
+            <input type="email" name="emailId" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Address</label>
-           <input type="text"  class="form-control validate">
+           <input type="text" name="address" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Branch</label>
-          <select class="form-control validate" style="padding:7.5px;height:100%;">
+          <select class="form-control validate" name="branchId"style="padding:7.5px;height:100%;">
             <option value="1">Madangir</option>
-            <option value="2">Malviya Nagar</option>
-            <option value="3">Chirag Delhi</option>
+            <option value="3">Malviya Nagar</option>
+            <option value="2">Chirag Delhi</option>
           </select>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Test Login ID</label>
-          <input type="text"  class="form-control validate">
+          <input type="text" name="testLoginId" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Total Fees</label>
-          <input type="text"  class="form-control validate" required>
+          <input type="text" name="totalfees" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Fee 1</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="installment1" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Fee 2</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="installment2" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Fee 3</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="installment3" class="form-control validate" required>
         </div>
 
 
@@ -345,15 +345,24 @@
 						<button type="button" data-toggle="modal" data-target="#studentDetail" >
            <h3> <span class="glyphicon glyphicon-plus"></span></h3></button>
 					</div>
-					<div class="table">
+					<div class="table" id="studentlist">
 
 						<div class="row header">
 							<div class="cell">
-								Student Name
+								Id
 							</div>
 							<div class="cell">
-								Attendance
+								Name
 							</div>
+							<div class="cell">
+              				  Phone 
+            				</div>
+            				<div class="cell">
+                				Class
+              				</div>
+              				<div class="cell">
+                				Course
+              				</div>
 							<div class="cell">
 								Total Fees
 							</div> 
@@ -366,45 +375,37 @@
               <div class="cell">
                 Fee 3
               </div>
-              <div class="cell">
-                Phone No.
-              </div>
+              
               <div class="cell">
                 Action
               </div>
 							
 						</div>
-
-						<div class="row myTable">
-							<div class="cell" data-title="Student Name">
-								Vincent Williamson
-							</div>
-							<div class="cell" data-title="Attendance">
-								25/40
-							</div>
-							<div class="cell" data-title="Total Fees">
-								21
-							</div>
-              <div class="cell" data-title="Fee 1">
-                Paid
-              </div>
-              <div class="cell" data-title="Fee 2">
-                15-07-2019
-              </div>
-              <div class="cell" data-title="Fee 3">
-                15-08-2019
-              </div>
-              <div class="cell" data-title="Phone No">
-                98*******3
-              </div>
-							<div class="cell" data-title="Action">
-								<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail">  </span>
-								<span class="glyphicon glyphicon-trash">  </span>
-							</div>
-							
-						</div>
-
-						
+ <script type="text/javascript">
+      $.getJSON('../subadmin/student', function(data) {
+          console.log(data[0]['title']);
+          var str= "";
+          
+          $.each(data,function(key,value){
+        	  if(value.status===true){
+        	  str+='<div class="row myTable">';
+        	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
+        	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
+        	str +=  '<div class="cell" data-title="Phone">'+value.contactDetails+'</div>';
+        	str +=  '<div class="cell clo" data-title="Class">'+value.stuclass+'</div>';
+        	str +=  '<div class="cell clo1" data-title="Courses">'+'tobe'+'</div>';
+        	str +=  '<div class="cell" data-title="TotalFees">'+value.fees.totalFees+'</div>';
+        	str +=  '<div class="cell" data-title="Fee 1">'+value.fees.installment1+'</div>';
+        	str +=  '<div class="cell" data-title="Fee 2">'+value.fees.installment2+'</div>';
+        	str +=  '<div class="cell" data-title="Fee 3">'+value.fees.installment3+'</div>';
+        	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteStudentDetail"></span></div>';
+        	str+='</div>';
+        	  }
+          });
+       
+         $("#studentlist").append(str);
+       });
+      </script>						
 
 					</div>
 			</div>

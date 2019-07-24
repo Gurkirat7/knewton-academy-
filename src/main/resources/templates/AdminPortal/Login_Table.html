@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="js/Sub_Admin.js"></script>
 <!--===============================================================================================-->
 </head>
 <body>
@@ -22,12 +23,15 @@
 	<form class="search"> 
       <div class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-6" placeholder="Search..">
-            <select class="form-control col-md-2 col-md-offset-1" id="type">
+            <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Type</option> 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
+               <option>Admin</option>
+            <option >Sub Admin</option>
+            <option >HR</option>
+            <option >Teacher</option>
+            <option >Employees</option>
+            <option> Students</option>
+            <option> Signup</option>
             </select>
           <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
@@ -43,32 +47,41 @@
 								Id
 							</div>
 							<div class="cell">
+								Name
+							</div>
+							<div class="cell">
 								Password
 							</div>
 							<div class="cell">
-								TypeId
+								Type
 							</div>
 						</div>
 						<div class="row myTable">
 							<div class="cell" data-title="Id">
 								ST001232
 							</div>
+							<div class="cell" data-title="Name">
+								Stuart bunny
+							</div>
 							<div class="cell" data-title="Password">
 								asdnkjka@333vv#
 							</div>
-							<div class="cell" data-title="TypeId">
-								90909102
+							<div class="cell clo" data-title="Type">
+								HR
 							</div>
 						</div>
 						<div class="row myTable">
 							<div class="cell" data-title="Id">
 								LI98976
 							</div>
-							<div class="cell" data-title="Password">
+							<div class="cell" data-title="Name">
+								Stuart 
+							</div>
+							<div class="cell " data-title="Password">
 								cghfc@3$
 							</div>
-							<div class="cell" data-title="TypeId">
-								5585858
+							<div class="cell clo" data-title="Type">
+								Signup
 							</div>
 						</div>
 
