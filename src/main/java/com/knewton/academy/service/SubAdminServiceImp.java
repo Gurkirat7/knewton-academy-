@@ -66,5 +66,10 @@ public void studentAdd(StudentTable student) {
 //	feesrepository.save(fees);
 //return true;
 //}
+@Override
+public void feesAdd(Fees fees) {
+	feesrepository.save(fees);
+	
+}
 
 }

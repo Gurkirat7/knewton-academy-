@@ -15,8 +15,7 @@ public class Branch {
     private int branchId;
 	@Column
 	private String name;
-	@OneToOne(mappedBy="branch")
-	private StudentTable studenttable;
+	
 	
 	public int getBranchId() {
 		return branchId;
@@ -34,13 +33,6 @@ public class Branch {
 		this.name = name;
 	}
 	
-	public StudentTable getStudenttable() {
-		return studenttable;
-	}
-
-	public void setStudenttable(StudentTable studenttable) {
-		this.studenttable = studenttable;
-	}
 
 	public Branch() {
 		// TODO Auto-generated constructor stub

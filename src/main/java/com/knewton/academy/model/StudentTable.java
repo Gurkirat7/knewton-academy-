@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -33,7 +34,9 @@ public class StudentTable {
 	@Column
 	private String address;
 	@Column
-	private boolean status;
+	private String branchId;
+	@Column
+	private boolean status = true;
 	@OneToOne(mappedBy="studenttable")
 	private Attendance attendance;
 	@OneToOne(mappedBy="studenttable")
@@ -46,15 +49,12 @@ public class StudentTable {
 	private ResultAssignment resultassignment;
 	@OneToOne(mappedBy="studenttable")
 	private StudentBatchMapping studentbatchmapping;
-	
-	@JsonIgnore
-	@OneToOne
+	@OneToOne(mappedBy="studenttable")
+	private TestSeriesLogin testserieslogin;
+	@ManyToOne
 	@JoinColumn(name="branchId", referencedColumnName="branchId", insertable=false,updatable=false)
 	private Branch branch;
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="testLoginId", referencedColumnName="testLoginId", insertable=false,updatable=false)
-	private TestSeriesLogin testserieslogin;
+	
 	
 	public String getName() {
 		return name;
@@ -119,8 +119,15 @@ public class StudentTable {
 		this.address = address;
 	}
 
-
 	
+	public String getBranchId() {
+		return branchId;
+	}
+
+	public void setBranchId(String branchId) {
+		this.branchId = branchId;
+	}
+
 	public String getStudentId() {
 		return studentId;
 	}
@@ -185,16 +192,6 @@ public class StudentTable {
 	public void setStudentbatchmapping(StudentBatchMapping studentbatchmapping) {
 		this.studentbatchmapping = studentbatchmapping;
 	}
-
-	public TestSeriesLogin getTestserieslogin() {
-		return testserieslogin;
-	}
-
-	public void setTestserieslogin(TestSeriesLogin testserieslogin) {
-		this.testserieslogin = testserieslogin;
-	}
-	
-
 	public boolean isStatus() {
 		return status;
 	}

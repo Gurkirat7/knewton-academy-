@@ -35,8 +35,9 @@ public Optional<StudentTable> showPersonalDetailOfSubAdmin(){
 }
 
 @RequestMapping(value="/subadmin/add",method=RequestMethod.POST)
-public RedirectView studentAdd(StudentTable student) {
+public RedirectView studentAdd(StudentTable student,Fees fees) {
 	subadminserviceimp.studentAdd(student);
+	subadminserviceimp.feesAdd(fees);
 	return new RedirectView("/subadmin");
 }
 

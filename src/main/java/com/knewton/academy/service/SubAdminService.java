@@ -11,7 +11,7 @@ public interface SubAdminService {
 	public void studentAdd(StudentTable student);
 	public void studentDelete(String id);
 	public void studentEdit(StudentTable student);
-//	public boolean addfees(Fees fees);
+	public void feesAdd(Fees fees);
 //	public boolean deleteFees(String id);
 //	public boolean updateFees(Fees fees,String id);
 }

@@ -225,7 +225,7 @@
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Total Fees</label>
-          <input type="text" name="totalfees" class="form-control validate" required>
+          <input type="text" name="totalFees" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
@@ -388,6 +388,7 @@
           
           $.each(data,function(key,value){
         	  if(value.status===true){
+        		  console.log(value);
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
         	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
