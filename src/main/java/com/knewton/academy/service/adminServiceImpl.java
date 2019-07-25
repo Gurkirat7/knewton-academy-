@@ -34,9 +34,7 @@ public List<StudentTable> studentDisplay() {
 	Iterable<StudentTable> student= studenttablerepository.findAll();
 	 ArrayList<StudentTable> students = new ArrayList<StudentTable>();
        student.forEach(e -> students.add(e));
-
-       return students;
-	
+       return students;	
 }
 
 @Override
@@ -44,9 +42,7 @@ public List<EmployeeTable> employeeDisplay() {
 	Iterable<EmployeeTable> employee= employeetablerepository.findAll();
 	 ArrayList<EmployeeTable> employees = new ArrayList<EmployeeTable>();
       employee.forEach(e -> employees.add(e));
-
-      return employees;
-	
+      return employees;	
 }
 
 @Override
@@ -64,10 +60,8 @@ public void employeeDelete(String employeeId) {
 }
 
 @Override
-public void employeeAdd(EmployeeTable employee) {
-	
-	employeetablerepository.save(employee);
-	
+public void employeeAdd(EmployeeTable employee) {	
+	employeetablerepository.save(employee);	
 }
 
 @Override

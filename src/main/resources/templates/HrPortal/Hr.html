@@ -7,22 +7,16 @@
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
-
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
   <!-- Libraries CSS Files -->
 <link rel="stylesheet" type="text/css" href="css/header-footer.css">
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
- 
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
 <!--===============================================================================================-->
-
-<!--PROFILE-->
 <link rel="stylesheet" href="css/hr.css">
 </head>
 <body>
@@ -42,8 +36,6 @@
       
     </div>
  </header><!-- #header -->
- 
- 
 
       <script type="text/javascript">
       $.getJSON('../notice', function(data) {
@@ -76,18 +68,28 @@
   </div>
   </div>
 </div>
+</div>
+</div>
+</div>
 
-<div class="container">
-	<!--search bar-->
+<!--search bar-->
   <form class="search"> 
       <div class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-2 col-md-4" placeholder="employee name">
-            
+             <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
+              <option value="none" selected disabled hidden>Type</option> 
+              <option>Admin</option>
+              <option>Sub Admin</option>
+              <option>HR</option>
+              <option>Teacher</option>
+              <option>Employee</option>
+            </select>
            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
+  <div class="container">
 	<!--Add student details-->
-  <form>
+<form th:action="@{/hr/add}" method="POST">
 	<div class="modal fade" id="employeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -103,42 +105,45 @@
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right">Employee ID</label>
-          <input type="text" class="form-control validate" maxlength="7" minlength="7" required>
+          <input type="text" name="employeeId" class="form-control validate" maxlength="7" minlength="7" required>
         </div>
 
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Name</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="name" class="form-control validate" required>
         </div>
           <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >User Type</label>
-           <input type="text"  class="form-control validate" required>
+          <select class="form-control validate" name="userTypeId" style="padding:7.5px;height:100%;">
+            <option value="1">Admin</option>
+            <option value="2">Sub Admin</option>
+            <option value="3">HR</option>
+            <option value="4">Teacher</option>
+            <option value="5">Employees</option>
+          </select>
         </div>
 		    <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Contact Details</label>
-          <input type="tel"  class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
+          <input type="tel" name="contactDetails" class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Email ID</label>
-            <input type="email"  class="form-control validate">
+            <input type="email" name="emailId" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Address</label>
-           <input type="text"  class="form-control validate">
+           <input type="text" name="address" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Salary</label>
-           <input type="number"  class="form-control validate">
+           <input type="number" name="salary" class="form-control validate">
         </div>
-       
-        
-
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -149,8 +154,8 @@
 </div>
 </form>
 <!--edit button-->
-<form>
-<div class="modal fade" id="editStudentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<form th:action="@{/hr/edit}" method="POST">
+<div class="modal fade" id="editEmployeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -160,37 +165,44 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+       <input type="hidden" name="employeeId">
       <div class="modal-body mx-3">
       <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Employee name</label>
-            <input type="text"  class="form-control validate">
+            <input type="text" name="name" class="form-control validate">
         </div>
           <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Contact Details</label>
-          <input type="tel"  class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
+          <input type="tel" name="contactDetails" class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Email ID</label>
-            <input type="email"  class="form-control validate">
+            <input type="email" name="emailId" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Address</label>
-           <input type="text"  class="form-control validate">
+           <input type="text" name="address" class="form-control validate">
         </div>
         
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >User Type</label>
-           <input type="text"  class="form-control validate">
+           <select class="form-control validate" style="padding:7.5px;height:100%;" name="userTypeId">
+            <option value="1">Admin</option>
+            <option value="2">Sub Admin</option>
+            <option value="3">HR</option>
+            <option value="4">Teacher</option>
+            <option value="5">Employees</option>
+          </select>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Salary</label>
-           <input type="number"  class="form-control validate">
+           <input type="number" name="salary" class="form-control validate">
         </div>
         </div>
       <div class="modal-footer d-flex justify-content-center">
@@ -201,94 +213,116 @@
 </div>
 </form>
 
+<!-- delete emp -->
+<div class="modal fade" id="deleteEmployeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Delete Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/hr/delete}" method="POST">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="employeeId">
+      
+     
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" style="text-align:center;width:100%!important;font-size:30px;margin-top:5px;" >ARE YOU SURE YOU WANT TO DELETE ???</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default btn-lg btn-danger" value="Y E S">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
 				    <div class="fright">
 						<button type="button" data-toggle="modal" data-target="#employeeDetail"><h3><span class="glyphicon glyphicon-plus"></span></h3></button>
 					</div>
-					<div class="table">
+					<div class="table" id="employeelist">
 
 						<div class="row header">
+						
 							<div class="cell">
-								employee Name
+								Employee ID
 							</div>
 							<div class="cell">
-								employee Id
+								Employee Name
 							</div>
 							<div class="cell">
-								contact number
+								Employee Type
 							</div> 
 							<div class="cell">
-								empployee type
+								Contact Number
 							</div>
-              <div class="cell">
-                salary
-              </div>
-              <div class="cell">
-                Action
-              </div>
-							
+              				<div class="cell">
+               					 Salary
+              				</div>
+			              <div class="cell">
+			                Action
+			              </div>							
 						</div>
 
-						<div class="row myTable">
-							<div class="cell" data-title="employee Name">
-								Vincent Williamson
-							</div>
-							<div class="cell" data-title="employee id">
-								256
-							</div>
-							<div class="cell" data-title="contact number">
-								9867765363
-							</div>
-              <div class="cell" data-title="employee type">
-                Non-teaching 
-              </div>
-              <div class="cell" data-title="salary">
-                152019
-              </div>
-							<div class="cell" data-title="Action">
-								<span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail">  </span>
-								<span class="glyphicon glyphicon-trash">  </span>
-							</div>
-							
-						</div>
-            <div class="row myTable">
-              <div class="cell" data-title="employee Name">
-                prabhat
-              </div>
-              <div class="cell" data-title="employee id">
-                007
-              </div>
-              <div class="cell" data-title="contact number">
-                9878667697
-              </div>
-              <div class="cell" data-title="employee type">
-                teaching 
-              </div>
-              <div class="cell" data-title="salary">
-                1000019
-              </div>
-              <div class="cell" data-title="Action">
-                <span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail">  </span>
-                <span class="glyphicon glyphicon-trash">  </span>
-              </div>
-              
-            </div>
-
-						
-
-					</div>
-			</div>
+						 <script type="text/javascript">
+           
+ 
+      $.getJSON('../hr/employee', function(data) {
+          var str= "";
+          $.each(data,function(key,value){
+        	  if(value.status===true){
+        	  str+='<div class="row myTable">';        	  
+        	str +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
+        	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
+        	str +=  '<div class="cell clo" data-title="Type">'+value.usertype.userType+'</div>';
+        	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
+        	str +=  '<div class="cell" data-title="Salary">'+value.salary+'</div>';
+        	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
+        	str+='</div>';
+        	  }
+          });
+          $("#employeelist").append(str);
+          
+          $(".editButtonIcon").click(function () {
+              var eid = $(this).parent().parent()[0].firstChild.innerHTML;
+              $.each(data,function(key,value){
+            	 if (value.employeeId===eid){
+            		$("input[name=employeeId]").val(value.employeeId);
+            		$("input[name=name]").val(value.name);
+            		$("select[name=userTypeId]").val(value.userTypeId);
+            		$("input[name=contactDetails]").val(value.contactDetails);
+            		$("input[name=emailId]").val(value.emailId);
+            		$("input[name=address]").val(value.address);
+            		$("input[name=salary]").val(value.salary);
+            	 } 
+              });
+            });
+          
+          $(".delete").click(function () {
+              var eid = $(this).parent().parent()[0].firstChild.innerHTML;
+              $("#deleteEmployeeDetail input[name=employeeId]").val(eid);
+          });
+       });
+    </script>
+    		</div>
 		</div>
 	</div>
 </div>
-
+</div> 
       <!--Notice starts-->
    <div id = "notice" class="row">
                 
    </div> <br> <br>
-                  
+                 
          <!--==========================
     Footer
   ============================-->
@@ -368,19 +402,9 @@
 </div>
 </div>
   <!-- #footer -->
-  
+  <script src="table/js/Employee_Table.js"></script>
    <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/mobile-nav/mobile-nav.js"></script>
-  
-<script type="text/javascript">
-  $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $(".row.myTable").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+<script src="js/Sub_Admin.js"></script>
 </body>
 </html>

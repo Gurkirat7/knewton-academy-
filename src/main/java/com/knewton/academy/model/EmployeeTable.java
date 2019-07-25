@@ -33,7 +33,7 @@ public class EmployeeTable {
 	@Column
 	private int salary;
 	@Column
-	private boolean status;
+	private boolean status = true;
 	@OneToOne(mappedBy="employeetable")
 	private TeacherBatchMapping teacherbatchmapping;
 	@ManyToOne

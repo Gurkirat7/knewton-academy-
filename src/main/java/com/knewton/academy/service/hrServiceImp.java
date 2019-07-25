@@ -1,6 +1,7 @@
 package com.knewton.academy.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,41 +18,41 @@ public class hrServiceImp implements hrService {
 	//public final Logger LOGGER=  Logger.getLogger (hrServiceImp.class);
 	
 	@Autowired
-	EmployeeTableRepository employeeTableRepository;
+	EmployeeTableRepository employeetablerepository;
 	
  
 	@Override
-	public boolean deleteEmployee(String id) {
-		
-		 employeeTableRepository.deleteById(id);
-		 return true;
-	}
- 
-	@Override
-	public boolean updateEmployee(EmployeeTable employee) {
-	   employeeTableRepository.save(employee);
-		return true;
-	}
-
-	@Override
 	public Optional<EmployeeTable> showPersonalDetailOfHR(String id) {
-		Optional<EmployeeTable> employee= employeeTableRepository.findById(id);
+		Optional<EmployeeTable> employee= employeetablerepository.findById(id);
 		return employee;
 	}
 
 	@Override
-	public List<EmployeeTable> showAllEmployees() {
-		List<EmployeeTable> employeeList= (List<EmployeeTable>) employeeTableRepository.findAll();
-		System.out.println(employeeList);
-		return employeeList;
+	public List<EmployeeTable> employeeDisplay() {
+		Iterable<EmployeeTable> employee= employeetablerepository.findAll();
+		 ArrayList<EmployeeTable> employees = new ArrayList<EmployeeTable>();
+	      employee.forEach(e -> employees.add(e));
+	      return employees;
+	}
+	
+	@Override
+	public void employeeEdit(EmployeeTable employee) {
+		employeetablerepository.save(employee);
 	}
 
 	@Override
-	public boolean  addEmployee(EmployeeTable employee) {
-		employeeTableRepository.save(employee);
-		return true;
+	public void employeeDelete(String employeeId) {
+//		employeetablerepository.deleteById(employeeId);
+		Optional<EmployeeTable> emp = employeetablerepository.findById(employeeId);
+		EmployeeTable emp1 = emp.get();
+		emp1.setStatus(false);
+		employeetablerepository.save(emp1);
 	}
 
+	@Override
+	public void employeeAdd(EmployeeTable employee) {		
+		employeetablerepository.save(employee);		
+	}
 	
 	}
 

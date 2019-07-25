@@ -10,9 +10,9 @@ import com.knewton.academy.model.EmployeeTable;
 
 
 public interface hrService {
-	public  Optional<EmployeeTable> showPersonalDetailOfHR(String id);
-	public  List<EmployeeTable> showAllEmployees();
-	public   boolean addEmployee(EmployeeTable employee);
-	public  boolean deleteEmployee(String id);
-	public  boolean updateEmployee(EmployeeTable  employee);
+	public Optional<EmployeeTable> showPersonalDetailOfHR(String id);
+	public List<EmployeeTable> employeeDisplay();
+	public void employeeAdd(EmployeeTable employee);
+	public void employeeDelete(String employeeId);
+	public void employeeEdit(EmployeeTable  employee);
 }
