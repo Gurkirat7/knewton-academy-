@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.StudentTable;
+import com.knewton.academy.model.TestSeriesLogin;
 import com.knewton.academy.repository.EmployeeTableRepository;
 import com.knewton.academy.repository.FeesRepository;
 import com.knewton.academy.repository.StudentTableRepository;
+import com.knewton.academy.repository.TestSeriesLoginRepository;
 
 @Service
 public class SubAdminServiceImp implements SubAdminService {
@@ -22,6 +24,8 @@ StudentTableRepository studenttablerepository;
 FeesRepository feesrepository;
 @Autowired
 EmployeeTableRepository employeetablerepository;
+@Autowired
+TestSeriesLoginRepository testseriesloginrepository;
 @Override
 public Optional<StudentTable> showPersonalDetailOfSubAdmin(String id) {
 	Optional<StudentTable> student=studenttablerepository.findById(id);
@@ -69,6 +73,12 @@ public void studentAdd(StudentTable student) {
 @Override
 public void feesAdd(Fees fees) {
 	feesrepository.save(fees);
+	
+}
+@Override
+public void addtestId(TestSeriesLogin testserieslogin) {
+	
+	testseriesloginrepository.save(testserieslogin);
 	
 }
 

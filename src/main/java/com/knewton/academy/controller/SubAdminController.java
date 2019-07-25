@@ -14,9 +14,11 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.StudentTable;
+import com.knewton.academy.model.TestSeriesLogin;
 import com.knewton.academy.repository.EmployeeTableRepository;
 import com.knewton.academy.repository.FeesRepository;
 import com.knewton.academy.repository.StudentTableRepository;
+import com.knewton.academy.repository.TestSeriesLoginRepository;
 import com.knewton.academy.service.SubAdminServiceImp;
 
 @RestController
@@ -29,21 +31,25 @@ public class SubAdminController {
 	EmployeeTableRepository employeetablerepository;
 	@Autowired
 	SubAdminServiceImp subadminserviceimp;
+	
 @GetMapping("/subadmin/info")
 public Optional<StudentTable> showPersonalDetailOfSubAdmin(){
 	return subadminserviceimp.showPersonalDetailOfSubAdmin("fsg");
 }
 
 @RequestMapping(value="/subadmin/add",method=RequestMethod.POST)
-public RedirectView studentAdd(StudentTable student,Fees fees) {
+public RedirectView studentAdd(StudentTable student,Fees fees,TestSeriesLogin testserieslogin) {
 	subadminserviceimp.studentAdd(student);
 	subadminserviceimp.feesAdd(fees);
+	subadminserviceimp.addtestId(testserieslogin);
 	return new RedirectView("/subadmin");
 }
 
 @RequestMapping(value="/subadmin/edit",method=RequestMethod.POST)
-public RedirectView editStu(StudentTable student) {
+public RedirectView editStu(StudentTable student,Fees fees,TestSeriesLogin testserieslogin) {
 	subadminserviceimp.studentEdit(student);
+	subadminserviceimp.feesAdd(fees);
+	subadminserviceimp.addtestId(testserieslogin);
 	return new RedirectView("/subadmin");
 }
 

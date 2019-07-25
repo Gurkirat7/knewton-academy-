@@ -243,7 +243,6 @@
           
           $(".editButtonIcon").click(function () {
               var eid = $(this).parent().parent()[0].firstChild.innerHTML;
-              var str1 =""
               $.each(data,function(key,value){
             	 if (value.employeeId===eid){
             		$("input[name=employeeId]").val(value.employeeId);

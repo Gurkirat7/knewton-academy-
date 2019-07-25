@@ -293,6 +293,10 @@ iframe {
   padding: 7.5px;
   height: 100%;
 }
+#type1{
+  padding: 7.5px;
+  height: 100%;
+}
 #searchSubmit:hover{
   background-color: #6c7ae0;
 }
@@ -377,6 +381,7 @@ label {
 	left:80%;
 	word-spacing:-20px;
 }
+
 @media(max-width:650px){
 	.try{
 	margin-top:10px;

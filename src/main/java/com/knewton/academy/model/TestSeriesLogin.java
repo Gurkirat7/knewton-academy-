@@ -12,24 +12,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="testserieslogin")
 public class TestSeriesLogin {
-	@Column
-	private String studentId;
 	@Id
-	private String testId;
-	
+	private String studentId;
 	@Column
-	private String password;
-//	@OneToOne(mappedBy="testserieslogin")
-//	private StudentTable studenttable;
-	
+	private String testId;	
+	@Column
+	private String testpassword;
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="studentId" , referencedColumnName="studentId",insertable=false,updatable=false)
 	private StudentTable studenttable;
 
-	public String getPassword() {
-		return password;
-	}
-
+	
 	public String getStudentId() {
 		return studentId;
 	}
@@ -46,17 +40,21 @@ public class TestSeriesLogin {
 		this.testId = testId;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getTestpassword() {
+		return testpassword;
 	}
-	
-//	public StudentTable getStudenttable() {
-//		return studenttable;
-//	}
-//
-//	public void setStudenttable(StudentTable studenttable) {
-//		this.studenttable = studenttable;
-//	}
+
+	public void setTestpassword(String testpassword) {
+		this.testpassword = testpassword;
+	}
+
+	public StudentTable getStudenttable() {
+		return studenttable;
+	}
+
+	public void setStudenttable(StudentTable studenttable) {
+		this.studenttable = studenttable;
+	}
 
 	public TestSeriesLogin() {
 		// TODO Auto-generated constructor stub

@@ -131,10 +131,13 @@
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-4" placeholder="Search..">
             <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Class</option> 
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
               <option>10</option>
+              <option>11</option>
               <option>12</option>
-              <option>3</option>
-              <option>4</option>
             </select>
             <select class="form-control col-md-2" id="type1" onchange="myFunction1()">
               <option value="none" selected disabled hidden>Course</option> 
@@ -176,11 +179,13 @@
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Class</label>
           <select class="form-control validate" name="stuclass" style="padding:7.5px;height:100%;">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
           </select>
         </div>
         <div class="field-wrap mb-5">
@@ -220,7 +225,12 @@
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Test Login ID</label>
-          <input type="text" name="testLoginId" class="form-control validate">
+          <input type="text" name="testId" class="form-control validate">
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Test Password</label>
+          <input type="text" name="testpassword" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
@@ -254,7 +264,7 @@
 </div>
 </form>
 <!--edit button-->
-<form>
+<form th:action="@{/subadmin/edit}" method="POST">
 <div class="modal fade" id="editStudentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -266,66 +276,77 @@
         </button>
       </div>
       <div class="modal-body mx-3">
-
+		<input type="hidden" name="studentId">
+		<input type="hidden" name="name">
+		<input type="hidden" name="fatherName">
+		<input type="hidden" name="motherName">
+		
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Class</label>
-          <select class="form-control validate" style="padding:7.5px;height:100%;">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+          <select class="form-control validate" name ="stuclass" style="padding:7.5px;height:100%;">
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
           </select>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Contact Details</label>
-          <input type="tel"  class="form-control validate" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
+          <input type="tel"  class="form-control validate" name="contactDetails" pattern="[0-9]{10}"  maxlength="10" minlength="10" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Email ID</label>
-            <input type="email"  class="form-control validate">
+            <input type="email" name="emailId" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Address</label>
-           <input type="text"  class="form-control validate">
+           <input type="text" name="address" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Branch</label>
-          <select class="form-control validate" style="padding:7.5px;height:100%;">
+          <select class="form-control validate" name="branchId" style="padding:7.5px;height:100%;">
             <option value="1">Madangir</option>
-            <option value="2">Malviya Nagar</option>
-            <option value="3">Chirag Delhi</option>
+            <option value="3">Malviya Nagar</option>
+            <option value="2">Chirag Delhi</option>
           </select>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Test Login ID</label>
-          <input type="text"  class="form-control validate">
+          <input type="text" name="testId" class="form-control validate">
+        </div>
+         <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Test Password</label>
+          <input type="text" name="testpassword" class="form-control validate">
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Total Fees</label>
-          <input type="text"  class="form-control validate" required>
+          <input type="text" name="totalFees" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Fee 1</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="installment1" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Fee 2</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text" name="installment2" class="form-control validate" required>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Fee 3</label>
-           <input type="text"  class="form-control validate" required>
+           <input type="text"  name="installment3" class="form-control validate" required>
         </div>
 
 
@@ -337,6 +358,35 @@
   </div>
 </div>
 </form>
+<!-- delete stu -->
+<div class="modal fade" id="deleteStudentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Delete Employee Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/subadmin/delete}" method="POST">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="studentId">
+      
+     
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" style="text-align:center;width:100%!important;font-size:30px;margin-top:5px;" >ARE YOU SURE YOU WANT TO DELETE ???</label>
+        </div>
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default btn-lg btn-danger" value="Y E S">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 	<div class="limiter">
 		<div class="container-table100">
@@ -402,9 +452,36 @@
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteStudentDetail"></span></div>';
         	str+='</div>';
         	  }
-          });
-       
+          });       
          $("#studentlist").append(str);
+         
+         $(".editButtonIcon").click(function () {
+             var sid = $(this).parent().parent()[0].firstChild.innerHTML;
+             $.each(data,function(key,value){
+           	 if (value.studentId===sid){
+           		$("input[name=studentId]").val(value.studentId);
+           		$("input[name=name]").val(value.name);
+           		$("input[name=fatherName]").val(value.fatherName);
+           		$("input[name=motherName]").val(value.motherName);
+           		$("select[name=stuclass]").val(value.stuclass);
+           		$("input[name=contactDetails]").val(value.contactDetails);
+           		$("input[name=emailId]").val(value.emailId);
+           		$("input[name=address]").val(value.address);
+           		$("select[name=branchId]").val(value.branchId);
+           		$("input[name=totalFees]").val(value.fees.totalFees);
+           		$("input[name=installment1]").val(value.fees.installment1);
+           		$("input[name=installment2]").val(value.fees.installment2);
+           		$("input[name=installment3]").val(value.fees.installment3);
+           		$("input[name=testId]").val(value.testserieslogin.testId);
+           		$("input[name=testpassword]").val(value.testserieslogin.testpassword);
+           	 } 
+             });
+           });
+         
+         $(".delete").click(function () {
+             var sid = $(this).parent().parent()[0].firstChild.innerHTML;
+             $("#deleteStudentDetail input[name=studentId]").val(sid);
+         });
        });
       </script>						
 

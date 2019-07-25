@@ -196,6 +196,15 @@ public class StudentTable {
 		return status;
 	}
 
+	
+	public TestSeriesLogin getTestserieslogin() {
+		return testserieslogin;
+	}
+
+	public void setTestserieslogin(TestSeriesLogin testserieslogin) {
+		this.testserieslogin = testserieslogin;
+	}
+
 	public void setStatus(boolean status) {
 		this.status = status;
 	}

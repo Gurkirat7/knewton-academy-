@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2019 at 01:41 PM
+-- Generation Time: Jul 25, 2019 at 08:46 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.28
 
@@ -165,10 +165,12 @@ CREATE TABLE `fees` (
 
 INSERT INTO `fees` (`studentId`, `totalFees`, `installment1`, `installment2`, `installment3`) VALUES
 ('S100000', '45000', 'paid', 'paid', '24/07/2019'),
-('S100001', '60', 'paid', 'paid', 'paid'),
+('S100001', '6000', 'paid', 'paid', 'paid'),
 ('S100003', '45000', '15000', '24', '15000'),
 ('S100005', '555', 'paid', 'paid', 'paid'),
-('S100006', '555', '555', 'paid', 'paid');
+('S100006', '555', '555', 'paid', 'paid'),
+('S100007', '555', 'paid', 'paid', 'paid'),
+('S100008', '55500', 'paid', 'paid', 'paid');
 
 -- --------------------------------------------------------
 
@@ -351,7 +353,9 @@ INSERT INTO `studenttable` (`studentId`, `name`, `class`, `fatherName`, `motherN
 ('S100003', 'kal', 2, 'asdjkjll', 'lkaskd', 2015635894, 'dettol@gmail.com', '24/44 khin to hai', 1, 0),
 ('S100004', 'kal', 1, 'asdjkjll', 'lkaskd', 2015635894, 'gurkiratloves69@gmail.com', '24/44 khin to hai', 2, 0),
 ('S100005', 'Akshay Manchanda', 1, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '24/44 khin to hai', 1, 0),
-('S100006', 'kal', 2, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 1);
+('S100006', 'kal', 11, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 1),
+('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 1),
+('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -386,10 +390,18 @@ CREATE TABLE `test` (
 --
 
 CREATE TABLE `testserieslogin` (
-  `testId` varchar(255) NOT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `studentId` varchar(255) DEFAULT NULL
+  `testId` varchar(7) NOT NULL,
+  `testpassword` varchar(20) DEFAULT NULL,
+  `studentId` varchar(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testserieslogin`
+--
+
+INSERT INTO `testserieslogin` (`testId`, `testpassword`, `studentId`) VALUES
+('TS10001', 'fgggg', 'S100001'),
+('TS10000', 'forsomething', 'S100008');
 
 -- --------------------------------------------------------
 
@@ -562,8 +574,9 @@ ALTER TABLE `test`
 -- Indexes for table `testserieslogin`
 --
 ALTER TABLE `testserieslogin`
-  ADD PRIMARY KEY (`testId`),
-  ADD KEY `FK6ci6gc4b0sa3lpgqc0tymk3s4` (`studentId`);
+  ADD PRIMARY KEY (`studentId`),
+  ADD UNIQUE KEY `testId` (`testId`),
+  ADD KEY `studentId` (`studentId`);
 
 --
 -- Indexes for table `usertype`
@@ -698,7 +711,7 @@ ALTER TABLE `test`
 -- Constraints for table `testserieslogin`
 --
 ALTER TABLE `testserieslogin`
-  ADD CONSTRAINT `FK6ci6gc4b0sa3lpgqc0tymk3s4` FOREIGN KEY (`studentId`) REFERENCES `studenttable` (`studentId`);
+  ADD CONSTRAINT `testserieslogin_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `studenttable` (`studentId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
