@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2019 at 07:09 AM
+-- Generation Time: Jul 27, 2019 at 01:11 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.28
 
@@ -42,7 +42,9 @@ CREATE TABLE `assignment` (
 
 INSERT INTO `assignment` (`assignmentId`, `batchId`, `description`, `totalMarks`, `date`) VALUES
 (1, 'C9', 'kuch to hua hai', 100, '2019-07-25'),
-(12, 'P12', 'kuch to', 100, '2019-07-24');
+(11, 'C9', 'something', 50, '2019-07-16'),
+(12, 'P12', 'kuch to', 100, '2019-07-24'),
+(21, 'C8', 'kuch to', 100, '2019-07-12');
 
 -- --------------------------------------------------------
 
@@ -52,7 +54,8 @@ INSERT INTO `assignment` (`assignmentId`, `batchId`, `description`, `totalMarks`
 
 CREATE TABLE `attendance` (
   `classDeliveredId` int(5) NOT NULL,
-  `studentId` varchar(7) NOT NULL
+  `studentId` varchar(7) NOT NULL,
+  `attendance` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -301,7 +304,9 @@ CREATE TABLE `result_assignment` (
 --
 
 INSERT INTO `result_assignment` (`studentId`, `assignmentId`, `obtainedMarks`) VALUES
-('S100000', 1, 99);
+('S100000', 1, 99),
+('S100004', 1, 2),
+('S100008', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -375,7 +380,10 @@ CREATE TABLE `studentbatchmapping` (
 
 INSERT INTO `studentbatchmapping` (`studentId`, `batchId`) VALUES
 ('S100000', 'C8'),
-('S100001', 'E6');
+('S100000', 'E6'),
+('S100001', 'E6'),
+('S100004', 'C9'),
+('S100008', 'C9');
 
 -- --------------------------------------------------------
 
@@ -393,22 +401,24 @@ CREATE TABLE `studenttable` (
   `emailId` varchar(25) NOT NULL,
   `address` varchar(30) NOT NULL,
   `branchId` int(2) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1'
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `studentbatchmapping_batchId` varchar(255) DEFAULT NULL,
+  `studentbatchmapping_studentId` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `studenttable`
 --
 
-INSERT INTO `studenttable` (`studentId`, `name`, `class`, `fatherName`, `motherName`, `contactDetails`, `emailId`, `address`, `branchId`, `status`) VALUES
-('S100000', 'something', 12, 'stramp', 'exxampler', 1203654741, 'info@example.com', '6/90 saket', 1, 1),
-('S100001', 'Store', 10, 'Damad', 'samechange', 2003214562, 'Lelo@yahoo.com', '56b malviya nagar', 3, 0),
-('S100003', 'kal', 2, 'asdjkjll', 'lkaskd', 2015635894, 'dettol@gmail.com', '24/44 khin to hai', 1, 0),
-('S100004', 'kal', 1, 'asdjkjll', 'lkaskd', 2015635894, 'gurkiratloves69@gmail.com', '24/44 khin to hai', 2, 0),
-('S100005', 'Akshay Manchanda', 1, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '24/44 khin to hai', 1, 0),
-('S100006', 'kal', 11, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 0),
-('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 0),
-('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 0);
+INSERT INTO `studenttable` (`studentId`, `name`, `class`, `fatherName`, `motherName`, `contactDetails`, `emailId`, `address`, `branchId`, `status`, `studentbatchmapping_batchId`, `studentbatchmapping_studentId`) VALUES
+('S100000', 'something', 12, 'stramp', 'exxampler', 1203654741, 'info@example.com', '6/90 saket', 1, 1, NULL, NULL),
+('S100001', 'Store', 10, 'Damad', 'samechange', 2003214562, 'Lelo@yahoo.com', '56b malviya nagar', 3, 0, NULL, NULL),
+('S100003', 'kal', 2, 'asdjkjll', 'lkaskd', 2015635894, 'dettol@gmail.com', '24/44 khin to hai', 1, 0, NULL, NULL),
+('S100004', 'kal', 1, 'asdjkjll', 'lkaskd', 2015635894, 'gurkiratloves69@gmail.com', '24/44 khin to hai', 2, 1, NULL, NULL),
+('S100005', 'Akshay Manchanda', 1, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '24/44 khin to hai', 1, 0, NULL, NULL),
+('S100006', 'kal', 11, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 0, NULL, NULL),
+('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 0, NULL, NULL),
+('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -420,6 +430,14 @@ CREATE TABLE `teacherbatchmapping` (
   `employeeId` varchar(7) NOT NULL,
   `batchId` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `teacherbatchmapping`
+--
+
+INSERT INTO `teacherbatchmapping` (`employeeId`, `batchId`) VALUES
+('E100000', 'C8'),
+('E100000', 'C9');
 
 -- --------------------------------------------------------
 
@@ -606,7 +624,8 @@ ALTER TABLE `studentbatchmapping`
 --
 ALTER TABLE `studenttable`
   ADD PRIMARY KEY (`studentId`) USING BTREE,
-  ADD KEY `Branch_id` (`branchId`);
+  ADD KEY `Branch_id` (`branchId`),
+  ADD KEY `FK7lfq11j1t5au2rlcf2rgwiahc` (`studentbatchmapping_batchId`,`studentbatchmapping_studentId`);
 
 --
 -- Indexes for table `teacherbatchmapping`
@@ -745,6 +764,7 @@ ALTER TABLE `studentbatchmapping`
 -- Constraints for table `studenttable`
 --
 ALTER TABLE `studenttable`
+  ADD CONSTRAINT `FK7lfq11j1t5au2rlcf2rgwiahc` FOREIGN KEY (`studentbatchmapping_batchId`,`studentbatchmapping_studentId`) REFERENCES `studentbatchmapping` (`batchId`, `studentId`),
   ADD CONSTRAINT `studenttable_ibfk_2` FOREIGN KEY (`branchId`) REFERENCES `branch` (`branchId`);
 
 --

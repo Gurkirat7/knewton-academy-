@@ -1,5 +1,6 @@
 package com.knewton.academy.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -14,7 +15,8 @@ public class Attendance {
 	
 	@EmbeddedId
 	private AttendanceId attendanceid;
-	
+	@Column
+	private boolean attendance;
 	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="classDeliveredId", referencedColumnName="classDeliveredId", insertable=false,updatable=false)
@@ -35,6 +37,17 @@ public class Attendance {
 		this.attendanceid = attendanceid;
 	}
 	
+	
+	public boolean isAttendance() {
+		return attendance;
+	}
+
+
+	public void setAttendance(boolean attendance) {
+		this.attendance = attendance;
+	}
+
+
 	public ClassDelivered getClassdelivered() {
 		return classdelivered;
 	}
