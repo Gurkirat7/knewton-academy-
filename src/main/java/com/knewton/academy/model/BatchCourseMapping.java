@@ -23,10 +23,6 @@ public class BatchCourseMapping {
 	private AttendanceCount attendancecount;
 	@OneToOne(mappedBy="batchcoursemapping")
 	private ClassDelivered classdelivered;
-//	@OneToOne(mappedBy="batchcoursemapping")
-//	private StudentBatchMapping studentbatchmapping;
-	@OneToOne(mappedBy="batchcoursemapping")
-	private TeacherBatchMapping teacherbatchmapping;
 //	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="courseId", referencedColumnName="courseId", insertable=false,updatable=false)
@@ -92,25 +88,6 @@ public class BatchCourseMapping {
 		this.classdelivered = classdelivered;
 	}
 
-
-//	public StudentBatchMapping getStudentbatchmapping() {
-//		return studentbatchmapping;
-//	}
-//
-//
-//	public void setStudentbatchmapping(StudentBatchMapping studentbatchmapping) {
-//		this.studentbatchmapping = studentbatchmapping;
-//	}
-
-
-	public TeacherBatchMapping getTeacherbatchmapping() {
-		return teacherbatchmapping;
-	}
-
-
-	public void setTeacherbatchmapping(TeacherBatchMapping teacherbatchmapping) {
-		this.teacherbatchmapping = teacherbatchmapping;
-	}
 
 
 	public BatchCourseMapping() {

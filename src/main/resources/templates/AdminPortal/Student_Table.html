@@ -68,7 +68,6 @@
 						
 							  <script type="text/javascript">
       $.getJSON('../admin/student', function(data) {
-          console.log(data[0]['title']);
           var str= "";
           
           $.each(data,function(key,value){
@@ -83,17 +82,7 @@
         	str+='</div>';
         	  }
           });
-       
-          str+='<div class="row myTable">';
-      	str +=  '<div class="cell" data-title="Student Id">+value.studentId+</div>';
-      	str +=  '<div class="cell" data-title="Full Name">+value.name+</div>';
-      	str +=  '<div class="cell" data-title="Phone No">+value.contactDetails+</div>';
-      	str +=  '<div class="cell clo" data-title="Class">+value.stuclass+</div>';
-      	str +=  '<div class="cell clo1" data-title="Courses">jee</div>';
-      	str +=  '<div class="cell" data-title="Performance">+tobe+</div>';
-      	str+='</div>';
-			
-          $("#studentlist").append(str);
+         $("#studentlist").append(str);
        });
       </script>
 						

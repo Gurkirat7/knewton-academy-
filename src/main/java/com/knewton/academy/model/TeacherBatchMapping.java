@@ -3,6 +3,8 @@ package com.knewton.academy.model;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,11 +17,11 @@ public class TeacherBatchMapping {
 	@EmbeddedId
 	private TeacherBatchMappingId teacherbatchmappingid;
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="employeeId", referencedColumnName="employeeId",insertable=false, updatable=false)
 	private EmployeeTable employeetable;
-	@JsonIgnore
-	@OneToOne
+//	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="batchId", referencedColumnName="batchId",insertable=false, updatable=false)
 	private BatchCourseMapping batchcoursemapping;
 

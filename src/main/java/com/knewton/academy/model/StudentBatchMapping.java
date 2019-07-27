@@ -8,6 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -17,8 +19,8 @@ public class StudentBatchMapping {
 	@EmbeddedId
 	private StudentBatchMappingId studentbatchmappingid;
 	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
+	@ManyToOne
+	@JoinColumn(name="studentId", referencedColumnName="studentId",insertable=false,updatable=false)
 	private StudentTable studenttable;
 //	@JsonIgnore
 	@ManyToOne

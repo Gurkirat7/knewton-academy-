@@ -50,7 +50,6 @@
 
       <script type="text/javascript">
       $.getJSON('../notice', function(data) {
-          console.log(data[0]['title']);
           var str= "";
           str +='<div class="notice-board" style="width:100%;height:40%;"><div class="panel panel-default"><div class="panel-body"><ul style="padding-left:0px;list-style:none;" id = "noticeListItems"><marquee direction="up" height = "300px" onmouseover="this.stop()" onmouseout="this.start()">';
           $.each(data,function(key,value){
@@ -243,45 +242,30 @@
 <!--CARDS-->
 <div class="car" style="margin-top:20px;">
 <div class="container" style="font-size:12px;">
-                <div class="row">
-                        <div class="column zoom " onclick="openTab('b1');">
-                          <div class="card card1">
-                            <h3>Course 1</h3>
-                            <p>Attendance</p>
-							<!--attandance-->
-							<a href="attendance.html">click here</a>
-                            
-							<p>Assignment Marks</p>
-							<!--assignment marks-->
-							<a href="assignmentMarks.html">click here</a>
-                          </div>
-                        </div>
-
-                        <div class="column zoom " onclick="openTab('b2');">
-                          <div class="card card2">
-                            <h3>Course 2</h3>
-                            <p>Attendance</p>
-							<!--attandance-->
-							<a href="attendance.html">click here</a>
-                            <p>Assignmen Marks</p>
-							<!--assignment marks-->
-							<a href="assignmentMarks.html">click here</a>
-							
-
-                          </div>
-                        </div>
-
-                        <div class="column zoom " onclick="openTab()">
-                          <div class="card card3">
-                            <h3>Course 3</h3>
-                            <p>Attendance</p>
-							<!--attandance-->
-							<a href="attendance.html">click here</a>
-                            <p>Assignmen Marks</p>
-							<!--assignment marks-->
-							<a href="assignmentMarks.html">click here</a>
-                          </div>
-                        </div>
+                <div class="row" id="batchList">
+          <script>              
+          $.getJSON('../teacher/batch', function(data) {
+          var str= "";
+          var i=1;
+          $.each(data,function(key,value){
+        	  var a=i;
+        		  var empid = "E100000";
+        		 if(value.teacherbatchmappingid.employeeId==empid){
+        	  str+='<div class="column zoom col-md-4" >';
+        	str +=  '<div class="card card1">';
+        	str +=  '<div id="'+a+'"><h3>'+value.teacherbatchmappingid.batchId+'</h3></div>';
+        	str += '<h3> ' + value.batchcoursemapping.batchName+'</h3>'
+        	str +=  '<p>Attendance</p><div onclick=localStorage["batch"]=(document.getElementById("'+a+'").innerText);><a href="attendance.html">click here</a></div>';
+        	str +=  '<p>Assignment Marks</p><div onclick=localStorage["batch"]=(document.getElementById("'+a+'").innerText);><a href="assignmentMarks.html">click here</a></div>';
+        	str +=  '</div></div>';
+        		
+        	  }
+        		 i=i+1;
+          });
+         $("#batchList").append(str);
+       });
+      </script>
+                       
 </div>
 </div>
 </div>

@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;
 
 import com.knewton.academy.model.Attendance;
+import com.knewton.academy.model.AttendanceId;
 
 @Repository
-public interface AttendanceRepository extends CrudRepository<Attendance,String>{
+public interface AttendanceRepository extends CrudRepository<Attendance,AttendanceId>{
 
 }

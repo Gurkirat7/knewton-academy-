@@ -3,11 +3,15 @@
  */
 package com.knewton.academy.model;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -47,8 +51,8 @@ public class StudentTable {
 	private ResultTest resulttest;
 	@OneToOne(mappedBy="studenttable")
 	private ResultAssignment resultassignment;
-	@OneToOne(mappedBy="studenttable")
-	private StudentBatchMapping studentbatchmapping;
+	@OneToMany(mappedBy="studenttable")
+	private Set<StudentBatchMapping> studentbatchmapping;
 	@OneToOne(mappedBy="studenttable")
 	private TestSeriesLogin testserieslogin;
 	@ManyToOne
@@ -185,13 +189,16 @@ public class StudentTable {
 		this.resultassignment = resultassignment;
 	}
 
-	public StudentBatchMapping getStudentbatchmapping() {
+	
+	
+	public Set<StudentBatchMapping> getStudentbatchmapping() {
 		return studentbatchmapping;
 	}
 
-	public void setStudentbatchmapping(StudentBatchMapping studentbatchmapping) {
+	public void setStudentbatchmapping(Set<StudentBatchMapping> studentbatchmapping) {
 		this.studentbatchmapping = studentbatchmapping;
 	}
+
 	public boolean isStatus() {
 		return status;
 	}

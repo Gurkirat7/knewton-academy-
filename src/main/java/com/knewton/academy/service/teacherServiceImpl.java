@@ -11,12 +11,15 @@ import com.knewton.academy.model.Assignment;
 import com.knewton.academy.model.Attendance;
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.ResultAssignment;
+import com.knewton.academy.model.ResultAssignmentId;
 import com.knewton.academy.model.StudentTable;
+import com.knewton.academy.model.TeacherBatchMapping;
 import com.knewton.academy.repository.AssignmentRepository;
 import com.knewton.academy.repository.AttendanceRepository;
 import com.knewton.academy.repository.EmployeeTableRepository;
 import com.knewton.academy.repository.ResultAssignmentRepository;
 import com.knewton.academy.repository.StudentTableRepository;
+import com.knewton.academy.repository.TeacherBatchMappingRepository;
 
 @Service
 public class teacherServiceImpl implements teacherService{
@@ -30,6 +33,9 @@ public class teacherServiceImpl implements teacherService{
 	AttendanceRepository attendanceRepository;
     @Autowired
     StudentTableRepository studenttablerepository;
+    @Autowired
+	TeacherBatchMappingRepository teacherbatchmappingrepository;
+
 //	public void teacherServiceImpl() {
 //		return null;
 //	}
@@ -40,13 +46,13 @@ public class teacherServiceImpl implements teacherService{
 		return employee;
 	}
 
-//	@Override
-//	public List<Assignment> showAllAssignment() {
-//		Iterable<Assignment> assign= assignmentRepository.findAll();
-//		 ArrayList<Assignment> assigns = new ArrayList<Assignment>();
-//	       assign.forEach(e -> assigns.add(e));
-//	       return assigns;	
-//	}
+	@Override
+	public List<Assignment> showAllAssignment() {
+		Iterable<Assignment> assign= assignmentRepository.findAll();
+		 ArrayList<Assignment> assigns = new ArrayList<Assignment>();
+	       assign.forEach(e -> assigns.add(e));
+	       return assigns;	
+	}
 
 	@Override
 	public void addAssignment(Assignment assignment) {
@@ -54,8 +60,9 @@ public class teacherServiceImpl implements teacherService{
 	}
 	
 	@Override
-	public void addResultAssignment(ResultAssignment resultassignment)
+	public void addResultAssignment(String studentId,int assignmentId,int obtainedMarks)
 	{
+		ResultAssignment resultassignment = new ResultAssignment(new ResultAssignmentId(studentId,assignmentId),obtainedMarks);
 		resultassignmentRepository.save(resultassignment);
 	}
 
@@ -71,6 +78,14 @@ public class teacherServiceImpl implements teacherService{
 		 ArrayList<StudentTable> students = new ArrayList<StudentTable>();
 	       student.forEach(e -> students.add(e));
 	       return students;	
+	}
+
+	@Override
+	public List<TeacherBatchMapping> batchesDisplay() {
+		Iterable<TeacherBatchMapping> batch= teacherbatchmappingrepository.findAll();
+		 ArrayList<TeacherBatchMapping> batches = new ArrayList<TeacherBatchMapping>();
+	       batch.forEach(e -> batches.add(e));
+	       return batches;
 	}
 
 }

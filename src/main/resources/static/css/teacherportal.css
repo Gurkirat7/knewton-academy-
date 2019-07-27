@@ -48,7 +48,7 @@ transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will g
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
-  height: 200px;
+  height: 100%;
 }
 .col2{
     width: 25%;

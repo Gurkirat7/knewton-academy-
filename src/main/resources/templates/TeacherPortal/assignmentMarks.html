@@ -6,9 +6,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="css/header-footer.css">
  
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +18,7 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="img/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
@@ -56,37 +54,21 @@
     </div>
  </header><!-- #header -->
 
-<center><h1 style="margin-top: 10%"
-> Assignment Marks </h1>
+<center><h1 style="margin-top: 10%"> Assignment Marks </h1>
 </center>
 <!--search bar-->
   <form class="search"> 
       <div id = "searchform" class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-5" placeholder="Search Student..">
-            <select class="form-control col-md-1 col-md-offset-2" id="type">
-              <option value="none" selected disabled hidden>Class</option> 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-            <select class="form-control col-md-1" id="type1">
-              <option value="none" selected disabled hidden>Course</option> 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
             <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
 
 <!--Add Assignment-->
-  <form th:action="@{/teacher/assign}" method="POST">
-  <div class="modal fade" id="assignmentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
+  <form th:action="@{/teacher/assign}" method="POST" >
+  <div class="modal fade" id="assignmentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="margin-top:200px;">
       <div class="modal-header text-center">
 
         <h4 class="modal-title w-100 font-weight-bold">Add Assignment Details</h4>
@@ -105,12 +87,14 @@
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Batch Id</label>
-          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;">
-            <option value="JEE">JEE</option>
-            <option value="E6">English 6th</option>
-            <option value="P12">Physics 12th</option>
-            <option value="M4">Maths 4th</option>
-            <option value="C8">Chemistry 8th</option>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="batchInsert">
+            <script>
+            batchInsert();
+            function batchInsert(){
+            var str=' <option value="'+localStorage["batch"]+'">' + localStorage["batch"] + '</option>';
+            $("#batchInsert").append(str);
+            }
+            </script>
           </select>
         </div>
         <div class="field-wrap mb-5">
@@ -152,12 +136,31 @@
       </div>
       <form th:action="@{/teacher/assignedit}" method="POST">
       <div class="modal-body mx-3">	
-      <input type="hidden" name="studentId">
+      
+      <input type="hidden" name="studentId" id="setsid">
       
        <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >AssignmentId</label>
-          <input type="number"  class="form-control validate" name="assignmentId" maxlength="4" minlength="1" required>
+          <select class="form-control validate" name="assignmentId" style="padding:7.5px;height:100%;" id="assignmentMarks"> 
+          	<script>
+          	$.getJSON('../teacher/assignment', function(data) {
+                var str= "";
+                
+                $.each(data,function(key,value){
+                	if(localStorage["batch"]==value.batchId)
+                		{
+              	         str+='<option value="'+value.assignmentId+'">'+value.assignmentId+'</option>';
+                		}
+              
+                });
+                $("#assignmentMarks").append(str);
+                
+          	});
+          	
+          	
+            </script>
+          </select>
         </div>
         
         <div class="field-wrap mb-5">
@@ -180,7 +183,7 @@
 		<div class="container-table100">
 			<div class="wrap-table100">
 			<div class="fright">
-            <button type="button" data-toggle="modal" data-target="#AssignmentDetail" style="">
+          <button type="button" data-toggle="modal" data-target="#AssignmentDetail" style="">
            <h3> <span class="glyphicon glyphicon-plus"></span></h3></button>
           </div>
 					<div class="table" id="studentList">
@@ -215,17 +218,34 @@
           var str= "";
           $.each(data,function(key,value){
         	  if(value.status===true){
+        		  for(var i=0;i<value.studentbatchmapping.length;i++)
+        			  {
+        		  if(localStorage["batch"]==value.studentbatchmapping[i].batchcoursemapping.batchId)
+        			  {
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
         	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
-        	str +=  '<div class="cell clo1" data-title="Courses">'+value.studentbatchmapping.batchcoursemapping.course.details+'</div>';
+        	str +=  '<div class="cell clo1" data-title="Courses">';
+        	for(var i=0;i<value.studentbatchmapping.length;i++){
+        		str+= value.studentbatchmapping[i].batchcoursemapping.course.details;
+        		if(i!=value.studentbatchmapping.length-1){
+        			str+=', ';
+        		}
+        	}
+        	str += '</div>';
         	str +=  '<div class="cell" data-title="Performance">'+'tobe'+'</div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editAssignmentResult"></span></a></div>';
         	str+='</div>';
+        			  }
+        	  }
         	  }
           });       
          $("#studentList").append(str);
-         
+     
+         $(".editButtonIcon").click(function () {
+             var sid = $(this).parent().parent()[0].firstChild.innerHTML;
+           		$("#setsid").val(sid);
+             });
      
          
       });

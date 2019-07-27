@@ -34,8 +34,6 @@ public class EmployeeTable {
 	private int salary;
 	@Column
 	private boolean status = true;
-	@OneToOne(mappedBy="employeetable")
-	private TeacherBatchMapping teacherbatchmapping;
 	@ManyToOne
 	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
 	private Usertype usertype;
@@ -112,14 +110,7 @@ public class EmployeeTable {
 
 
 
-	public TeacherBatchMapping getTeacherbatchmapping() {
-		return teacherbatchmapping;
-	}
 
-
-	public void setTeacherbatchmapping(TeacherBatchMapping teacherbatchmapping) {
-		this.teacherbatchmapping = teacherbatchmapping;
-	}
 
 
 	public Usertype getUsertype() {
@@ -151,7 +142,7 @@ public class EmployeeTable {
 	public String toString() {
 		return "EmployeeTable [employeeId=" + employeeId + ", name=" + name + ", userTypeId=" + userTypeId
 				+ ", contactDetails=" + contactDetails + ", emailId=" + emailId + ", address=" + address + ", salary="
-				+ salary + ", status=" + status + ", teacherbatchmapping=" + teacherbatchmapping + ", usertype="
+				+ salary + ", status=" + status +  ", usertype="
 				+ usertype + "]";
 	}
 	

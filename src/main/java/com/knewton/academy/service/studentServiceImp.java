@@ -24,11 +24,11 @@ public class studentServiceImp implements studentService {
 		return student;
 	}
 
-	@Override
-	public Optional<ResultAssignment> resultassignment(String id) {
-	Optional<ResultAssignment> result= 	resultassignmentrepository.findById(id);
-	   return result ;
-	}
+//	@Override
+//	public Optional<ResultAssignment> resultassignment(String id) {
+//	Optional<ResultAssignment> result= 	resultassignmentrepository.findById(id);
+//	   return result ;
+//	}
 
 	@Override
 	public ResultTest resulttest(String id) {
