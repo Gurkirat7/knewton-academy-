@@ -212,7 +212,14 @@ iframe {
   background-color: #ececff;
   cursor: pointer;
 }
+.fright
+{
+  float: right;
+}
 
+.glyphicon{
+  margin:7px;
+}
 @media (max-width: 768px) {
   .row {
     border-bottom: 1px solid #f2f2f2;
@@ -257,6 +264,10 @@ iframe {
   padding: 0px;
 }
 #type{
+  padding: 7.5px;
+  height: 35px;
+}
+#type1{
   padding: 7.5px;
   height: 35px;
 }

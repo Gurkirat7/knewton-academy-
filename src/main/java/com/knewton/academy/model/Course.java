@@ -18,8 +18,6 @@ public class Course {
 	private String details;
 	@OneToOne(mappedBy="course")
 	private Test test;
-	@OneToOne(mappedBy="course")
-	private BatchCourseMapping batchcoursemapping;
 		
 	public int getCourseId() {
 		return courseId;
@@ -44,13 +42,6 @@ public class Course {
 		this.test = test;
 	}
 
-	public BatchCourseMapping getBatchcoursemapping() {
-		return batchcoursemapping;
-	}
-
-	public void setBatchcoursemapping(BatchCourseMapping batchcoursemapping) {
-		this.batchcoursemapping = batchcoursemapping;
-	}
 
 	public Course() {
 		// TODO Auto-generated constructor stub

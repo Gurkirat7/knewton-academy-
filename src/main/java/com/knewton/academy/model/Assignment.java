@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,11 +28,8 @@ public class Assignment {
 	@Column
 	private Date date;
 	
-	@OneToOne(mappedBy="assignment")
-	private ResultAssignment resultassignment;
-	
-	@JsonIgnore
-	@OneToOne
+//	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="batchId",referencedColumnName="batchId", insertable=false,updatable=false)
 	private BatchCourseMapping batchcoursemapping;
 	
@@ -83,13 +81,6 @@ public class Assignment {
 		this.batchcoursemapping = batchcoursemapping;
 	}
 
-	public ResultAssignment getResultassignment() {
-		return resultassignment;
-	}
-
-	public void setResultassignment(ResultAssignment resultassignment) {
-		this.resultassignment = resultassignment;
-	}
 
 	public Assignment() {
 		// TODO Auto-generated constructor stub

@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,8 +22,8 @@ public class ResultAssignment{
 	@OneToOne
 	@JoinColumn(name="studentId",referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
-	@JsonIgnore
-	@OneToOne
+//	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="assignmentId",referencedColumnName="assignmentId", insertable=false,updatable=false)
 	private Assignment assignment;
 	

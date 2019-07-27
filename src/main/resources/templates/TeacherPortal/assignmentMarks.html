@@ -6,7 +6,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/header-footer.css">
  
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +22,6 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/teacher_table.css">
@@ -69,7 +70,7 @@
               <option>3</option>
               <option>4</option>
             </select>
-            <select class="form-control col-md-1" id="type">
+            <select class="form-control col-md-1" id="type1">
               <option value="none" selected disabled hidden>Course</option> 
               <option>1</option>
               <option>2</option>
@@ -80,10 +81,109 @@
       </div>
   </form>
 
+<!--Add Assignment-->
+  <form th:action="@{/teacher/assign}" method="POST">
+  <div class="modal fade" id="assignmentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+
+        <h4 class="modal-title w-100 font-weight-bold">Add Assignment Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    
+      <div class="modal-body mx-3">
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Assignment ID</label>
+          <input type="number" name="assignmentId" class="form-control validate" maxlength="4" required>
+        </div>
+
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Batch Id</label>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;">
+            <option value="JEE">JEE</option>
+            <option value="E6">English 6th</option>
+            <option value="P12">Physics 12th</option>
+            <option value="M4">Maths 4th</option>
+            <option value="C8">Chemistry 8th</option>
+          </select>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Description</label>
+          <input type="text" name="description" class="form-control validate" maxlength="30"  required>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Total Marks</label>
+          <input type="number" name="totalMarks" class="form-control validate" required>
+        </div>
+    <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Date</label>
+          <input type="date" name="date" class="form-control validate" required>
+        </div>
+        
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+      
+    </div>
+  </div>
+</div>
+</form>
+
+<!--edit button-->
+<div class="modal fade" id="editAssignmentResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add Assignment Marks</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/teacher/assignedit}" method="POST">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="studentId">
+      
+       <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >AssignmentId</label>
+          <input type="number"  class="form-control validate" name="assignmentId" maxlength="4" minlength="1" required>
+        </div>
+        
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Obtained Marks</label>
+          <input type="number"  class="form-control validate" maxlength="3" minlength="1" required name="obtainedMarks">
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-					<div class="table">
+			<div class="fright">
+            <button type="button" data-toggle="modal" data-target="#AssignmentDetail" style="">
+           <h3> <span class="glyphicon glyphicon-plus"></span></h3></button>
+          </div>
+					<div class="table" id="studentList">
 
 						<div class="row header">
 							<div class="cell">
@@ -93,85 +193,45 @@
 								Full Name
 							</div>
 							<div class="cell">
-								Phone No.
-							</div>
-							<div class="cell">
-								Class
-							</div>
-							<div class="cell">
 								Courses
 							</div>
 							<div class="cell">
 									Performance
 							</div>
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST002882
-							</div>
-							<div class="cell" data-title="Full Name">
-								Vincent Williamson
-							</div>
-							<div class="cell" data-title="Phone No">
-								976*****23
-							</div>
-							<div class="cell" data-title="Class">
-								12th
-							</div>
-							<div class="cell" data-title="Courses">
-									JEE-Adv
-							</div>
-							<div class="cell" data-title="Performance">
-									0%
+							<div class="cell">
+									Add Marks
 							</div>
 						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST001232
-							</div>
-							<div class="cell" data-title="Full Name">
-								asdnkjkas	
-							</div>
-							<div class="cell" data-title="Phone No">
-								90909102	
-							</div>
-							<div class="cell" data-title="Class">
-								10th
-							</div>
-							<div class="cell" data-title="Courses">
-								 lol
-							</div>
-							<div class="cell" data-title="Performance">
-									50%
-							</div>
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST00123412
-							</div>
-							<div class="cell" data-title="Full Name">
-								gutjekek
-							</div>
-							<div class="cell" data-title="Phone No">
-								990909222
-							</div>
-							<div class="cell" data-title="Class">
-								9th
-							</div>
-							<div class="cell" data-title="Courses">
-								mains
-							</div>
-							<div class="cell" data-title="Performance">
-									100%
-							</div>
-						</div>
+						
 					</div>
 			</div>
 		</div>
 	</div>
 
 <!--===============================================================================================-->
+	<script type="text/javascript">
+	
+      $.getJSON('../teacher/student', function(data) {
+          var str= "";
+          $.each(data,function(key,value){
+        	  if(value.status===true){
+        	  str+='<div class="row myTable">';
+        	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
+        	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
+        	str +=  '<div class="cell clo1" data-title="Courses">'+value.studentbatchmapping.batchcoursemapping.course.details+'</div>';
+        	str +=  '<div class="cell" data-title="Performance">'+'tobe'+'</div>';
+        	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editAssignmentResult"></span></a></div>';
+        	str+='</div>';
+        	  }
+          });       
+         $("#studentList").append(str);
+         
+     
+         
+      });
+	</script>
 	<script src="js/teacher.js"></script>
+		<script src="js/Sub_Admin.js"></script>
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/mobile-nav/mobile-nav.js"></script>
 	  </body>

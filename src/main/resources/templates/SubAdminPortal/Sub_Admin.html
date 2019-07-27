@@ -426,12 +426,10 @@
 						</div>
  <script type="text/javascript">
       $.getJSON('../subadmin/student', function(data) {
-          console.log(data[0]['title']);
           var str= "";
           
           $.each(data,function(key,value){
         	  if(value.status===true){
-        		  console.log(value);
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
         	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';

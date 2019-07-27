@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2019 at 08:46 AM
+-- Generation Time: Jul 27, 2019 at 07:09 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.28
 
@@ -35,6 +35,14 @@ CREATE TABLE `assignment` (
   `totalMarks` int(3) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment`
+--
+
+INSERT INTO `assignment` (`assignmentId`, `batchId`, `description`, `totalMarks`, `date`) VALUES
+(1, 'C9', 'kuch to hua hai', 100, '2019-07-25'),
+(12, 'P12', 'kuch to', 100, '2019-07-24');
 
 -- --------------------------------------------------------
 
@@ -68,8 +76,25 @@ CREATE TABLE `attendancecount` (
 
 CREATE TABLE `batchcoursemapping` (
   `batchId` varchar(3) NOT NULL,
+  `batchName` varchar(30) NOT NULL,
   `courseId` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `batchcoursemapping`
+--
+
+INSERT INTO `batchcoursemapping` (`batchId`, `batchName`, `courseId`) VALUES
+('C8', 'Chemistry 8th', 5),
+('C9', 'Chemistry 9th', 5),
+('E6', 'English 6th', 7),
+('JEE', 'JEE', 1),
+('KVP', 'KVPY', 3),
+('M4', 'Maths 4th', 6),
+('M7', 'Maths 7th', 6),
+('NEE', 'NEET', 2),
+('P11', 'Physics 11th', 4),
+('P12', 'Physics 12th', 4);
 
 -- --------------------------------------------------------
 
@@ -114,6 +139,19 @@ CREATE TABLE `course` (
   `details` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`courseId`, `details`) VALUES
+(1, 'jee'),
+(2, 'neet'),
+(3, 'kvpy'),
+(4, 'physics'),
+(5, 'chemistry'),
+(6, 'maths'),
+(7, 'english');
+
 -- --------------------------------------------------------
 
 --
@@ -136,7 +174,7 @@ CREATE TABLE `employeetable` (
 --
 
 INSERT INTO `employeetable` (`employeeId`, `name`, `emailId`, `address`, `contactDetails`, `salary`, `userTypeId`, `status`) VALUES
-('E100000', 'kalolll', 'dettol@gmail.com', '6/90 saket', 1256327890, 74000, 1, 1),
+('E100000', 'kalolll', 'dettol@gmail.com', '6/90 saket', 1256327890, 7400, 1, 1),
 ('E100001', 'Anotherdedf', 'Lelo@yahoo.com', '2/36 knewton academy kharbanda', 2065247891, 50000, 2, 0),
 ('E100002', 'something', 'lol@gmaol.cmo', '5/76 madangir', 1256327890, 74000, 1, 1),
 ('E100003', 'yalla habibi', 'yb@lelo.com', '24/44 khin to hai', 2015635894, 5555, 2, 0),
@@ -258,6 +296,13 @@ CREATE TABLE `result_assignment` (
   `obtainedMarks` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `result_assignment`
+--
+
+INSERT INTO `result_assignment` (`studentId`, `assignmentId`, `obtainedMarks`) VALUES
+('S100000', 1, 99);
+
 -- --------------------------------------------------------
 
 --
@@ -324,6 +369,14 @@ CREATE TABLE `studentbatchmapping` (
   `batchId` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `studentbatchmapping`
+--
+
+INSERT INTO `studentbatchmapping` (`studentId`, `batchId`) VALUES
+('S100000', 'C8'),
+('S100001', 'E6');
+
 -- --------------------------------------------------------
 
 --
@@ -349,12 +402,12 @@ CREATE TABLE `studenttable` (
 
 INSERT INTO `studenttable` (`studentId`, `name`, `class`, `fatherName`, `motherName`, `contactDetails`, `emailId`, `address`, `branchId`, `status`) VALUES
 ('S100000', 'something', 12, 'stramp', 'exxampler', 1203654741, 'info@example.com', '6/90 saket', 1, 1),
-('S100001', 'Store', 10, 'Damad', 'samechange', 2003214562, 'Lelo@yahoo.com', '56b malviya nagar', 3, 1),
+('S100001', 'Store', 10, 'Damad', 'samechange', 2003214562, 'Lelo@yahoo.com', '56b malviya nagar', 3, 0),
 ('S100003', 'kal', 2, 'asdjkjll', 'lkaskd', 2015635894, 'dettol@gmail.com', '24/44 khin to hai', 1, 0),
 ('S100004', 'kal', 1, 'asdjkjll', 'lkaskd', 2015635894, 'gurkiratloves69@gmail.com', '24/44 khin to hai', 2, 0),
 ('S100005', 'Akshay Manchanda', 1, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '24/44 khin to hai', 1, 0),
-('S100006', 'kal', 11, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 1),
-('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 1),
+('S100006', 'kal', 11, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 0),
+('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 0),
 ('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 0);
 
 -- --------------------------------------------------------

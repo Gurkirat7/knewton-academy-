@@ -4,6 +4,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,8 +20,8 @@ public class StudentBatchMapping {
 	@OneToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
-	@JsonIgnore
-	@OneToOne
+//	@JsonIgnore
+	@ManyToOne
 	@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
 	private BatchCourseMapping batchcoursemapping;
 	
