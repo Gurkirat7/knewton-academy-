@@ -1,12 +1,14 @@
 package com.knewton.academy.model;
 
 import java.sql.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -72,7 +74,7 @@ public class Assignment {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
 	public BatchCourseMapping getBatchcoursemapping() {
 		return batchcoursemapping;
 	}

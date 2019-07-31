@@ -195,9 +195,7 @@
 							<div class="cell">
 								Full Name
 							</div>
-							<div class="cell">
-								Courses
-							</div>
+						
 							<div class="cell">
 									Performance
 							</div>
@@ -224,16 +222,18 @@
         			  {
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
-        	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
-        	str +=  '<div class="cell clo1" data-title="Courses">';
-        	for(var i=0;i<value.studentbatchmapping.length;i++){
-        		str+= value.studentbatchmapping[i].batchcoursemapping.course.details;
-        		if(i!=value.studentbatchmapping.length-1){
-        			str+=', ';
+        	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';  
+        	var total=0;
+		    var obtained=0;
+        	for(var i = 0;i<value.resultassignment.length;i++)
+        		{ 
+        		    if(value.resultassignment[i].resultassignmentid.studentId==value.studentId && (value.resultassignment[i].assignment.batchId==localStorage["batch"]))
+        		    		{
+        		    	          total = total + value.resultassignment[i].assignment.totalMarks;
+        		    	          obtained = obtained + value.resultassignment[i].obtainedMarks;
+        		    		}
         		}
-        	}
-        	str += '</div>';
-        	str +=  '<div class="cell" data-title="Performance">'+'tobe'+'</div>';
+        	str +=  '<div class="cell" data-title="Performance">'+parseFloat(obtained/total*100).toFixed(2)+'%</div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editAssignmentResult"></span></a></div>';
         	str+='</div>';
         			  }
@@ -241,7 +241,7 @@
         	  }
           });       
          $("#studentList").append(str);
-     
+        
          $(".editButtonIcon").click(function () {
              var sid = $(this).parent().parent()[0].firstChild.innerHTML;
            		$("#setsid").val(sid);

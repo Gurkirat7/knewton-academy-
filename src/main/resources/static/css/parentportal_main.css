@@ -23,7 +23,6 @@
 /* Float four columns side by side */
 .column {
   float: left;
-  width: 33%;
   padding: 0 10px;
 
 }
@@ -54,13 +53,15 @@ transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will g
 /* Style the counter cards */
 .card {
   border-radius: 5%;
-  font-size: 19px;
+  font-size: 15px;
+  width:100%;
   margin-bottom: 50px;
   margin-right: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: left;
   height: 100%!important;
+   background: linear-gradient(#9f9bf4,#4073c9,#072455);
 }
 /*Attendance click */
 .card span{
@@ -93,7 +94,6 @@ transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will g
 #cardcontainer{
     margin-left: 10%;
     margin-top: 40px;
-    max-width: 80%;
 }
 #notice-board{
   float: right;

@@ -42,32 +42,21 @@
   <form class="search" style="margin-top:50px;">
       <div id="searchform" class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-5" placeholder="Search Assignment">
-            <select class="form-control col-md-1 col-md-offset-2" id="type">
-              <option value="none" selected disabled hidden>Class</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-            <select class="form-control col-md-1" id="type">
-              <option value="none" selected disabled hidden>Course</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
+          <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
 
 	<div id="firstsearch" class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-					<div class="table">
+					<div class="table" id="showassignment">
 
 						<div class="row header">
 							<div class="cell">
-								Assignment Name
+								Assignment Id
+							</div>
+							<div class="cell">
+								Assignment Description
 							</div>
 							<div class="cell">
 								Maximum Marks
@@ -79,50 +68,33 @@
 								Percentage
 							</div>
 						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Assignment Id">
-								AS002882
-							</div>
-							<div class="cell" data-title="No">
-								100
-							</div>
-							<div class="cell" data-title="Marks">
-							  78
-							</div>
-							<div class="cell" data-title="per">
-								78%
-							</div>
+						
+						<script type="text/javascript">
+	
+      $.getJSON('../student/ass', function(data) {
+          var str= "";
+          $.each(data,function(key,value){
+        		  if(localStorage["batch"]==value.assignment.batchId)
+        			  {
+        			  if(localStorage["stu"]==value.resultassignmentid.studentId)
+        				  {
+        	  str+='<div class="row myTable">';
+        	str +=  '<div class="cell" data-title="Assignment Id">'+value.resultassignmentid.assignmentId+'</div>';
+        	str +=  '<div class="cell" data-title="Assignment Description">'+value.assignment.description+'</div>';        	
+        	str +=  '<div class="cell" data-title="Maximum Marks">'+value.assignment.totalMarks+'</div>';
+        	str +=  '<div class="cell" data-title="Obtained Marks">'+value.obtainedMarks+'</div>';
+        	str +=  '<div class="cell" data-title="Percentage">'+parseFloat(value.obtainedMarks/value.assignment.totalMarks*100).toFixed(2)+'%</div>';
+        	str+='</div>';
+        				  }
+        			  }
+          });       
+         $("#showassignment").append(str);
+     
+     
+         
+      });
+	</script>
 
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Assignment Id">
-								AS001232
-							</div>
-							<div class="cell" data-title="No">
-								100
-							</div>
-							<div class="cell" data-title="Marks">
-								99
-							</div>
-							<div class="cell" data-title="per">
-								99%
-							</div>
-						</div>
-
-						<div class="row myTable">
-							<div class="cell" data-title="Assignment Id">
-								AS00123412
-							</div>
-							<div class="cell" data-title="No">
-								100
-							</div>
-							<div class="cell" data-title="Marks">
-								78
-							</div>
-							<div class="cell" data-title="per">
-								78%
-							</div>
-							</div>
 						</div>
 					</div>
 			</div>
@@ -131,7 +103,7 @@
 
 
 		<!--Test Series-->
-		<h2 style="margin-top:10%; margin-bottom: 20px;"><center> Test Series</center></h2>
+	<!-- 	<h2 style="margin-top:10%; margin-bottom: 20px;"><center> Test Series</center></h2>
 		<form class="search" style="margin-top:10px;">
 	      <div id="searchform" class=" container">
 	          <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-5" placeholder="Search Assignment">
@@ -232,7 +204,7 @@
 							</div>
 						</div>
 				</div>
-			</div>
+			</div>  -->
 
 </body>
 </html>

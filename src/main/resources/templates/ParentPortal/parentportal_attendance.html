@@ -10,6 +10,9 @@
   <link rel="stylesheet" type="text/css" href="css/header-footer.css">
   <!-- Libraries CSS Files -->
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   <title>Attendance</title>
   </head>
@@ -39,7 +42,38 @@
       <th scope="col">Attendance</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="attendance">
+    <script type="text/javascript">
+	
+      $.getJSON('../student/attendance', function(data) {
+          var str= "";
+          $.each(data,function(key,value){
+        			  
+        		  if(localStorage["batch"]==value.batchId)
+        			  {
+        	
+        	for(var i=0;i<value.attendance.length;i++)
+        	{
+        		if(localStorage["stu"]==value.attendance[i].attendanceid.studentId)
+        		{
+        			str +=  '<tr><td>'+value.date+'</td>';
+        			if(value.attendance[i].attendance)
+        			str +=  '<td>Present</td></tr>';
+        			else
+        			str+=  '<td>Absent</td></tr>';
+        			
+        		}
+        	
+        	      }      	
+        	
+        	  }
+        	  
+          });       
+         $("#attendance").append(str);
+      });
+	</script>
+	</tbody>
+ <!--  <tbody>
     <tr>
       <td>1-4-2019</td>
       <td>P</td>
@@ -48,7 +82,7 @@
       <td>2-4-2019</td>
       <td>A</td>
     </tr>
-  </tbody>
+  </tbody> -->
 </table>
   </body>
 </html>

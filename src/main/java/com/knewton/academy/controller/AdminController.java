@@ -45,9 +45,9 @@ public class AdminController {
 //	
 	@RequestMapping(value="/employee/add",method=RequestMethod.POST)
 	public RedirectView employeeAdd(EmployeeTable employee) {
-		System.out.println("Before emplye");
+//		System.out.println("Before emplye");
 		adminserviceimpl.employeeAdd(employee);
-		System.out.println("aaa");
+//		System.out.println("aaa");
 		return new RedirectView("/Employee_Table.html");
 	}
 	@RequestMapping(value="/employee/edit",method=RequestMethod.POST)
