@@ -1,10 +1,14 @@
 package com.knewton.academy.model;
 
 import java.sql.Date;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,10 +25,10 @@ public class ClassDelivered {
     @Column
     private Date date;
     
-    @OneToOne(mappedBy="classdelivered")
-    private Attendance attendance;
+    @OneToMany(mappedBy="classdelivered")
+    private Set<Attendance> attendance;
     @JsonIgnore
-    @OneToOne
+    @ManyToOne
 	@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
 	private BatchCourseMapping batchcoursemapping;
     
@@ -57,13 +61,11 @@ public class ClassDelivered {
 		this.batchcoursemapping = batchcoursemapping;
 	}
 	
-
-
-	public Attendance getAttendance() {
+	public Set<Attendance> getAttendance() {
 		return attendance;
 	}
 
-	public void setAttendance(Attendance attendance) {
+	public void setAttendance(Set<Attendance> attendance) {
 		this.attendance = attendance;
 	}
 

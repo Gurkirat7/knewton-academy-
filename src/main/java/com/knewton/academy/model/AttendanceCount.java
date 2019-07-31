@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -15,17 +16,17 @@ public class AttendanceCount {
 	@EmbeddedId
 	private AttendanceCountId attendancecountid;
 	@Column
-	private int totalCount;
+	private int totalCount = 0;
 	@Column
-	private int presentCount;
+	private int presentCount = 0;
 	
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
 
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
 	private BatchCourseMapping batchcoursemapping;
 

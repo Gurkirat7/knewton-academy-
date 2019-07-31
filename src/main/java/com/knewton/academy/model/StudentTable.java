@@ -41,16 +41,16 @@ public class StudentTable {
 	private String branchId;
 	@Column
 	private boolean status = true;
-	@OneToOne(mappedBy="studenttable")
-	private Attendance attendance;
-	@OneToOne(mappedBy="studenttable")
-	private AttendanceCount attendancecount; 
+	@OneToMany(mappedBy="studenttable")
+	private Set<Attendance> attendance;
+	@OneToMany(mappedBy="studenttable")
+	private Set<AttendanceCount> attendancecount; 
 	@OneToOne(mappedBy="studenttable")
 	private Fees fees;
 	@OneToOne(mappedBy="studenttable")
 	private ResultTest resulttest;
-	@OneToOne(mappedBy="studenttable")
-	private ResultAssignment resultassignment;
+	@OneToMany(mappedBy="studenttable")
+	private Set<ResultAssignment> resultassignment;
 	@OneToMany(mappedBy="studenttable")
 	private Set<StudentBatchMapping> studentbatchmapping;
 	@OneToOne(mappedBy="studenttable")
@@ -148,20 +148,20 @@ public class StudentTable {
 		this.branch = branch;
 	}
 	
-	
-	public Attendance getAttendance() {
+	public Set<Attendance> getAttendance() {
 		return attendance;
 	}
 
-	public void setAttendance(Attendance attendance) {
+	public void setAttendance(Set<Attendance> attendance) {
 		this.attendance = attendance;
 	}
 
-	public AttendanceCount getAttendancecount() {
+
+	public Set<AttendanceCount> getAttendancecount() {
 		return attendancecount;
 	}
 
-	public void setAttendancecount(AttendanceCount attendancecount) {
+	public void setAttendancecount(Set<AttendanceCount> attendancecount) {
 		this.attendancecount = attendancecount;
 	}
 
@@ -180,17 +180,15 @@ public class StudentTable {
 	public void setResulttest(ResultTest resulttest) {
 		this.resulttest = resulttest;
 	}
-
-	public ResultAssignment getResultassignment() {
+	
+	public Set<ResultAssignment> getResultassignment() {
 		return resultassignment;
 	}
 
-	public void setResultassignment(ResultAssignment resultassignment) {
+	public void setResultassignment(Set<ResultAssignment> resultassignment) {
 		this.resultassignment = resultassignment;
 	}
 
-	
-	
 	public Set<StudentBatchMapping> getStudentbatchmapping() {
 		return studentbatchmapping;
 	}

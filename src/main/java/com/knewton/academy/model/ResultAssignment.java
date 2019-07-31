@@ -19,7 +19,7 @@ public class ResultAssignment{
 	@Column
 	private int obtainedMarks;
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="studentId",referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
 //	@JsonIgnore

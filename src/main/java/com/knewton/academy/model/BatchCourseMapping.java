@@ -1,10 +1,13 @@
 package com.knewton.academy.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,10 +22,10 @@ public class BatchCourseMapping {
 	private String batchName;
 	@Column
 	private int courseId;
-	@OneToOne(mappedBy="batchcoursemapping")
-	private AttendanceCount attendancecount;
-	@OneToOne(mappedBy="batchcoursemapping")
-	private ClassDelivered classdelivered;
+	@OneToMany(mappedBy="batchcoursemapping")
+	private Set<AttendanceCount> attendancecount;
+	@OneToMany(mappedBy="batchcoursemapping")
+	private Set<ClassDelivered> classdelivered;
 //	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="courseId", referencedColumnName="courseId", insertable=false,updatable=false)
@@ -39,6 +42,15 @@ public class BatchCourseMapping {
 	}
 
 	
+	public Set<ClassDelivered> getClassdelivered() {
+		return classdelivered;
+	}
+
+
+	public void setClassdelivered(Set<ClassDelivered> classdelivered) {
+		this.classdelivered = classdelivered;
+	}
+
 
 	public String getBatchName() {
 		return batchName;
@@ -69,25 +81,15 @@ public class BatchCourseMapping {
 		this.course = course;
 	}
 
-	public AttendanceCount getAttendancecount() {
+
+	public Set<AttendanceCount> getAttendancecount() {
 		return attendancecount;
 	}
 
 
-	public void setAttendancecount(AttendanceCount attendancecount) {
+	public void setAttendancecount(Set<AttendanceCount> attendancecount) {
 		this.attendancecount = attendancecount;
 	}
-
-
-	public ClassDelivered getClassdelivered() {
-		return classdelivered;
-	}
-
-
-	public void setClassdelivered(ClassDelivered classdelivered) {
-		this.classdelivered = classdelivered;
-	}
-
 
 
 	public BatchCourseMapping() {

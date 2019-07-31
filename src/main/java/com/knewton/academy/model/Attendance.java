@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,12 +19,12 @@ public class Attendance {
 	@Column
 	private boolean attendance;
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="classDeliveredId", referencedColumnName="classDeliveredId", insertable=false,updatable=false)
 	private ClassDelivered classdelivered;
 	
 	@JsonIgnore
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="studentId", referencedColumnName="studentId", insertable=false,updatable=false)
 	private StudentTable studenttable;
 

@@ -14,6 +14,8 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.knewton.academy.model.Assignment;
 import com.knewton.academy.model.ClassDelivered;
 import com.knewton.academy.model.Attendance;
+import com.knewton.academy.model.AttendanceCountId;
+import com.knewton.academy.model.AttendanceId;
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.ResultAssignment;
@@ -74,6 +76,22 @@ public List<TeacherBatchMapping> batchesDisplay() {
   return batch;
 }
 
+@RequestMapping(value="/teacher/deliver",method=RequestMethod.POST)
+public RedirectView classdelivery(ClassDelivered classdelivered) {
+	teacherserviceimpl.classdelivery(classdelivered);
+	return new RedirectView("/attendance.html");
+}
 
+@GetMapping("/teacher/attendance")
+public List<ClassDelivered> attendanceDisplay() {
+	List<ClassDelivered> batch = teacherserviceimpl.attendanceDisplay();
+  return batch;
+}
+
+@RequestMapping(value="/teacher/attendancecount",method=RequestMethod.POST)
+public RedirectView attendancesave(@RequestParam String studentId,@RequestParam int classDeliveredId,@RequestParam boolean attendance,@RequestParam String batchId) {
+	teacherserviceimpl.attendancesave(studentId,classDeliveredId,attendance,batchId);
+	return new RedirectView("/attendance.html");
+}
 }
 

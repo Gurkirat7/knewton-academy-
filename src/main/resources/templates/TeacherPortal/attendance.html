@@ -59,29 +59,124 @@
   <form class="search"> 
       <div id = "searchform" class=" container">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-5" placeholder="Search Student..">
-            <select class="form-control col-md-1 col-md-offset-2" id="type">
-              <option value="none" selected disabled hidden>Class</option> 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-            <select class="form-control col-md-1" id="type">
-              <option value="none" selected disabled hidden>Course</option> 
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
-            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
+           <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
+<!--Add ClassDelivered-->
+  <form th:action="@{/teacher/deliver}" method="POST" >
+  <div class="modal fade" id="assignmentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="margin-top:200px;">
+      <div class="modal-header text-center">
 
-	<div class="limiter">
+        <h4 class="modal-title w-100 font-weight-bold">Add Class Delivered Details</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    
+      <div class="modal-body mx-3">
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Class Delivered ID</label>
+          <input type="number" name="classDeliveredId" class="form-control validate" maxlength="4" required>
+        </div>
+
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Batch Id</label>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="batchInsert">
+            <script>
+            batchInsert();
+            function batchInsert(){
+            var str=' <option value="'+localStorage["batch"]+'">' + localStorage["batch"] + '</option>';
+            $("#batchInsert").append(str);
+            }
+            </script>
+          </select>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Date</label>
+          <input type="date" name="date" class="form-control validate" required>
+        </div>
+        
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+      
+    </div>
+  </div>
+</div>
+</form>
+
+<!--edit button-->
+<div class="modal fade" id="editAssignmentResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Mark Attendance</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/teacher/attendancecount}" method="POST">
+      <div class="modal-body mx-3">	
+      
+      <input type="text" name="studentId" id="setsid">
+      <input type="text" name="batchId" id="setbid">
+       <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Class Delivered Id</label>
+          <select class="form-control validate" name="classDeliveredId" style="padding:7.5px;height:100%;" id="classDelivered"> 
+          	<script>
+          	$.getJSON('../teacher/attendance', function(data) {
+                var str= "";
+                $("#setbid").val(localStorage["batch"]);
+                $.each(data,function(key,value){
+                	if(localStorage["batch"]==value.batchId)
+                		{
+              	         str+='<option value="'+value.classDeliveredId+'">'+value.classDeliveredId+'</option>';
+                		}
+              
+                });
+                $("#classDelivered").append(str);
+                
+                
+          	}); 	
+          	
+            </script>
+          </select>
+        </div>
+        
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Attendance Status</label>
+          <select class="form-control validate" name="attendance" style="padding:7.5px;height:100%;"> 
+          <option value="true">Present</option>
+          <option value="false">Absent</option>     
+          </select>     
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default" text="Submit">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
-					<div class="table">
-
+			<div class="fright">
+          <button type="button" data-toggle="modal" data-target="#AssignmentDetail" style="">
+           <h3> <span class="glyphicon glyphicon-plus"></span></h3></button>
+          </div>
+					<div class="table" id="studentList">
 						<div class="row header">
 							<div class="cell">
 								Student Id
@@ -90,86 +185,54 @@
 								Full Name
 							</div>
 							<div class="cell">
-								Phone No.
+								Present Attendance
 							</div>
 							<div class="cell">
-								Class
+								Total Attendance
 							</div>
 							<div class="cell">
-								Courses
-							</div>
-							<div class="cell">
-									Performance
+								Mark Attendance
 							</div>
 						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST002882
-							</div>
-							<div class="cell" data-title="Full Name">
-								Vincent Williamson
-							</div>
-							<div class="cell" data-title="Phone No">
-								976*****23
-							</div>
-							<div class="cell" data-title="Class">
-								12th
-							</div>
-							<div class="cell" data-title="Courses">
-									JEE-Adv
-							</div>
-							<div class="cell" data-title="Performance">
-									0%
-							</div>
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST001232
-							</div>
-							<div class="cell" data-title="Full Name">
-								asdnkjkas	
-							</div>
-							<div class="cell" data-title="Phone No">
-								90909102	
-							</div>
-							<div class="cell" data-title="Class">
-								10th
-							</div>
-							<div class="cell" data-title="Courses">
-								 lol
-							</div>
-							<div class="cell" data-title="Performance">
-									50%
-							</div>
-						</div>
-						<div class="row myTable">
-							<div class="cell" data-title="Student Id">
-								ST00123412
-							</div>
-							<div class="cell" data-title="Full Name">
-								gutjekek
-							</div>
-							<div class="cell" data-title="Phone No">
-								990909222
-							</div>
-							<div class="cell" data-title="Class">
-								9th
-							</div>
-							<div class="cell" data-title="Courses">
-								mains
-							</div>
-							<div class="cell" data-title="Performance">
-									100%
-							</div>
-						</div>
-					</div>
+						<script type="text/javascript">
+	
+      $.getJSON('../teacher/student', function(data) {
+          var str= "";
+          $.each(data,function(key,value){
+        	  if(value.status===true){
+        		  for(var i=0;i<value.studentbatchmapping.length;i++)
+        			  {
+        		  if(localStorage["batch"]==value.studentbatchmapping[i].batchcoursemapping.batchId)
+        			  {
+        	  str+='<div class="row myTable">';
+        	str +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
+        	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';        	
+        	str +=  '<div class="cell" data-title="Present Attendance">'+'tobe'+'</div>';
+        	str +=  '<div class="cell" data-title="Total Attendance">'+'tobe'+'</div>';
+        	str +=  '<div class="cell" data-title="Mark Attendance"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editAssignmentResult"></span></a></div>';
+        	str+='</div>';
+        			  }
+        	  }
+        	  }
+          });       
+         $("#studentList").append(str);
+     
+         $(".editButtonIcon").click(function () {
+             var sid = $(this).parent().parent()[0].firstChild.innerHTML;
+           		$("#setsid").val(sid);
+             });
+     
+         
+      });
+	</script>
 			</div>
 		</div>
 	</div>
+</div>
 
 	<script src="js/teacher.js"></script>
-
-	  <script src="lib/jquery/jquery.min.js"></script>
+	<script src="js/Sub_Admin.js"></script>
+	<script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/mobile-nav/mobile-nav.js"></script>
 	  </body>
 	  </html>
