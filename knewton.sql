@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2019 at 12:32 PM
+-- Generation Time: Aug 09, 2019 at 07:45 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -43,7 +43,8 @@ INSERT INTO `assignment` (`assignmentId`, `batchId`, `description`, `totalMarks`
 (11, 'C9', 'something', 50, '2019-07-16'),
 (12, 'P12', 'kuch to', 100, '2019-07-24'),
 (14, 'C8', 'tera tera tera ........', 360, '2019-07-29'),
-(21, 'C8', 'kuch to', 100, '2019-07-12');
+(21, 'C8', 'kuch to', 100, '2019-07-12'),
+(50, 'C9', 'tera tera tera ........', 200, '2019-08-07');
 
 -- --------------------------------------------------------
 
@@ -68,10 +69,12 @@ INSERT INTO `attendance` (`classDeliveredId`, `studentId`, `attendance`) VALUES
 (2, 'S100004', 0),
 (2, 'S100008', 1),
 (3, 'S100004', 1),
+(3, 'S100008', 1),
 (4, 'S100004', 1),
 (5, 'S100004', 1),
 (5, 'S100008', 1),
-(6, 'S100004', 1);
+(6, 'S100004', 1),
+(50, 'S100000', 0);
 
 -- --------------------------------------------------------
 
@@ -91,9 +94,10 @@ CREATE TABLE IF NOT EXISTS `attendancecount` (
 --
 
 INSERT INTO `attendancecount` (`studentId`, `batchId`, `totalCount`, `presentCount`) VALUES
+('S100000', 'C8', 1, 0),
 ('S100004', 'C9', 5, 4),
 ('S100004', 'JEE', 1, 1),
-('S100008', 'C9', 3, 3);
+('S100008', 'C9', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -165,7 +169,8 @@ INSERT INTO `classdelivered` (`classDeliveredId`, `batchId`, `date`) VALUES
 (3, 'C9', '2019-07-28'),
 (4, 'C9', '2019-07-29'),
 (5, 'C9', '2019-07-02'),
-(6, 'JEE', '2019-07-16');
+(6, 'JEE', '2019-07-16'),
+(50, 'C8', '2019-08-07');
 
 -- --------------------------------------------------------
 
@@ -205,6 +210,7 @@ CREATE TABLE IF NOT EXISTS `employeetable` (
   `contactDetails` bigint(10) NOT NULL,
   `salary` int(7) NOT NULL,
   `userTypeId` int(2) NOT NULL,
+  `branchId` int(2) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -212,15 +218,15 @@ CREATE TABLE IF NOT EXISTS `employeetable` (
 -- Dumping data for table `employeetable`
 --
 
-INSERT INTO `employeetable` (`employeeId`, `name`, `emailId`, `address`, `contactDetails`, `salary`, `userTypeId`, `status`) VALUES
-('E100000', 'kalolll', 'dettol@gmail.com', '6/90 saket', 1256327890, 7400, 1, 1),
-('E100001', 'Anotherdedf', 'Lelo@yahoo.com', '2/36 knewton academy kharbanda', 2065247891, 50000, 2, 0),
-('E100002', 'something', 'lol@gmaol.cmo', '5/76 madangir', 1256327890, 74000, 1, 1),
-('E100003', 'yalla habibi', 'yb@lelo.com', '24/44 khin to hai', 2015635894, 5555, 2, 0),
-('E100004', 'azithrom', 'jnjk@gj.com', '24/44 khin to hai', 2015635894, 4555, 2, 0),
-('E100005', 'Akshay', 'jnjk@gj.com', 'ae', 1714771469, 22, 2, 0),
-('E100006', 'Gurkirat Singh', 'gurkiratloves69@gmail.com', 'jeete the jiske liye', 1714771469, 65000, 5, 0),
-('E100007', 'Gurkirat Singh', 'fo@gmail.com', 'pta nhi', 1714771469, 5, 4, 0);
+INSERT INTO `employeetable` (`employeeId`, `name`, `emailId`, `address`, `contactDetails`, `salary`, `userTypeId`, `branchId`, `status`) VALUES
+('E100000', 'kalolll', 'dettol@gmail.com', '6/90 saket', 1256327890, 7400, 1, 1, 1),
+('E100001', 'Anotherdedf', 'Lelo@yahoo.com', '2/36 knewton academy kharbanda', 2065247891, 50000, 2, 2, 1),
+('E100002', 'something', 'lol@gmaol.cmo', '5/76 madangir', 1256327890, 74000, 1, 1, 1),
+('E100003', 'yalla habibi', 'yb@lelo.com', '24/44 khin to hai', 2015635894, 5555, 2, 1, 1),
+('E100004', 'azithrom', 'jnjk@gj.com', '24/44 khin to hai', 2015635894, 4555, 2, 3, 1),
+('E100005', 'Akshay', 'jnjk@gj.com', 'ae', 1714771469, 22, 2, 1, 1),
+('E100006', 'Gurkirat Singh', 'gurkiratloves69@gmail.com', 'jeete the jiske liye', 1714771469, 65000, 5, 2, 1),
+('E100007', 'Gurkirat Singh', 'fo@gmail.com', 'pta nhi', 1714771469, 5, 4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -248,7 +254,9 @@ INSERT INTO `fees` (`studentId`, `totalFees`, `installment1`, `installment2`, `i
 ('S100005', '555', 'paid', 'paid', 'paid'),
 ('S100006', '555', '555', 'paid', 'paid'),
 ('S100007', '555', 'paid', 'paid', 'paid'),
-('S100008', '55500', 'paid', 'paid', 'paid');
+('S100008', '55500', 'paid', 'paid', 'paid'),
+('S100009', '55', 'paid', 'paid', '25/10/19'),
+('S100010', '55', 'paid', 'paid', '25/10/19');
 
 -- --------------------------------------------------------
 
@@ -342,10 +350,12 @@ CREATE TABLE IF NOT EXISTS `result_assignment` (
 --
 
 INSERT INTO `result_assignment` (`studentId`, `assignmentId`, `obtainedMarks`) VALUES
+('S100000', 1, 50),
 ('S100000', 14, 80),
 ('S100000', 21, 50),
 ('S100004', 1, 2),
 ('S100004', 11, 25),
+('S100004', 50, 100),
 ('S100008', 1, 2);
 
 -- --------------------------------------------------------
@@ -424,7 +434,10 @@ INSERT INTO `studentbatchmapping` (`studentId`, `batchId`) VALUES
 ('S100008', 'C9'),
 ('S100000', 'E6'),
 ('S100001', 'E6'),
-('S100004', 'JEE');
+('S100000', 'JEE'),
+('S100004', 'JEE'),
+('S100000', 'M4'),
+('S100010', 'P12');
 
 -- --------------------------------------------------------
 
@@ -459,7 +472,9 @@ INSERT INTO `studenttable` (`studentId`, `name`, `class`, `fatherName`, `motherN
 ('S100005', 'Akshay Manchanda', 1, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '24/44 khin to hai', 1, 0, NULL, NULL),
 ('S100006', 'kal', 11, 'asdjkjll', 'lkaskd', 2015635894, 'gur@lelo.com', '24/44 khin to hai', 3, 0, NULL, NULL),
 ('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 0, NULL, NULL),
-('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 1, NULL, NULL);
+('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 1, NULL, NULL),
+('S100009', 'GURKIRAT SINGH', 6, 'Chaudhary', 'GURKIRAT SINGH', 1523002458, 'gurkir@gmail.com', '8/2 BLOCK NO.8 NEHRU NAGAR', 1, 0, NULL, NULL),
+('S100010', 'GURKIRAT SINGH', 12, 'Chaudhary', 'GURKIRAT SINGH', 1523002458, 'gurkir97@gmail.com', '8/2 BLOCK NO.8 NEHRU NAGAR', 3, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -513,7 +528,9 @@ CREATE TABLE IF NOT EXISTS `testserieslogin` (
 
 INSERT INTO `testserieslogin` (`testId`, `testpassword`, `studentId`) VALUES
 ('TS10001', 'fgggg', 'S100001'),
-('TS10000', 'forsomething', 'S100008');
+('TS10000', 'forsomething', 'S100008'),
+('TS10002', 'kuchbhi', 'S100009'),
+('TS10003', 'kuchbhi', 'S100010');
 
 -- --------------------------------------------------------
 
@@ -589,7 +606,7 @@ ALTER TABLE `course`
 -- Indexes for table `employeetable`
 --
 ALTER TABLE `employeetable`
- ADD PRIMARY KEY (`employeeId`), ADD KEY `userTypeId` (`userTypeId`);
+ ADD PRIMARY KEY (`employeeId`), ADD KEY `userTypeId` (`userTypeId`), ADD KEY `branchId` (`branchId`);
 
 --
 -- Indexes for table `fees`
@@ -733,7 +750,8 @@ ADD CONSTRAINT `classdelivered_ibfk_1` FOREIGN KEY (`batchId`) REFERENCES `batch
 -- Constraints for table `employeetable`
 --
 ALTER TABLE `employeetable`
-ADD CONSTRAINT `employeetable_ibfk_1` FOREIGN KEY (`userTypeId`) REFERENCES `usertype` (`userTypeId`);
+ADD CONSTRAINT `employeetable_ibfk_1` FOREIGN KEY (`userTypeId`) REFERENCES `usertype` (`userTypeId`),
+ADD CONSTRAINT `employeetable_ibfk_2` FOREIGN KEY (`branchId`) REFERENCES `branch` (`branchId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `fees`
