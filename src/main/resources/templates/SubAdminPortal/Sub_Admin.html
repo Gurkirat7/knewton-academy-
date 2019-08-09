@@ -9,12 +9,13 @@
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+ 
   <!-- Libraries CSS Files -->
 <link rel="stylesheet" type="text/css" href="css/header-footer.css">
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 <link rel="stylesheet" href="css/Sub_Admin.css">
 </head>
@@ -36,11 +37,8 @@
     </div>
  </header><!-- #header -->
  
- 
-
-      <script type="text/javascript">
+  <script type="text/javascript">
       $.getJSON('../notice', function(data) {
-          console.log(data[0]['title']);
           var str= "";
           str +='<div class="notice-board" style="width:100%;height:40%;"><div class="panel panel-default"><div class="panel-body"><ul style="padding-left:0px;list-style:none;" id = "noticeListItems"><marquee direction="up" height = "300px" onmouseover="this.stop()" onmouseout="this.start()">';
           $.each(data,function(key,value){
@@ -48,7 +46,7 @@
             str+= (value.content+'<br>Date:'+value.date+'</li>');
 
           });
-			str+='</marquee></ul></div><div class="panel-footer" data-toggle="modal" data-target="#uploadNotice"><a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a></div></div></div>';
+			str+='</marquee></ul></div></div></div>';
           $("#notice").append(str);
        });
       </script>
@@ -215,6 +213,27 @@
             <option value="2">Chirag Delhi</option>
           </select>
         </div>
+  <!--       <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Batch</label>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="batch"> 
+          	<script>
+          	$.getJSON('../subadmin/batchcourse', function(data) {
+                var str= "";
+                $.each(data,function(key,value){
+                		
+              	         str+='<option value="'+value.batchId+'">'+value.batchName+'</option>';
+                		
+              
+                });
+                $("#batch").append(str);
+                
+                
+          	}); 	
+          	
+            </script>
+          </select>
+        </div>		-->
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Test Login ID</label>
@@ -257,7 +276,7 @@
 </div>
 </form>
 <!--edit button-->
-<form th:action="@{/subadmin/edit}" method="POST">
+<form th:action="@{/subadmin/edit}" method="POST" id="edit">
 <div class="modal fade" id="editStudentDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -357,7 +376,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Delete Employee Details</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Delete Student Details</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -380,6 +399,81 @@
   </div>
 </div>
 
+<!-- edit batch -->
+<div class="modal fade" id="editBatchDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Add Student's Batch</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/subadmin/addbatch}" method="POST" id="addbatch">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="studentId">
+      
+      	<div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Batch</label>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="batch"> 
+          	<script>
+          	$.getJSON('../subadmin/batchcourse', function(data) {
+                var str= "";
+                $.each(data,function(key,value){
+                		
+              	         str+='<option value="'+value.batchId+'">'+value.batchName+'</option>';
+                		
+              
+                });
+                $("#batch").append(str);
+                
+                
+          	}); 	
+          	
+            </script>
+          </select>
+        </div>	
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default btn-lg btn-success" value="SUBMIT">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- delete batch -->
+<div class="modal fade" id="deleteBatchDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Delete Student's Batch</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form th:action="@{/subadmin/deletebatch}" method="POST" id="deletebatch">
+      <div class="modal-body mx-3">	
+      <input type="hidden" name="studentId" id="getid">
+      
+      	<div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Batch</label>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="delbatch"> 
+          
+          </select>
+        </div>	
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-default btn-lg btn-danger" value="DELETE">
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 	<div class="limiter">
 		<div class="container-table100">
@@ -417,8 +511,10 @@
               </div>
               <div class="cell">
                 Fee 3
+              </div>              
+              <div class="cell">
+                Manage Batch
               </div>
-              
               <div class="cell">
                 Action
               </div>
@@ -435,36 +531,47 @@
         	str +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
         	str +=  '<div class="cell" data-title="Phone">'+value.contactDetails+'</div>';
         	str +=  '<div class="cell clo" data-title="Class">'+value.stuclass+'</div>';
-        	str +=  '<div class="cell clo1" data-title="Courses">'+'tobe'+'</div>';
+        	str +=  '<div class="cell clo1" data-title="Courses">';
+        	for(var i=0;i<value.studentbatchmapping.length;i++){
+        		str+= value.studentbatchmapping[i].batchcoursemapping.course.details;
+        		if(i!=value.studentbatchmapping.length-1){
+        			str+=', ';
+        		}
+        	}
+        	str += '</div>';
         	str +=  '<div class="cell" data-title="TotalFees">'+value.fees.totalFees+'</div>';
         	str +=  '<div class="cell" data-title="Fee 1">'+value.fees.installment1+'</div>';
         	str +=  '<div class="cell" data-title="Fee 2">'+value.fees.installment2+'</div>';
         	str +=  '<div class="cell" data-title="Fee 3">'+value.fees.installment3+'</div>';
+        	str +=  '<div class="cell" data-title="Manage Batch"><a class="editButtonIcon"><span class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#editBatchDetail"></span></a><a class="deleteBatch"><span class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#deleteBatchDetail"></span></a></div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteStudentDetail"></span></div>';
         	str+='</div>';
         	  }
           });       
          $("#studentlist").append(str);
-         
+        
          $(".editButtonIcon").click(function () {
              var sid = $(this).parent().parent()[0].firstChild.innerHTML;
+             console.log($(this));
              $.each(data,function(key,value){
            	 if (value.studentId===sid){
-           		$("input[name=studentId]").val(value.studentId);
-           		$("input[name=name]").val(value.name);
-           		$("input[name=fatherName]").val(value.fatherName);
-           		$("input[name=motherName]").val(value.motherName);
-           		$("select[name=stuclass]").val(value.stuclass);
-           		$("input[name=contactDetails]").val(value.contactDetails);
-           		$("input[name=emailId]").val(value.emailId);
-           		$("input[name=address]").val(value.address);
-           		$("select[name=branchId]").val(value.branchId);
-           		$("input[name=totalFees]").val(value.fees.totalFees);
-           		$("input[name=installment1]").val(value.fees.installment1);
-           		$("input[name=installment2]").val(value.fees.installment2);
-           		$("input[name=installment3]").val(value.fees.installment3);
-           		$("input[name=testId]").val(value.testserieslogin.testId);
-           		$("input[name=testpassword]").val(value.testserieslogin.testpassword);
+           		$("#edit input[name=studentId]").val(value.studentId);   
+           		$("#addbatch input[name=studentId]").val(value.studentId);
+           		$("#edit input[name=name]").val(value.name);
+           		$("#edit input[name=fatherName]").val(value.fatherName);
+           		$("#edit input[name=motherName]").val(value.motherName);
+           		$("#edit select[name=stuclass]").val(value.stuclass);
+           		$("#edit input[name=contactDetails]").val(value.contactDetails);
+           		$("#edit input[name=emailId]").val(value.emailId);
+           		$("#edit input[name=address]").val(value.address);
+           		$("#edit select[name=branchId]").val(value.branchId);
+           		$("#edit select[name=batchId]").val(value.studentbatchmapping[0].studentbatchmappingid.batchId);
+           		$("#edit input[name=totalFees]").val(value.fees.totalFees);
+           		$("#edit input[name=installment1]").val(value.fees.installment1);
+           		$("#edit input[name=installment2]").val(value.fees.installment2);
+           		$("#edit input[name=installment3]").val(value.fees.installment3);
+           		$("#edit input[name=testId]").val(value.testserieslogin.testId);
+           		$("#edit input[name=testpassword]").val(value.testserieslogin.testpassword);
            	 } 
              });
            });
@@ -473,6 +580,22 @@
              var sid = $(this).parent().parent()[0].firstChild.innerHTML;
              $("#deleteStudentDetail input[name=studentId]").val(sid);
          });
+         $(".deleteBatch").click(function () {
+        	 var strr= "";
+          	
+          	var sid = $(this).parent().parent()[0].firstChild.innerHTML ;
+         $.each(data,function(key,value){
+         	if(value.studentId===sid)
+ 			{
+ 			for(var i=0;i<value.studentbatchmapping.length;i++)
+ 				{
+	         strr +='<option value="'+value.studentbatchmapping[i].studentbatchmappingid.batchId+'">'+value.studentbatchmapping[i].batchcoursemapping.batchName+'</option>';
+ 			}
+ 			}
+         });
+         $("#delbatch").append(strr);
+ });
+
        });
       </script>						
 
@@ -483,9 +606,9 @@
 </div>
 
       <!--Notice starts-->
-    <div id = "notice" class="row">
+    <div id="notice" class="row">
                 
-       </div>  <br>       <br>
+       </div>  <br> <br>
                    <!--popup upload notice-->
     <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">

@@ -33,10 +33,15 @@ public class EmployeeTable {
 	@Column
 	private int salary;
 	@Column
+	private int branchId;
+	@Column
 	private boolean status = true;
 	@ManyToOne
 	@JoinColumn(name="userTypeId", referencedColumnName="userTypeId", insertable=false,updatable=false)
 	private Usertype usertype;
+	@ManyToOne
+	@JoinColumn(name="branchId", referencedColumnName="branchId", insertable=false,updatable=false)
+	private Branch branch;
 	
 	public String getEmployeeId() {
 		return employeeId;
@@ -109,8 +114,24 @@ public class EmployeeTable {
 	}
 
 
+	public int getBranchId() {
+		return branchId;
+	}
 
 
+	public void setBranchId(int branchId) {
+		this.branchId = branchId;
+	}
+
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
 
 
 	public Usertype getUsertype() {

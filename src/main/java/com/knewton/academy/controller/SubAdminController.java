@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.knewton.academy.model.BatchCourseMapping;
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
+import com.knewton.academy.model.StudentBatchMapping;
 import com.knewton.academy.model.StudentTable;
 import com.knewton.academy.model.TestSeriesLogin;
 import com.knewton.academy.repository.EmployeeTableRepository;
@@ -45,11 +47,21 @@ public RedirectView studentAdd(StudentTable student,Fees fees,TestSeriesLogin te
 	return new RedirectView("/subadmin");
 }
 
+@RequestMapping(value="/subadmin/addbatch",method=RequestMethod.POST)
+public RedirectView studentAdd(@RequestParam String studentId,@RequestParam String batchId) {
+	subadminserviceimp.addbatch(studentId,batchId);
+	return new RedirectView("/subadmin");
+}
+@RequestMapping(value="/subadmin/deletebatch",method=RequestMethod.POST)
+public RedirectView deleteBatch(@RequestParam String studentId,@RequestParam String batchId) {
+	subadminserviceimp.deletebatch(studentId,batchId);
+	return new RedirectView("/subadmin");
+}
 @RequestMapping(value="/subadmin/edit",method=RequestMethod.POST)
-public RedirectView editStu(StudentTable student,Fees fees,TestSeriesLogin testserieslogin) {
+public RedirectView editStu(StudentTable student,Fees fees,TestSeriesLogin testserieslogin,@RequestParam String batchId) {
 	subadminserviceimp.studentEdit(student);
 	subadminserviceimp.feesAdd(fees);
-	subadminserviceimp.addtestId(testserieslogin);
+	subadminserviceimp.addtestId(testserieslogin);	
 	return new RedirectView("/subadmin");
 }
 
@@ -65,6 +77,11 @@ public RedirectView deleteStu(@RequestParam String studentId) {
       return stu;
   }
 	
+	@GetMapping("/subadmin/batchcourse")
+	 public List<BatchCourseMapping> batchDisplay() {
+		List<BatchCourseMapping> stu = subadminserviceimp.batchDisplay();
+     return stu;
+ }
 //	@GetMapping("/subadmin/addfees")
 //	public boolean addfees() {
 //		Fees fe=new Fees();

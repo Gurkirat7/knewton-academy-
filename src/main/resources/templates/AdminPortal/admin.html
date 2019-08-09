@@ -53,7 +53,6 @@
 
       <script type="text/javascript">
       $.getJSON('../notice', function(data) {
-          console.log(data[0]['title']);
           var str= "";
           str +='<div class="notice-board" style="width:100%;height:40%;"><div class="panel panel-default"><div class="panel-body"><ul style="padding-left:0px;list-style:none;" id = "noticeListItems"><marquee direction="up" height = "300px" onmouseover="this.stop()" onmouseout="this.start()">';
           $.each(data,function(key,value){
@@ -64,6 +63,10 @@
 			str+='</marquee></ul></div><div class="panel-footer" data-toggle="modal" data-target="#uploadNotice"><a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a></div></div></div>';
           $("#notice").append(str);
        });
+      function branch(id)
+      {
+    	localStorage['branchId']=id;
+      }
       </script>
       
 
@@ -107,27 +110,24 @@
       
         <div class="container">
                 <div class="row">
+                         
                         <div class="column zoom" id="c1" onclick="openTab('b1');">
-                          <div class="card card1">
-                            <h3>Branch 1</h3>
-                            <p>Madangir</p>
-                            <p>Some text</p>
+                          <div class="card card1" style="padding-top:10%;">
+                            <h1>Branch 1</h1>
+                            <h3>Madangir</h3>
                           </div>
-                        </div>
-                      
+                      </div>
                         <div class="column zoom" id="c2" onclick="openTab('b2');">
-                          <div class="card card2">
-                            <h3>Branch 2</h3>
-                            <p>Malviya Nagar</p>
-                            <p>Some text</p>
+                          <div class="card card2" style="padding-top:10%;">
+                            <h1>Branch 2</h1>
+                            <h3>Chirag Delhi</h3>
                           </div>
                         </div>
                         
                         <div class="column zoom " id="c3" onclick="openTab('b3')">
-                          <div class="card card3">
-                            <h3>Branch 3</h3>
-                            <p>Chirag Dili</p>
-                            <p>Some text</p>
+                          <div class="card card3" style="padding-top:10%;">
+                            <h1>Branch 3</h1>
+                            <h3>Malviya Nagar</h3>
                           </div>
                         </div>
                         
@@ -137,40 +137,36 @@
                             <div class="row">
                                     <div class="column zoom col2" >
                                       <a href="Student_Table.html">
-                                      <div class="card card1">
-                                        <h3>Student</h3>
-                                        <p>Madangir</p>
-                                        <p>Some text</p>
+                                      <div class="card card1" style="padding-top:10%;">
+                                        <h1>Student</h1>
+                                        <h3>Madangir</h3>
                                       </div>
                                     </a>
                                     </div>
                                   
                                     <div class="column zoom col2" >
                                       <a href="Employee_Table.html">
-                                      <div class="card card1">
-                                        <h3>Employee</h3>
-                                        <p>Malviya Nagar</p>
-                                        <p>Some text</p>
+                                      <div class="card card1" style="padding-top:10%;">
+                                        <h1>Employee</h1>
+                                        <h3>Madangir</h3>
                                       </div>
                                       </a>
                                     </div>
                                     
                                     <div class="column zoom col2">
                                       <a href="SignUp_Table.html">
-                                      <div class="card card1">
-                                        <h3>SignUp Details</h3>
-                                        <p>Chirag Dili</p>
-                                        <p>Some text</p>
+                                      <div class="card card1" style="padding-top:10%;">
+                                        <h1>SignUp Details</h1>
+                                       <h3>Madangir</h3>
                                       </div>
                                       </a>
                                     </div>
                                     
                                     <div class="column zoom col2">
                                       <a href="Login_Table.html">
-                                            <div class="card card1">
-                                              <h3>Login Details</h3>
-                                              <p>Chirag Dili</p>
-                                              <p>Some text</p>
+                                            <div class="card card1" style="padding-top:10%;">
+                                              <h1>Login Details</h1>
+                                              <h3>Madangir</h3>
                                             </div>
                                           </div>
                                         </a>    
@@ -187,40 +183,36 @@
                                 <div class="row">
                                         <div class="column zoom col2" >
                                           <a href="Student_Table.html">
-                                          <div class="card card2">
-                                            <h3>Student</h3>
-                                            <p>Madangir</p>
-                                            <p>Some text</p>
+                                          <div class="card card2" style="padding-top:10%;">
+                                            <h1>Student</h1>
+                                            <h3>Chirag Delhi</h3>
                                           </div>
                                           </a>
                                         </div>
                                       
                                         <div class="column zoom col2" >
                                           <a href="Employee_Table.html">
-                                          <div class="card card2">
-                                            <h3>Employee</h3>
-                                            <p>Malviya Nagar</p>
-                                            <p>Some text</p>
+                                          <div class="card card2" style="padding-top:10%;">
+                                            <h1>Employee</h1>
+                                           <h3>Chirag Delhi</h3>
                                           </div>
                                           </a>
                                         </div>
                                         
                                         <div class="column zoom col2">
                                             <a href="SignUp_Table.html">
-                                          <div class="card card2">
-                                            <h3>SignUp Details</h3>
-                                            <p>Chirag Dili</p>
-                                            <p>Some text</p>
+                                          <div class="card card2" style="padding-top:10%;">
+                                            <h1>SignUp Details</h1>
+                                           <h3>Chirag Delhi</h3>
                                           </div>
                                           </a>
                                         </div>
                                         
                                             <div class="column zoom col2">
                                               <a href="Login_Table.html">
-                                                    <div class="card card2">
-                                                      <h3>Login Details</h3>
-                                                      <p>Chirag Dili</p>
-                                                      <p>Some text</p>
+                                                    <div class="card card2" style="padding-top:10%;">
+                                                      <h1>Login Details</h1>
+                                                     <h3>Chirag Delhi</h3>
                                                     </div>
                                                     </a>
                                             </div>
@@ -235,40 +227,36 @@
                               <div class="row">
                                     <div class="column zoom col2" >
                                       <a href="Student_Table.html">
-                                      <div class="card card3">
-                                        <h3>Student</h3>
-                                        <p>Madangir</p>
-                                        <p>Some text</p>
+                                      <div class="card card3" style="padding-top:10%;">
+                                        <h1>Student</h1>
+                                        <h3>Malviya Nagar</h3>
                                       </div>
                                     </a>
                                     </div>
                                   
                                     <div class="column zoom col2" >
                                       <a href="Employee_Table.html">
-                                      <div class="card card3">
-                                        <h3>Employee</h3>
-                                        <p>Malviya Nagar</p>
-                                        <p>Some text</p>
+                                      <div class="card card3" style="padding-top:10%;">
+                                        <h1>Employee</h1>
+                                         <h3>Malviya Nagar</h3>
                                       </div>
                                       </a>
                                     </div>
                                     
                                     <div class="column zoom col2">
                                       <a href="SignUp_Table.html">
-                                      <div class="card card3">
-                                        <h3>SignUp Details</h3>
-                                        <p>Chirag Dili</p>
-                                        <p>Some text</p>
+                                      <div class="card card3" style="padding-top:10%;">
+                                        <h1>SignUp Details</h1>
+                                         <h3>Malviya Nagar</h3>
                                       </div>
                                       </a>
                                     </div>
                                     
                                     <div class="column zoom col2">
                                       <a href="Login_Table.html">
-                                            <div class="card card3">
-                                              <h3>Login Details</h3>
-                                              <p>Chirag Dili</p>
-                                              <p>Some text</p>
+                                            <div class="card card3" style="padding-top:10%;">
+                                              <h1>Login Details</h1>
+                                              <h3>Malviya Nagar</h3>
                                             </div>
                                           </div>
                                         </a>    
@@ -277,57 +265,7 @@
         </div>
 <div id = "notice" class="row">
                 
-            <!--         <div class="notice-board">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                               
-                                <ul style="padding-left:0px;list-style:none;" id = "noticeListItems">
-                                    <marquee direction="up" onmouseover="this.stop()" onmouseout="this.start()">
-                                      <li>
-                                      
-                                        <a href="#">
-                                        <span class="glyphicon glyphicon-expand text-success" ></span>
-                                        <span class="label label-danger" >Header </span><br>
-                                        Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                     <li>
-                                            <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
-                                     <span class="label label-danger">Header</span><br>
-                                                  Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                     <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
-                                     <span class="label label-danger" >Header </span><br>
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                     <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span> 
-                                     <span class="label label-danger" >Header </span><br> 
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                    <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
-                                     <span class="label label-danger" >Header </span><br>
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                    <li>
-                                          <a href="#">
-                                     <span class="glyphicon glyphicon-expand text-success" ></span>  
-                                     <span class="label label-danger" >Header </span><br>
-                                          Lorem ipsum dolor sit amet ipsum dolor sit amet</a>
-                                    </li>
-                                    </marquee>
-                                </ul>
-                            </div>
-                            <div class="panel-footer" data-toggle="modal" data-target="#uploadNotice">
-                                <a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a>
-                            </div>
-                        </div>
-                    </div> -->
+           
                   </div>
                   <br>
                   <br> 
@@ -414,6 +352,7 @@
                 function openTab(tabName) {
                   var i, x;
                   var n = parseInt(tabName[1])-1;
+                  localStorage["branch"]=n+1;
                   x = document.getElementsByClassName("containerTab");
                   for (i = 0; i < x.length; i++) {
                     if(i!=n)

@@ -7,12 +7,20 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.knewton.academy.model.AttendanceId;
+import com.knewton.academy.model.BatchCourseMapping;
 import com.knewton.academy.model.EmployeeTable;
 import com.knewton.academy.model.Fees;
+import com.knewton.academy.model.ResultAssignment;
+import com.knewton.academy.model.ResultAssignmentId;
+import com.knewton.academy.model.StudentBatchMapping;
+import com.knewton.academy.model.StudentBatchMappingId;
 import com.knewton.academy.model.StudentTable;
 import com.knewton.academy.model.TestSeriesLogin;
+import com.knewton.academy.repository.BatchCourseMappingRepository;
 import com.knewton.academy.repository.EmployeeTableRepository;
 import com.knewton.academy.repository.FeesRepository;
+import com.knewton.academy.repository.StudentBatchMappingRepository;
 import com.knewton.academy.repository.StudentTableRepository;
 import com.knewton.academy.repository.TestSeriesLoginRepository;
 
@@ -23,9 +31,13 @@ StudentTableRepository studenttablerepository;
 @Autowired
 FeesRepository feesrepository;
 @Autowired
+StudentBatchMappingRepository studentbatchmappingrepository;
+@Autowired
 EmployeeTableRepository employeetablerepository;
 @Autowired
 TestSeriesLoginRepository testseriesloginrepository;
+@Autowired
+BatchCourseMappingRepository batchcoursemappingrepository;
 @Override
 public Optional<StudentTable> showPersonalDetailOfSubAdmin(String id) {
 	Optional<StudentTable> student=studenttablerepository.findById(id);
@@ -80,6 +92,26 @@ public void addtestId(TestSeriesLogin testserieslogin) {
 	
 	testseriesloginrepository.save(testserieslogin);
 	
+}
+@Override
+public List<BatchCourseMapping> batchDisplay() {
+	Iterable<BatchCourseMapping> student= batchcoursemappingrepository.findAll();
+	 ArrayList<BatchCourseMapping> students = new ArrayList<BatchCourseMapping>();
+      student.forEach(e -> students.add(e));
+      return students;	
+}
+@Override
+public void addbatch(String studentId,String batchId) {
+	// TODO Auto-generated method stub
+	StudentBatchMapping studentbatchmapping = new StudentBatchMapping(new StudentBatchMappingId(studentId,batchId));
+	studentbatchmappingrepository.save(studentbatchmapping);
+}
+@Override
+public void deletebatch(String studentId, String batchId) {
+	StudentBatchMappingId studentbatchmapping = new  StudentBatchMappingId();
+	studentbatchmapping.setStudentId(studentbatchmapping.getStudentId());
+	studentbatchmapping.setBatchId(studentbatchmapping.getBatchId());
+	studentbatchmappingrepository.deleteById(studentbatchmapping);
 }
 
 }

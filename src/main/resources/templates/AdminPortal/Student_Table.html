@@ -72,6 +72,8 @@
           
           $.each(data,function(key,value){
         	  if(value.status===true){
+        		  if(localStorage["branch"]==value.branchId)
+        			  {
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Student Id">'+value.studentId+'</div>';
         	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
@@ -85,8 +87,19 @@
         		}
         	}
         	str += '</div>';
-        	str +=  '<div class="cell" data-title="Performance">'+'tobe'+'</div>';
+        	var total=0;
+		    var obtained=0;
+        	for(var i = 0;i<value.resultassignment.length;i++)
+        		{ 
+        		    if(value.resultassignment[i].resultassignmentid.studentId==value.studentId)
+        		    		{
+        		    	          total = total + value.resultassignment[i].assignment.totalMarks;
+        		    	          obtained = obtained + value.resultassignment[i].obtainedMarks;
+        		    		}
+        		}
+        	str +=  '<div class="cell" data-title="Performance">'+parseFloat(obtained/total*100).toFixed(2)+'%</div>';
         	str+='</div>';
+        	  }
         	  }
           });
          $("#studentlist").append(str);

@@ -86,6 +86,15 @@
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Branch</label>
+          <select class="form-control validate" name="branchId" style="padding:7.5px;height:100%;">
+            <option value="1">Madangir</option>
+            <option value="3">Malviya Nagar</option>
+            <option value="2">Chirag Delhi</option>
+          </select>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Salary</label>
           <input type="number" name="salary" class="form-control validate" max="999999" required>
         </div>
@@ -112,7 +121,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form th:action="@{/employee/edit}" method="POST">
+      <form th:action="@{/employee/edit}" method="POST" id="edit">
       <div class="modal-body mx-3">	
       <input type="hidden" name="employeeId">
       
@@ -146,6 +155,15 @@
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Address</label>
           <input type="text"  class="form-control validate" required name="address">
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" >Branch</label>
+          <select class="form-control validate" name="branchId" style="padding:7.5px;height:100%;">
+            <option value="1">Madangir</option>
+            <option value="3">Malviya Nagar</option>
+            <option value="2">Chirag Delhi</option>
+          </select>
         </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
@@ -230,6 +248,8 @@
           var str= "";
           $.each(data,function(key,value){
         	  if(value.status===true){
+        		  if(localStorage["branch"]==value.branchId)
+        			  {
         	  str+='<div class="row myTable">';        	  
         	str +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
         	str +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
@@ -237,6 +257,7 @@
         	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
         	str+='</div>';
+        			  }
         	  }
           });
           $("#employeelist").append(str);
@@ -245,13 +266,13 @@
               var eid = $(this).parent().parent()[0].firstChild.innerHTML;
               $.each(data,function(key,value){
             	 if (value.employeeId===eid){
-            		$("input[name=employeeId]").val(value.employeeId);
-            		$("input[name=name]").val(value.name);
-            		$("select[name=userTypeId]").val(value.userTypeId);
-            		$("input[name=contactDetails]").val(value.contactDetails);
-            		$("input[name=emailId]").val(value.emailId);
-            		$("input[name=address]").val(value.address);
-            		$("input[name=salary]").val(value.salary);
+            		$("#edit input[name=employeeId]").val(value.employeeId);
+            		$("#edit input[name=name]").val(value.name);
+            		$("#edit select[name=userTypeId]").val(value.userTypeId);
+            		$("#edit input[name=contactDetails]").val(value.contactDetails);
+            		$("#edit input[name=emailId]").val(value.emailId);
+            		$("#edit input[name=address]").val(value.address);
+            		$("#edit input[name=salary]").val(value.salary);
             	 } 
               });
             });
