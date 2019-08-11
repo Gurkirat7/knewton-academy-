@@ -8,6 +8,7 @@ import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.ResultAssignment;
 import com.knewton.academy.model.StudentBatchMapping;
 import com.knewton.academy.model.StudentTable;
+import com.knewton.academy.model.Timetable;
 
 public interface studentService {
 	public  Optional<StudentTable> showPersonalDetailOfStudent(String id);
@@ -15,4 +16,5 @@ public interface studentService {
 	public List<StudentBatchMapping> batchesDisplay();
 	public List<ResultAssignment> showass();
 	public List<Fees> showfee();
+//	public List<Timetable> showtt();
 }

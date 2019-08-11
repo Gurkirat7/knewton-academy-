@@ -17,6 +17,7 @@ import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.StudentBatchMapping;
 import com.knewton.academy.model.StudentTable;
 import com.knewton.academy.model.TestSeriesLogin;
+import com.knewton.academy.model.Timetable;
 import com.knewton.academy.repository.EmployeeTableRepository;
 import com.knewton.academy.repository.FeesRepository;
 import com.knewton.academy.repository.StudentTableRepository;
@@ -82,6 +83,11 @@ public RedirectView deleteStu(@RequestParam String studentId) {
 		List<BatchCourseMapping> stu = subadminserviceimp.batchDisplay();
      return stu;
  }
+	@RequestMapping(value="/subadmin/timetable",method=RequestMethod.POST)
+	public RedirectView addtimetable(Timetable timetable) {
+		subadminserviceimp.addtimetable(timetable);
+		return new RedirectView("/subadmin");
+	}
 //	@GetMapping("/subadmin/addfees")
 //	public boolean addfees() {
 //		Fees fe=new Fees();

@@ -74,7 +74,7 @@
 </div>
 
 <div class="container">
-<form>
+<form th:action="@{/subadmin/timetable}" method="POST">
 <div class="modal fade" id="timetable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -89,21 +89,49 @@
 
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
-          <label data-error="wrong" data-success="right" >Class</label>
-          <select class="form-control validate" style="padding:7.5px;height:100%;">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+          <label data-error="wrong" data-success="right" >Batch</label>
+          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="batchtime"> 
+          	<script>
+          	$.getJSON('../subadmin/batchcourse', function(data) {
+                var str= "";
+                $.each(data,function(key,value){
+                		
+              	         str+='<option value="'+value.batchId+'">'+value.batchName+'</option>';
+                		
+              
+                });
+                $("#batchtime").append(str);
+                
+                
+          	}); 	
+          	
+            </script>
           </select>
-        </div>
+        </div>	
         
               
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
-          <label data-error="wrong" data-success="right" >Time Table(in file format)</label>
-           <input type="file"  class="form-control validate" name="myFile" required multiple>
+          <label data-error="wrong" data-success="right" >Day</label>
+           <select class="form-control validate" name="day" style="padding:7.5px;height:100%;" required>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+          </select>
+        </div>
+        <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right">Time</label>
+          <input type="time" name="time" class="form-control validate" required>
+        </div>
+         <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right">Room</label>
+          <input type="text" name="room" class="form-control validate" required>
         </div>
 
 
@@ -213,27 +241,7 @@
             <option value="2">Chirag Delhi</option>
           </select>
         </div>
-  <!--       <div class="field-wrap mb-5">
-          <i class="prefix grey-text"></i>
-          <label data-error="wrong" data-success="right" >Batch</label>
-          <select class="form-control validate" name="batchId" style="padding:7.5px;height:100%;" id="batch"> 
-          	<script>
-          	$.getJSON('../subadmin/batchcourse', function(data) {
-                var str= "";
-                $.each(data,function(key,value){
-                		
-              	         str+='<option value="'+value.batchId+'">'+value.batchName+'</option>';
-                		
-              
-                });
-                $("#batch").append(str);
-                
-                
-          	}); 	
-          	
-            </script>
-          </select>
-        </div>		-->
+
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Test Login ID</label>

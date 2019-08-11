@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2019 at 07:45 PM
+-- Generation Time: Aug 11, 2019 at 01:53 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -74,7 +74,8 @@ INSERT INTO `attendance` (`classDeliveredId`, `studentId`, `attendance`) VALUES
 (5, 'S100004', 1),
 (5, 'S100008', 1),
 (6, 'S100004', 1),
-(50, 'S100000', 0);
+(50, 'S100000', 0),
+(50, 'S100004', 1);
 
 -- --------------------------------------------------------
 
@@ -95,6 +96,7 @@ CREATE TABLE IF NOT EXISTS `attendancecount` (
 
 INSERT INTO `attendancecount` (`studentId`, `batchId`, `totalCount`, `presentCount`) VALUES
 ('S100000', 'C8', 1, 0),
+('S100004', 'C8', 1, 1),
 ('S100004', 'C9', 5, 4),
 ('S100004', 'JEE', 1, 1),
 ('S100008', 'C9', 4, 4);
@@ -273,7 +275,7 @@ CREATE TABLE IF NOT EXISTS `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(9);
+(16);
 
 -- --------------------------------------------------------
 
@@ -317,7 +319,7 @@ CREATE TABLE IF NOT EXISTS `notice` (
   `title` varchar(100) NOT NULL,
   `content` varchar(150) NOT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notice`
@@ -331,7 +333,8 @@ INSERT INTO `notice` (`serialNo`, `title`, `content`, `date`) VALUES
 (5, 'Good Evening Part 3', 'hey there!', '2019-07-17'),
 (6, 'xxx', 'dfff', '2019-07-19'),
 (7, 'asdas', 'dghdgfhgjk', '2019-07-20'),
-(8, 'Simple Click Events', 'kuch ti huva hai', '2019-07-31');
+(8, 'Simple Click Events', 'kuch ti huva hai', '2019-07-31'),
+(15, 'water', 'sallo apna panni leke aaya kro...yahan nhi milega kuch abse', '2019-08-11');
 
 -- --------------------------------------------------------
 
@@ -436,7 +439,7 @@ INSERT INTO `studentbatchmapping` (`studentId`, `batchId`) VALUES
 ('S100001', 'E6'),
 ('S100000', 'JEE'),
 ('S100004', 'JEE'),
-('S100000', 'M4'),
+('S100008', 'KVP'),
 ('S100010', 'P12');
 
 -- --------------------------------------------------------
@@ -531,6 +534,32 @@ INSERT INTO `testserieslogin` (`testId`, `testpassword`, `studentId`) VALUES
 ('TS10000', 'forsomething', 'S100008'),
 ('TS10002', 'kuchbhi', 'S100009'),
 ('TS10003', 'kuchbhi', 'S100010');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timetable`
+--
+
+CREATE TABLE IF NOT EXISTS `timetable` (
+`id` int(3) NOT NULL,
+  `batchId` varchar(3) NOT NULL,
+  `day` varchar(10) NOT NULL,
+  `time` varchar(7) NOT NULL,
+  `room` varchar(10) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timetable`
+--
+
+INSERT INTO `timetable` (`id`, `batchId`, `day`, `time`, `room`) VALUES
+(9, 'C8', 'Monday', '10:55', 'c103'),
+(10, 'C9', 'Thursday', '05:04', 'ss'),
+(11, 'C8', 'Monday', '06:05', '55'),
+(12, 'JEE', 'Friday', '05:55', 'c103'),
+(13, 'C9', 'Sunday', '08:59', 'zz'),
+(14, 'C9', 'Thursday', '05:59', '32');
 
 -- --------------------------------------------------------
 
@@ -681,6 +710,12 @@ ALTER TABLE `testserieslogin`
  ADD PRIMARY KEY (`studentId`), ADD UNIQUE KEY `testId` (`testId`), ADD KEY `studentId` (`studentId`);
 
 --
+-- Indexes for table `timetable`
+--
+ALTER TABLE `timetable`
+ ADD PRIMARY KEY (`id`), ADD KEY `batchId` (`batchId`);
+
+--
 -- Indexes for table `usertype`
 --
 ALTER TABLE `usertype`
@@ -699,7 +734,7 @@ MODIFY `serialNo` int(5) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-MODIFY `serialNo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `serialNo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `single_solution_question`
 --
@@ -710,6 +745,11 @@ MODIFY `serialNo` int(5) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `test`
 MODIFY `testId` int(3) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `timetable`
+--
+ALTER TABLE `timetable`
+MODIFY `id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- Constraints for dumped tables
 --
@@ -811,6 +851,12 @@ ADD CONSTRAINT `test_ibfk_1` FOREIGN KEY (`courseId`) REFERENCES `course` (`cour
 --
 ALTER TABLE `testserieslogin`
 ADD CONSTRAINT `testserieslogin_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `studenttable` (`studentId`);
+
+--
+-- Constraints for table `timetable`
+--
+ALTER TABLE `timetable`
+ADD CONSTRAINT `timetable_ibfk_1` FOREIGN KEY (`batchId`) REFERENCES `batchcoursemapping` (`batchId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

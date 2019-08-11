@@ -17,12 +17,14 @@ import com.knewton.academy.model.StudentBatchMapping;
 import com.knewton.academy.model.StudentBatchMappingId;
 import com.knewton.academy.model.StudentTable;
 import com.knewton.academy.model.TestSeriesLogin;
+import com.knewton.academy.model.Timetable;
 import com.knewton.academy.repository.BatchCourseMappingRepository;
 import com.knewton.academy.repository.EmployeeTableRepository;
 import com.knewton.academy.repository.FeesRepository;
 import com.knewton.academy.repository.StudentBatchMappingRepository;
 import com.knewton.academy.repository.StudentTableRepository;
 import com.knewton.academy.repository.TestSeriesLoginRepository;
+import com.knewton.academy.repository.TimetableRepository;
 
 @Service
 public class SubAdminServiceImp implements SubAdminService {
@@ -38,6 +40,8 @@ EmployeeTableRepository employeetablerepository;
 TestSeriesLoginRepository testseriesloginrepository;
 @Autowired
 BatchCourseMappingRepository batchcoursemappingrepository;
+@Autowired
+TimetableRepository timetablerepository;
 @Override
 public Optional<StudentTable> showPersonalDetailOfSubAdmin(String id) {
 	Optional<StudentTable> student=studenttablerepository.findById(id);
@@ -110,6 +114,10 @@ public void addbatch(String studentId,String batchId) {
 public void deletebatch(String studentId, String batchId) {
 	StudentBatchMapping studentbatchmapping = new StudentBatchMapping(new  StudentBatchMappingId(studentId,batchId));
 	studentbatchmappingrepository.deleteById(studentbatchmapping.getStudentbatchmappingid());
+}
+@Override
+public void addtimetable(Timetable timetable) {
+	timetablerepository.save(timetable);
 }
 
 }

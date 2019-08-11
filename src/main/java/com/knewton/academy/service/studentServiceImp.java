@@ -13,12 +13,14 @@ import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.ResultAssignment;
 import com.knewton.academy.model.StudentBatchMapping;
 import com.knewton.academy.model.StudentTable;
+import com.knewton.academy.model.Timetable;
 import com.knewton.academy.repository.AssignmentRepository;
 import com.knewton.academy.repository.ClassDeliveredRepository;
 import com.knewton.academy.repository.FeesRepository;
 import com.knewton.academy.repository.ResultAssignmentRepository;
 import com.knewton.academy.repository.StudentBatchMappingRepository;
 import com.knewton.academy.repository.StudentTableRepository;
+import com.knewton.academy.repository.TimetableRepository;
 
 @Service
 public class studentServiceImp implements studentService {
@@ -32,6 +34,8 @@ public class studentServiceImp implements studentService {
   ClassDeliveredRepository classdeliveredrepository;
   @Autowired
   FeesRepository feesrepository;
+  @Autowired
+  TimetableRepository timetablerepository;
 	@Override
 	public Optional<StudentTable> showPersonalDetailOfStudent(String id) {
 		Optional<StudentTable> student=studenttablerepository.findById(id);
@@ -77,5 +81,13 @@ public class studentServiceImp implements studentService {
 	       batch.forEach(e -> batches.add(e));
 	       return batches;
 	}
+
+//	@Override
+//	public List<Timetable> showtt() {
+//		Iterable<Timetable> tt= timetablerepository.findAll();
+//		 ArrayList<Timetable> tts = new ArrayList<Timetable>();
+//	       tt.forEach(e -> tts.add(e));
+//	       return tts;
+//	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.knewton.academy.model.StudentTable;
 import com.knewton.academy.model.TestSeriesLogin;
+import com.knewton.academy.model.Timetable;
 import com.knewton.academy.model.BatchCourseMapping;
 import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.StudentBatchMapping;
@@ -21,6 +22,7 @@ public interface SubAdminService {
 	public List<BatchCourseMapping> batchDisplay();
 	public void addbatch(@RequestParam String studentId,@RequestParam String batchId);
 	public void deletebatch(@RequestParam String studentId,@RequestParam String batchId);
+	public void addtimetable(Timetable timetable);
 //	public boolean deleteFees(String id);
 //	public boolean updateFees(Fees fees,String id);
 }

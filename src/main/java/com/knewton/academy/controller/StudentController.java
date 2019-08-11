@@ -10,6 +10,7 @@ import com.knewton.academy.model.ClassDelivered;
 import com.knewton.academy.model.Fees;
 import com.knewton.academy.model.ResultAssignment;
 import com.knewton.academy.model.StudentBatchMapping;
+import com.knewton.academy.model.Timetable;
 import com.knewton.academy.service.studentServiceImp;
 
 @RestController
@@ -37,4 +38,9 @@ public class StudentController {
 		List<Fees> ass = studentserviceimp.showfee();
 	  return ass;
 	}
+//	@GetMapping("/student/timetable")
+//	public List<Timetable> showtt() {
+//		List<Timetable> tt = studentserviceimp.showtt();
+//	  return tt;
+//	}
 }

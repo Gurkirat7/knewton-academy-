@@ -43,6 +43,7 @@
   
 <input type="checkbox" id="toggleStudent" checked style="padding-left:50px !important;">
 <script>
+localStorage["status"]=true;
 $('#toggleStudent').click(function() {
     localStorage["status"] = ($('#toggleStudent').is(':checked'));
 });
@@ -81,9 +82,10 @@ $('#toggleStudent').click(function() {
           
           $.each(data,function(key,value){
         	  var abd = localStorage["status"];
-        	  if(parseInt(value.status)===parseInt(abd)){
-        		  
-        		  if(localStorage["branch"]==value.branchId)
+        	  if(localStorage["branch"]==value.branchId)
+        	  {
+        		  console.log(localStorage["status"]+value.status);
+        		  if(localStorage["status"]==value.status)
         			  {
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Student Id">'+value.studentId+'</div>';

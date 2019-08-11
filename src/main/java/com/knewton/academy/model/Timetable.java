@@ -2,15 +2,20 @@ package com.knewton.academy.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="timetable")
 public class Timetable {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column
 	private String batchId;
@@ -20,6 +25,7 @@ public class Timetable {
 	private String time;
 	@Column
 	private String room;
+	@JsonIgnore
 	 @ManyToOne
 		@JoinColumn(name="batchId", referencedColumnName="batchId", insertable=false,updatable=false)
 		private BatchCourseMapping batchcoursemapping;
