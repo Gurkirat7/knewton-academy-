@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!--===============================================================================================-->
 </head>
 <body>
@@ -39,10 +40,18 @@
             <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
+  
+<input type="checkbox" id="toggleStudent" checked style="padding-left:50px !important;">
+<script>
+$('#toggleStudent').click(function() {
+    localStorage["status"] = ($('#toggleStudent').is(':checked'));
+});
+</script>
 
-	<div class="limiter">
-		<div class="container-table100">
-			<div class="wrap-table100">
+
+	<div class="limiter">		
+		<div class="container-table100">	
+			<div class="wrap-table100">			
 					<div class="table" id="studentlist"> 
 
 						<div class="row header">
@@ -71,7 +80,9 @@
           var str= "";
           
           $.each(data,function(key,value){
-        	  if(value.status===true){
+        	  var abd = localStorage["status"];
+        	  if(parseInt(value.status)===parseInt(abd)){
+        		  
         		  if(localStorage["branch"]==value.branchId)
         			  {
         	  str+='<div class="row myTable">';
@@ -98,6 +109,7 @@
         		    		}
         		}
         	str +=  '<div class="cell" data-title="Performance">'+parseFloat(obtained/total*100).toFixed(2)+'%</div>';
+        	str +=  '<div class="cell clo" data-title="Status">'+value.status+'</div>';
         	str+='</div>';
         	  }
         	  }

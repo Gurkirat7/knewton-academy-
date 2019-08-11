@@ -108,10 +108,8 @@ public void addbatch(String studentId,String batchId) {
 }
 @Override
 public void deletebatch(String studentId, String batchId) {
-	StudentBatchMappingId studentbatchmapping = new  StudentBatchMappingId();
-	studentbatchmapping.setStudentId(studentbatchmapping.getStudentId());
-	studentbatchmapping.setBatchId(studentbatchmapping.getBatchId());
-	studentbatchmappingrepository.deleteById(studentbatchmapping);
+	StudentBatchMapping studentbatchmapping = new StudentBatchMapping(new  StudentBatchMappingId(studentId,batchId));
+	studentbatchmappingrepository.deleteById(studentbatchmapping.getStudentbatchmappingid());
 }
 
 }

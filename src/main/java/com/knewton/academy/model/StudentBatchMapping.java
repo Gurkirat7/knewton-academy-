@@ -28,6 +28,7 @@ public class StudentBatchMapping {
 	private BatchCourseMapping batchcoursemapping;
 	
 	
+
 	public StudentBatchMappingId getStudentbatchmappingid() {
 		return studentbatchmappingid;
 	}
@@ -40,16 +41,13 @@ public class StudentBatchMapping {
 		return studenttable;
 	}
 
-
 	public void setStudenttable(StudentTable studenttable) {
 		this.studenttable = studenttable;
 	}
 
-
 	public BatchCourseMapping getBatchcoursemapping() {
 		return batchcoursemapping;
 	}
-
 
 	public void setBatchcoursemapping(BatchCourseMapping batchcoursemapping) {
 		this.batchcoursemapping = batchcoursemapping;

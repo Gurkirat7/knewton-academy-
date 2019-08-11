@@ -25,6 +25,8 @@ public class BatchCourseMapping {
 	@OneToMany(mappedBy="batchcoursemapping")
 	private Set<AttendanceCount> attendancecount;
 	@OneToMany(mappedBy="batchcoursemapping")
+	private Set<Timetable> timetable;
+	@OneToMany(mappedBy="batchcoursemapping")
 	private Set<ClassDelivered> classdelivered;
 //	@JsonIgnore
 	@ManyToOne
@@ -49,6 +51,15 @@ public class BatchCourseMapping {
 
 	public void setClassdelivered(Set<ClassDelivered> classdelivered) {
 		this.classdelivered = classdelivered;
+	}
+
+	public Set<Timetable> getTimetable() {
+		return timetable;
+	}
+
+
+	public void setTimetable(Set<Timetable> timetable) {
+		this.timetable = timetable;
 	}
 
 

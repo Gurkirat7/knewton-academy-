@@ -552,7 +552,6 @@
         
          $(".editButtonIcon").click(function () {
              var sid = $(this).parent().parent()[0].firstChild.innerHTML;
-             console.log($(this));
              $.each(data,function(key,value){
            	 if (value.studentId===sid){
            		$("#edit input[name=studentId]").val(value.studentId);   
@@ -578,13 +577,15 @@
          
          $(".delete").click(function () {
              var sid = $(this).parent().parent()[0].firstChild.innerHTML;
-             $("#deleteStudentDetail input[name=studentId]").val(sid);
+            
          });
          $(".deleteBatch").click(function () {
         	 var strr= "";
-          	
+        	 
           	var sid = $(this).parent().parent()[0].firstChild.innerHTML ;
+          	
          $.each(data,function(key,value){
+        	 $("#deletebatch input[name=studentId]").val(sid);
          	if(value.studentId===sid)
  			{
  			for(var i=0;i<value.studentbatchmapping.length;i++)

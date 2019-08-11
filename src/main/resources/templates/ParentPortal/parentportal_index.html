@@ -54,7 +54,6 @@
 
       <script type="text/javascript">
       $.getJSON('../notice', function(data) {
-          console.log(data[0]['title']);
           var str= "";
           str +='<div class="notice-board" style="width:100%;height:40%;"><div class="panel panel-default"><div class="panel-body"><ul style="padding-left:0px;list-style:none;" id = "noticeListItems"><marquee direction="up" height = "300px" onmouseover="this.stop()" onmouseout="this.start()">';
           $.each(data,function(key,value){
@@ -229,10 +228,10 @@
                   <script>              
           $.getJSON('../student/batch', function(data) {
           var str= "";
-          var i=1;
+          var x=1;
           var j=1000;
           $.each(data,function(key,value){
-        	  var a=i;
+        	  var a=x;
         	  var b=j;
         		  var stuid = "S100004";
         		  localStorage["stu"]=stuid;
@@ -252,33 +251,17 @@
         	str +=  '<div onclick=localStorage["batch"]=(document.getElementById("'+a+'").innerText);><a href="parentportal_attendance.html">Detailed Attendance</a></div><br>';
         	str +=  '<div onclick=localStorage["batch"]=(document.getElementById("'+a+'").innerText);><a href="parentportal_perf.html">Performance</a></div>';
         	str +=  '</div></div></div>';
-        		
+        	
         	  }
         		 
         		 j=j+1;
-        		 i=i+1;
+        		 x=x+1;
+        		 
           });
          $("#batchList").append(str);
        });
           
       </script>
-                    <!--    <div class="column zoom">
-                          <div class="card card1">
-                            <h3>Course 1</h3>
-                            <div class="po" onclick="pp('mypp')">
-                            <div style="cursor:pointer;">Attendance</div>
-                              <span id="mypp">
-                                <ul>
-                                  <li>Delivered: 100 </li>
-                                  <li>Attended: 93</li>
-                                  <li>Percentage: 93%</li>
-                              </ul>
-                            </span>
-                              <a href="parentportal_attendance.html">Detailed Attendance</a>
-                              <a href="parentportal_perf.html">Performance</a>
-                            </div>
-                          </div>
-                        </div>    --> 
              </div>
 </div>
 
