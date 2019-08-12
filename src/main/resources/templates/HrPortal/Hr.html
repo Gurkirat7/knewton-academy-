@@ -101,6 +101,11 @@
         </button>
       </div>
       <div class="modal-body mx-3">
+       <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right">Last Employee ID</label>
+          <input type="text" name="showid" id="showid" class="form-control validate" disabled>
+        </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right">Employee ID</label>
@@ -305,7 +310,9 @@
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
         	str+='</div>';
         	  }
-          });
+        	  localStorage["showeid"]=value.employeeId;
+          });    
+         $("#showid").val(localStorage["showeid"]);
           $("#employeelist").append(str);
           
           $(".editButtonIcon").click(function () {

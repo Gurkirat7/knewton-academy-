@@ -47,6 +47,11 @@
       </div>
     
       <div class="modal-body mx-3">
+       <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right">Last Employee ID</label>
+          <input type="text" name="showid" id="showid" class="form-control validate" disabled>
+        </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Employee ID</label>
@@ -259,7 +264,9 @@
         	str+='</div>';
         			  }
         	  }
-          });
+        	  localStorage["showeid"]=value.employeeId;
+          });    
+         $("#showid").val(localStorage["showeid"]);
           $("#employeelist").append(str);
           
           $(".editButtonIcon").click(function () {
