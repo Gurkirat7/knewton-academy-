@@ -3,6 +3,7 @@
  */
 package com.knewton.academy.model;
 
+import java.math.BigInteger;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class StudentTable {
 	@Column
 	private String motherName;
 	@Column
-	private int contactDetails;
+	private BigInteger contactDetails;
 	@Column
 	private String emailId;
 	@Column
@@ -97,14 +98,14 @@ public class StudentTable {
 	}
 
 
-	public int getContactDetails() {
+
+	public BigInteger getContactDetails() {
 		return contactDetails;
 	}
 
-    public void setContactDetails(int contactDetails) {
+	public void setContactDetails(BigInteger contactDetails) {
 		this.contactDetails = contactDetails;
 	}
-
 
 	public String getEmailId() {
 		return emailId;

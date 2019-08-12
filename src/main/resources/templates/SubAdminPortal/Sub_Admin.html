@@ -183,12 +183,17 @@
         </button>
       </div>
       <div class="modal-body mx-3">
+      <div class="field-wrap mb-5">
+          <i class="prefix grey-text"></i>
+          <label data-error="wrong" data-success="right">Last Student ID</label>
+          <input type="text" name="showid" id="showid" class="form-control validate" disabled>
+        </div>
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right">Student ID</label>
           <input type="text" name="studentId" class="form-control validate" maxlength="7" minlength="7" required>
         </div>
-
+	
         <div class="field-wrap mb-5">
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Student Name</label>
@@ -531,7 +536,6 @@
  <script type="text/javascript">
       $.getJSON('../subadmin/student', function(data) {
           var str= "";
-          
           $.each(data,function(key,value){
         	  if(value.status===true){
         	  str+='<div class="row myTable">';
@@ -555,7 +559,9 @@
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteStudentDetail"></span></div>';
         	str+='</div>';
         	  }
-          });       
+        	  localStorage["showid"]=value.studentId;
+          });    
+         $("#showid").val(localStorage["showid"]);
          $("#studentlist").append(str);
         
          $(".editButtonIcon").click(function () {

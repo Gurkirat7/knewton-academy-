@@ -79,7 +79,6 @@ $('#toggleStudent').click(function() {
 							  <script type="text/javascript">
       $.getJSON('../admin/student', function(data) {
           var str= "";
-          
           $.each(data,function(key,value){
         	  var abd = localStorage["status"];
         	  if(localStorage["branch"]==value.branchId)

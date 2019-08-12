@@ -1,5 +1,7 @@
 package com.knewton.academy.model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,7 +27,7 @@ public class EmployeeTable {
 	@Column
 	private int userTypeId;
 	@Column
-	private int contactDetails;
+	private BigInteger contactDetails;
 	@Column
 	private String emailId;
 	@Column
@@ -74,12 +76,15 @@ public class EmployeeTable {
 	}
 
 
-	public int getContactDetails() {
+	
+
+
+	public BigInteger getContactDetails() {
 		return contactDetails;
 	}
 
 
-	public void setContactDetails(int contactDetails) {
+	public void setContactDetails(BigInteger contactDetails) {
 		this.contactDetails = contactDetails;
 	}
 

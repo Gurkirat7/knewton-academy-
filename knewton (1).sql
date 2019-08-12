@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2019 at 08:03 AM
+-- Generation Time: Aug 12, 2019 at 08:48 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -207,8 +207,8 @@ INSERT INTO `course` (`courseId`, `details`) VALUES
 CREATE TABLE `employeetable` (
   `employeeId` varchar(7) NOT NULL,
   `name` varchar(25) NOT NULL,
-  `emailId` varchar(25) NOT NULL,
-  `address` varchar(30) NOT NULL,
+  `emailId` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `contactDetails` bigint(10) NOT NULL,
   `salary` int(7) NOT NULL,
   `userTypeId` int(2) NOT NULL,
@@ -258,7 +258,8 @@ INSERT INTO `fees` (`studentId`, `totalFees`, `installment1`, `installment2`, `i
 ('S100007', '555', 'paid', 'paid', 'paid'),
 ('S100008', '55500', 'paid', 'paid', 'paid'),
 ('S100009', '55', 'paid', 'paid', '25/10/19'),
-('S100010', '55', 'paid', 'paid', '25/10/19');
+('S100010', '55', 'paid', 'paid', '25/10/19'),
+('S100011', '555', 'PAID', 'PAID', 'PAID');
 
 -- --------------------------------------------------------
 
@@ -382,13 +383,13 @@ CREATE TABLE `result_test` (
 CREATE TABLE `signup` (
   `sno` int(3) NOT NULL,
   `name` varchar(25) NOT NULL,
-  `emailID` varchar(25) NOT NULL,
+  `emailID` varchar(50) NOT NULL,
   `password` varchar(15) NOT NULL,
-  `contactDetails` int(10) NOT NULL,
+  `contactDetails` bigint(10) NOT NULL,
   `class` int(2) NOT NULL,
   `course` varchar(15) NOT NULL,
   `parentsName` varchar(25) NOT NULL,
-  `address` varchar(30) NOT NULL
+  `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -399,7 +400,8 @@ INSERT INTO `signup` (`sno`, `name`, `emailID`, `password`, `contactDetails`, `c
 (1, 'something', 'something@gmail.com', 'password', 1203654741, 12, 'jee', 'dont have any', 'chhatarpur'),
 (24, 'c', 'gh@gm.com', '555', 1111111111, 12, 'jet', 'dd', 'ff'),
 (25, 'd', 'da@jj.cn', 'ajskld', 1111111111, 12, 'ask', 'mdk', 'askdl'),
-(26, 'jigd', 'da@jj.cn', '2121', 1111111111, 11, 'no', 'choudhary', 'kharbanda clinic');
+(26, 'jigd', 'da@jj.cn', '2121', 1111111111, 11, 'no', 'choudhary', 'kharbanda clinic'),
+(27, 'f', 'ghg@fffffff.com', '11111111', 9999999999, 12, 'ask', 'me', 'anything ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff');
 
 -- --------------------------------------------------------
 
@@ -458,9 +460,9 @@ CREATE TABLE `studenttable` (
   `class` int(2) NOT NULL,
   `fatherName` varchar(25) NOT NULL,
   `motherName` varchar(25) NOT NULL,
-  `contactDetails` int(10) NOT NULL,
-  `emailId` varchar(25) NOT NULL,
-  `address` varchar(30) NOT NULL,
+  `contactDetails` bigint(10) NOT NULL,
+  `emailId` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `branchId` int(2) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `studentbatchmapping_batchId` varchar(255) DEFAULT NULL,
@@ -481,7 +483,8 @@ INSERT INTO `studenttable` (`studentId`, `name`, `class`, `fatherName`, `motherN
 ('S100007', 'kal', 9, 'asdjkjll', 'lkaskd', 2015635894, 'akshay@lelo.com', '24/44 khin to hai', 3, 0, NULL, NULL),
 ('S100008', 'Akshay Manchanda', 2, 'asdjkjll', 'lkaskd', 1714771469, 'akshay@lelo.com', '6/90 saket', 3, 1, NULL, NULL),
 ('S100009', 'GURKIRAT SINGH', 6, 'Chaudhary', 'GURKIRAT SINGH', 1523002458, 'gurkir@gmail.com', '8/2 BLOCK NO.8 NEHRU NAGAR', 1, 0, NULL, NULL),
-('S100010', 'GURKIRAT SINGH', 12, 'Chaudhary', 'GURKIRAT SINGH', 1523002458, 'gurkir97@gmail.com', '8/2 BLOCK NO.8 NEHRU NAGAR', 3, 1, NULL, NULL);
+('S100010', 'GURKIRAT SINGH', 12, 'Chaudhary', 'GURKIRAT SINGH', 1523002458, 'gurkir97@gmail.com', '8/2 BLOCK NO.8 NEHRU NAGAR', 3, 1, NULL, NULL),
+('S100011', 'c', 6, 'H', 'H', 9999999999, 'zs@gmm.com', 'ff', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -537,7 +540,8 @@ INSERT INTO `testserieslogin` (`testId`, `testpassword`, `studentId`) VALUES
 ('TS10001', 'fgggg', 'S100001'),
 ('TS10000', 'forsomething', 'S100008'),
 ('TS10002', 'kuchbhi', 'S100009'),
-('TS10003', 'kuchbhi', 'S100010');
+('TS10003', 'kuchbhi', 'S100010'),
+('', '', 'S100011');
 
 -- --------------------------------------------------------
 
@@ -780,7 +784,7 @@ ALTER TABLE `notice`
 -- AUTO_INCREMENT for table `signup`
 --
 ALTER TABLE `signup`
-  MODIFY `sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `sno` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `single_solution_question`
 --

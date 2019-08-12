@@ -1,5 +1,7 @@
 package com.knewton.academy.model;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +21,7 @@ public class Signup {
 	@Column
 	private String password;
 	@Column
-	private int contactDetails;
+	private BigInteger contactDetails;
 	@Column(name="class")
 	private int CLASS;
 	@Column
@@ -53,10 +55,11 @@ public class Signup {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getContactDetails() {
+	
+	public BigInteger getContactDetails() {
 		return contactDetails;
 	}
-	public void setContactDetails(int contactDetails) {
+	public void setContactDetails(BigInteger contactDetails) {
 		this.contactDetails = contactDetails;
 	}
 	public int getCLASS() {
