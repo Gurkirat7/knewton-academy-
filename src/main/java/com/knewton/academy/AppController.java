@@ -14,6 +14,10 @@ public class AppController {
 	    public String signup() {
 	        return "signup";
 	    }
+	 @GetMapping("/thanks")
+	    public String thanks() {
+	        return "thanks";
+	    }
 	 @GetMapping("/admin")
 	    public String admin() {
 	        return "AdminPortal/admin";

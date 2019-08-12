@@ -2,15 +2,19 @@ package com.knewton.academy.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="signup")
 public class Signup {
+	@Id
+	private int sno;
 	@Column
 	private String name;
-	@Id
+	@Column
 	private String emailID;
 	@Column
 	private String password;
@@ -24,6 +28,13 @@ public class Signup {
 	private String parentsName;
 	@Column
 	private String address;
+	
+	public int getSno() {
+		return sno;
+	}
+	public void setSno(int sno) {
+		this.sno = sno;
+	}
 	public String getName() {
 		return name;
 	}
