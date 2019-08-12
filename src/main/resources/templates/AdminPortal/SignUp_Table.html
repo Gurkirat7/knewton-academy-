@@ -7,7 +7,13 @@
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
-	
+	<!--HEADER FOOTER-->
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">   
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/css/util.css">
 	<link rel="stylesheet" type="text/css" href="table/css/SignUp_Table.css">
@@ -37,8 +43,23 @@ $.getJSON('/sign', function(data) {
 
 </head>
 <body>
-	
-	<div class="limiter">
+	  <header id="header" class="fixed-top">
+        <div class="container">
+          <div class="logo float-left">
+            <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1>
+          </div>
+
+          <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+              <li><a class="btn btn-outline-info my-2 my-sm-0" href="/admin">Back To Portal</a></li>
+            </ul>
+          </nav><!-- .main-nav -->
+
+
+        </div>
+     </header><!-- #header -->
+     
+	<div class="limiter" style="padding-top:8%;">
 		<div class="container-table100">
 			<div class="wrap-table100">
 					<div class="table" id="signupList">
@@ -69,14 +90,11 @@ $.getJSON('/sign', function(data) {
 												Address
 											</div>
 						</div>
-
-						
-
-						
 					</div>
 			</div>
 		</div>
 	</div>
-
+<script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
 </body>
 </html>

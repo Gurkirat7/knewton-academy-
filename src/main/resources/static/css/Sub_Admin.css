@@ -166,6 +166,11 @@ iframe {
     max-width: 98px;
     display: block;
   }
+  #toggleStudent{
+	margin-left:5%!important;
+	margin-top:5%;
+	margin-bottom:5%;
+}
 }
 
 .cell {
@@ -387,4 +392,12 @@ label {
 	margin-top:10px;
 	left:0%;
 	}
+}
+.hidden
+{
+	visibility:hidden;
+}
+#toggleStudent{
+	margin-left:18%;
+	margin-top:5%;
 }

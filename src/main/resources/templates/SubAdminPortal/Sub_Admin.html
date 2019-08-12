@@ -150,6 +150,7 @@
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-4" placeholder="Search..">
             <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Class</option> 
+              <option>5</option>
               <option>6</option>
               <option>7</option>
               <option>8</option>
@@ -158,16 +159,17 @@
               <option>11</option>
               <option>12</option>
             </select>
-            <select class="form-control col-md-2" id="type1" onchange="myFunction1()">
-              <option value="none" selected disabled hidden>Course</option> 
-              <option>tobe</option>
-              <option>jee</option>
-              <option>3</option>
-              <option>4</option>
-            </select>
             <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
+  <button class="btn btn-lg btn-primary" id="toggleStudent">ACTIVE / INACTIVE</button>
+<script>
+$(document).ready(function(){
+	  $("#toggleStudent").click(function(){
+		  $(".limiter .container-table100 .wrap-table100 .table").toggleClass("hidden");
+	  });
+	});
+</script>
 
 	<!--Add student details-->
  <form th:action="@{/subadmin/add}" method="POST">
@@ -203,6 +205,7 @@
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Class</label>
           <select class="form-control validate" name="stuclass" style="padding:7.5px;height:100%;">
+          <option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
             <option value="8">8</option>
@@ -282,7 +285,7 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Submit">
+        <input type="submit" class="btn btn-lg btn-success btn-block" text="Submit">
       </div>
     </div>
   </div>
@@ -310,6 +313,7 @@
           <i class="prefix grey-text"></i>
           <label data-error="wrong" data-success="right" >Class</label>
           <select class="form-control validate" name ="stuclass" style="padding:7.5px;height:100%;">
+           	<option value="5">5</option>
             <option value="6">6</option>
             <option value="7">7</option>
             <option value="8">8</option>
@@ -377,7 +381,7 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Submit">
+        <input type="submit" class="btn btn-lg btn-success btn-block" text="Submit">
       </div>
     </div>
   </div>
@@ -536,6 +540,7 @@
  <script type="text/javascript">
       $.getJSON('../subadmin/student', function(data) {
           var str= "";
+          var str2="";
           $.each(data,function(key,value){
         	  if(value.status===true){
         	  str+='<div class="row myTable">';
@@ -559,10 +564,33 @@
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteStudentDetail"></span></div>';
         	str+='</div>';
         	  }
+        	  if(value.status===false){
+            	  str2+='<div class="row myTable">';
+            	str2 +=  '<div class="cell" data-title="Id">'+value.studentId+'</div>';
+            	str2 +=  '<div class="cell" data-title="Name">'+value.name+'</div>';
+            	str2 +=  '<div class="cell" data-title="Phone">'+value.contactDetails+'</div>';
+            	str2 +=  '<div class="cell clo" data-title="Class">'+value.stuclass+'</div>';
+            	str2 +=  '<div class="cell clo1" data-title="Courses">';
+            	for(var i=0;i<value.studentbatchmapping.length;i++){
+            		str2+= value.studentbatchmapping[i].batchcoursemapping.course.details;
+            		if(i!=value.studentbatchmapping.length-1){
+            			str2+=', ';
+            		}
+            	}
+            	str2 += '</div>';
+            	str2 +=  '<div class="cell" data-title="TotalFees">'+value.fees.totalFees+'</div>';
+            	str2 +=  '<div class="cell" data-title="Fee 1">'+value.fees.installment1+'</div>';
+            	str2 +=  '<div class="cell" data-title="Fee 2">'+value.fees.installment2+'</div>';
+            	str2 +=  '<div class="cell" data-title="Fee 3">'+value.fees.installment3+'</div>';
+            	str2 +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editStudentDetail"></span></a></div>';
+            	str2 += '<div class="cell" data-title="Active">'+value.status+'</div>';
+            	str2 +='</div>';
+            	  }
         	  localStorage["showid"]=value.studentId;
           });    
          $("#showid").val(localStorage["showid"]);
          $("#studentlist").append(str);
+         $("#studentlist2").append(str2);
         
          $(".editButtonIcon").click(function () {
              var sid = $(this).parent().parent()[0].firstChild.innerHTML;
@@ -615,6 +643,44 @@
       </script>						
 
 					</div>
+					<div class="table hidden" id="studentlist2">
+
+						<div class="row header">
+							<div class="cell">
+								Id
+							</div>
+							<div class="cell">
+								Name
+							</div>
+							<div class="cell">
+              				  Phone 
+            				</div>
+            				<div class="cell">
+                				Class
+              				</div>
+              				<div class="cell">
+                				Course
+              				</div>
+							<div class="cell">
+								Total Fees
+							</div> 
+							<div class="cell">
+								Fee 1
+							</div>
+              <div class="cell">
+                Fee 2
+              </div>
+              <div class="cell">
+                Fee 3
+              </div>  
+              <div class="cell">
+                Action
+              </div>
+              <div class="cell">
+                Active
+              </div>
+							
+						</div>
 			</div>
 		</div>
 	</div>
@@ -656,85 +722,7 @@
   </div>
 </div>
     <!--Notice Ends-->
-         <!--==========================
-    Footer
-  ============================-->
-  <div class="footer-container">
-  <div class="container-fluid">
-  <footer id="footer">
-    <div class="footer-top">
-        <div class="row rowf">
-
-          <div class="col-lg-4 offset-lg-1 col-md-12 footer-info">
-            <h3>KNEWTON ACADEMY</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact">
-            <h4>HEAD OFFICE</h4>
-            <p>
-              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
-               Above Kharbanda Clinic Gali No. 5, <br>
-               D.D.A Flats, Madangir,<br>
-                New Delhi-110062<br><br>
-              <strong>Phone:</strong>+91 9873889037<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div>
-
-          </div>
-
-          <div class="col-lg-4 col-md-12 footer-newsletter">
-            <section id="contact">  
-              <div class="col-lg-6">
-                <h4> For Any Queries : </h4>
-              <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-row">
-                  <div class="form-group col-lg-12">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
-                  </div>
-                  <div class="form-group col-lg-12">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
-              </form>
-              </div>
-              </div>
-            </section>
-          </div>
-
-        </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="copyright">
-        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
-      </div>
-    </div>
-  </footer>
-</div>
-</div>
-  <!-- #footer -->
+   
   
    <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/mobile-nav/mobile-nav.js"></script>

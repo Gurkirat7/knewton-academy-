@@ -8,6 +8,15 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="table/css/util.css">
+	 <!--HEADER FOOTER-->
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">   
+	<link rel="stylesheet" type="text/css" href="table/css/Student_Table.css">	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="table/css/Employee_Table.css">
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -16,9 +25,23 @@
 <!--===============================================================================================-->
 </head>
 <body>
-  
+  <header id="header" class="fixed-top">
+        <div class="container">
+          <div class="logo float-left">
+            <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1>
+          </div>
+
+          <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+              <li><a class="btn btn-outline-info my-2 my-sm-0" href="/admin">Back To Portal</a></li>
+            </ul>
+          </nav><!-- .main-nav -->
+
+
+        </div>
+     </header><!-- #header -->
  <form class="search"> 
-      <div class=" container">
+      <div class=" container-fluid">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-6" placeholder="Search..">
             <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Type</option> 
@@ -32,6 +55,15 @@
           <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
+  
+  <button class="btn btn-lg btn-primary" id="toggleStudent">ACTIVE / INACTIVE</button>
+<script>
+$(document).ready(function(){
+	  $("#toggleStudent").click(function(){
+		  $(".limiter .container-table100 .wrap-table100 .table").toggleClass("hidden");
+	  });
+	});
+</script>
   <!--Add employee details-->
   <form th:action="@{/employee/add}" method="POST">
   <div class="modal fade" id="employeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -108,7 +140,7 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Submit">
+        <input type="submit" class="btn btn-lg btn-block btn-success" text="Submit">
       </div>
       
     </div>
@@ -181,7 +213,7 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Submit">
+        <input type="submit" class="btn btn-lg btn-success btn-block" text="Submit">
       </div>
       </form>
     </div>
@@ -242,6 +274,9 @@
               <div class="cell">
                 Action
               </div>
+              <div class="cell">
+                Active
+              </div>
               
             </div>
           
@@ -251,9 +286,10 @@
  
       $.getJSON('../admin/employee', function(data) {
           var str= "";
+          var str2="";
           $.each(data,function(key,value){
-        	  if(value.status===true){
-        		  if(localStorage["branch"]==value.branchId)
+        	  if(localStorage["branch"]==value.branchId) {
+        		  if(value.status===true)
         			  {
         	  str+='<div class="row myTable">';        	  
         	str +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
@@ -261,13 +297,27 @@
         	str +=  '<div class="cell clo" data-title="Type">'+value.usertype.userType+'</div>';
         	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
+        	str +=  '<div class="cell clo" data-title="Active">'+value.status+'</div>';
         	str+='</div>';
         			  }
+        		  if(value.status===false)
+    			  {
+    	  str2+='<div class="row myTable">';        	  
+    	str2 +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
+    	str2 +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
+    	str2 +=  '<div class="cell clo" data-title="Type">'+value.usertype.userType+'</div>';
+    	str2 +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
+    	str2 +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a></div>';
+    	str2 +=  '<div class="cell clo" data-title="Active">'+value.status+'</div>';
+    	str2+='</div>';
+    			  }
+        		  
         	  }
         	  localStorage["showeid"]=value.employeeId;
           });    
          $("#showid").val(localStorage["showeid"]);
           $("#employeelist").append(str);
+          $("#employeelist2").append(str2);
           
           $(".editButtonIcon").click(function () {
               var eid = $(this).parent().parent()[0].firstChild.innerHTML;
@@ -292,9 +342,34 @@
     </script>            
 
           </div>
+          <div class="table hidden" id="employeelist2">
+
+            <div class="row header">
+              <div class="cell">
+                Employee Id
+              </div>
+              <div class="cell">
+                Full Name
+              </div>
+              <div class="cell">
+                Type
+              </div>
+              <div class="cell">
+                Phone No
+              </div> 
+              <div class="cell">
+                Action
+              </div>
+              <div class="cell">
+                Active
+              </div>
+            </div>
+            </div>
       </div>
     </div>
-  </div>
+  </div>	
+<script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
 <script src="table/js/Employee_Table.js"></script>
 </body>
 </html>

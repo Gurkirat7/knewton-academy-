@@ -86,7 +86,18 @@
            <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
+  
+  
+
   <div class="container">
+   <button class="btn btn-lg btn-primary" id="toggleStudent">ACTIVE / INACTIVE</button>
+<script>
+$(document).ready(function(){
+	  $("#toggleStudent").click(function(){
+		  $(".limiter .container-table100 .wrap-table100 .table").toggleClass("hidden");
+	  });
+	});
+</script>
 	<!--Add student details-->
 <form th:action="@{/hr/add}" method="POST">
 	<div class="modal fade" id="employeeDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -160,7 +171,7 @@
 
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Submit">
+        <input type="submit" class="btn btn-success btn-block" text="Submit">
       </div>
     </div>
   </div>
@@ -227,7 +238,7 @@
         </div>
         </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default" text="Submit">
+        <input type="submit" class="btn btn-lg btn-success btn-block" text="Submit">
       </div>
     </div>
   </div>
@@ -256,7 +267,7 @@
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <input type="submit" class="btn btn-default btn-lg btn-danger" value="Y E S">
+        <input type="submit" class="btn btn-default btn-lg btn-danger btn-block" value="Y E S">
       </div>
       </form>
     </div>
@@ -291,7 +302,10 @@
               				</div>
 			              <div class="cell">
 			                Action
-			              </div>							
+			              </div>	
+			              <div class="cell">
+                			Active
+              				</div>						
 						</div>
 
 						 <script type="text/javascript">
@@ -299,6 +313,7 @@
  
       $.getJSON('../hr/employee', function(data) {
           var str= "";
+          var str2="";
           $.each(data,function(key,value){
         	  if(value.status===true){
         	  str+='<div class="row myTable">';        	  
@@ -308,12 +323,26 @@
         	str +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
         	str +=  '<div class="cell" data-title="Salary">'+value.salary+'</div>';
         	str +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a><span class="glyphicon glyphicon-trash delete" data-toggle="modal" data-target="#deleteEmployeeDetail"></span></div>';
+        	str +=  '<div class="cell clo" data-title="Active">'+value.status+'</div>';
         	str+='</div>';
         	  }
+        	  if(value.status===false)
+			  {
+	  str2+='<div class="row myTable">';        	  
+	str2 +=  '<div class="cell" data-title="Employee Id">'+value.employeeId+'</div>';
+	str2 +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
+	str2 +=  '<div class="cell clo" data-title="Type">'+value.usertype.userType+'</div>';
+	str2 +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
+	str2 +=  '<div class="cell" data-title="Salary">'+value.salary+'</div>';
+	str2 +=  '<div class="cell" data-title="Action"><a class="editButtonIcon"><span class="glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editEmployeeDetail"></span></a></div>';
+	str2 +=  '<div class="cell clo" data-title="Active">'+value.status+'</div>';
+	str2+='</div>';
+			  }
         	  localStorage["showeid"]=value.employeeId;
           });    
          $("#showid").val(localStorage["showeid"]);
           $("#employeelist").append(str);
+          $("#employeelist2").append(str2);
           
           $(".editButtonIcon").click(function () {
               var eid = $(this).parent().parent()[0].firstChild.innerHTML;
@@ -337,6 +366,33 @@
        });
     </script>
     		</div>
+    		<div class="table hidden" id="employeelist2">
+
+						<div class="row header">
+						
+							<div class="cell">
+								Employee ID
+							</div>
+							<div class="cell">
+								Employee Name
+							</div>
+							<div class="cell">
+								Employee Type
+							</div> 
+							<div class="cell">
+								Contact Number
+							</div>
+              				<div class="cell">
+               					 Salary
+              				</div>
+			              <div class="cell">
+			                Action
+			              </div>	
+			              <div class="cell">
+                			Active
+              				</div>						
+						</div>
+						</div>
 		</div>
 	</div>
 </div>
@@ -346,85 +402,6 @@
                 
    </div> <br> <br>
                  
-         <!--==========================
-    Footer
-  ============================-->
-  <div class="footer-container">
-  <div class="container-fluid">
-  <footer id="footer">
-    <div class="footer-top">
-        <div class="row rowf">
-
-          <div class="col-lg-4 offset-lg-1 col-md-12 footer-info">
-            <h3>KNEWTON ACADEMY</h3>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
-          </div>
-
-          <div class="col-lg-3 col-md-12 footer-contact">
-            <h4>HEAD OFFICE</h4>
-            <p>
-              5/76(1<sup>st</sup> , 2<sup>nd</sup> , 3<sup>rd</sup> Floor)<br>
-               Above Kharbanda Clinic Gali No. 5, <br>
-               D.D.A Flats, Madangir,<br>
-                New Delhi-110062<br><br>
-              <strong>Phone:</strong>+91 9873889037<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
-            </div>
-
-          </div>
-
-          <div class="col-lg-4 col-md-12 footer-newsletter">
-            <section id="contact">  
-              <div class="col-lg-6">
-                <h4> For Any Queries : </h4>
-              <div class="form">
-              <div id="sendmessage">Your message has been sent. Thank you!</div>
-              <div id="errormessage"></div>
-              <form action="" method="post" role="form" class="contactForm">
-                <div class="form-row">
-                  <div class="form-group col-lg-12">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                    <div class="validation"></div>
-                  </div>
-                  <div class="form-group col-lg-12">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                    <div class="validation"></div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
-                  <div class="validation"></div>
-                </div>
-                <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
-              </form>
-              </div>
-              </div>
-            </section>
-          </div>
-
-        </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="copyright">
-        &copy; Copyright <strong>Knewton Academy</strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">INTERNS</a>
-      </div>
-    </div>
-  </footer>
-</div>
-</div>
-  <!-- #footer -->
   <script src="table/js/Employee_Table.js"></script>
    <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/mobile-nav/mobile-nav.js"></script>

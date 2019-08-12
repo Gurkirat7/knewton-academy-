@@ -255,11 +255,11 @@ iframe {
   background: #c4d3f6;
   }
 
-.container{
-  margin-top: 5%;
+.container-fluid{
+  margin-top: 10%;
 }
 
-.container .dropdown{
+.container-fluid .dropdown{
   padding: 0px;
 }
 #type{

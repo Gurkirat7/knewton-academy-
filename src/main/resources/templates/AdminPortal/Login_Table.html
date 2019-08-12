@@ -7,7 +7,13 @@
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
-
+ <!--HEADER FOOTER-->
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">  
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/css/util.css">
 	<link rel="stylesheet" type="text/css" href="table/css/Login_Table.css">
@@ -18,10 +24,24 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<!--search bar-->
+	 <header id="header" class="fixed-top">
+        <div class="container">
+          <div class="logo float-left">
+            <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1>
+          </div>
+
+          <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+              <li><a class="btn btn-outline-info my-2 my-sm-0" href="/admin">Back To Portal</a></li>
+            </ul>
+          </nav><!-- .main-nav -->
+
+
+        </div>
+     </header><!-- #header -->
 	<!--search bar-->
 	<form class="search"> 
-      <div class=" container">
+      <div class=" container-fluid">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-6" placeholder="Search..">
             <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Type</option> 
@@ -90,6 +110,8 @@
 			</div>
 		</div>
 	</div>
+	<script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
 <script src="table/js/Login_Table.js"></script>
 
 </body>

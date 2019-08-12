@@ -164,6 +164,11 @@ iframe {
     min-width: 98px;
     display: block;
   }
+  #toggleStudent{
+	margin-left:5%!important;
+	margin-top:5%;
+	margin-bottom:5%;
+}
 }
 
 .cell {
@@ -259,11 +264,11 @@ iframe {
   background: #c4d3f6;
   }
 
-.container{
-  margin-top: 5%;
+.container-fluid{
+  margin-top: 10%;
 }
 
-.container .dropdown{
+.container-fluid .dropdown{
   padding: 0px;
 }
 #type{
@@ -281,4 +286,12 @@ iframe {
 	margin-left:20%;
 	margin-top:3%;
 	   
+}
+.hidden
+{
+	visibility:hidden;
+}
+#toggleStudent{
+	margin-left:18%;
+	margin-top:5%;
 }

@@ -4,24 +4,49 @@
 	<title>Student Details</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="table/vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="table/css/util.css">
+  <!--HEADER FOOTER-->
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" type="text/css" href="css/header-footer.css">
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">   
 	<link rel="stylesheet" type="text/css" href="table/css/Student_Table.css">	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!--===============================================================================================-->
 </head>
 <body>
+<header id="header" class="fixed-top">
+        <div class="container">
+          <div class="logo float-left">
+            <h1 class="text-light"><a href="../index.html"><span>Knewton Academy</span></a></h1>
+          </div>
+
+          <nav class="main-nav float-right d-none d-lg-block">
+            <ul>
+              <li><a class="btn btn-outline-info my-2 my-sm-0" href="/admin">Back To Portal</a></li>
+            </ul>
+          </nav><!-- .main-nav -->
+
+
+        </div>
+     </header><!-- #header -->
 	<!--search bar-->
   <form class="search"> 
-      <div class=" container">
+      <div class=" container-fluid">
           <input type="text" id="myInput" class="form-control col-md-offset-1 col-md-4" placeholder="Search..">
             <select class="form-control col-md-2 col-md-offset-1" id="type" onchange="myFunction()">
               <option value="none" selected disabled hidden>Class</option> 
+              <option>5</option>
               <option>6</option>
               <option>7</option>
               <option>8</option>
@@ -30,23 +55,17 @@
               <option>11</option>
               <option>12</option>
             </select>
-            <select class="form-control col-md-2" id="type1" onchange="myFunction1()">
-              <option value="none" selected disabled hidden>Course</option> 
-              <option>chemistry</option>
-              <option>jee</option>
-              <option>english</option>
-              <option>4</option>
-            </select>
             <button type="reset" onclick="location.reload();" class="btn btn-default" id="searchSubmit">Reset</button>
       </div>
   </form>
   
-<input type="checkbox" id="toggleStudent" checked style="padding-left:50px !important;">
+<button class="btn btn-lg btn-primary" id="toggleStudent">ACTIVE / INACTIVE</button>
 <script>
-localStorage["status"]=true;
-$('#toggleStudent').click(function() {
-    localStorage["status"] = ($('#toggleStudent').is(':checked'));
-});
+$(document).ready(function(){
+	  $("#toggleStudent").click(function(){
+		  $(".limiter .container-table100 .wrap-table100 .table").toggleClass("hidden");
+	  });
+	});
 </script>
 
 
@@ -74,17 +93,22 @@ $('#toggleStudent').click(function() {
 							<div class="cell">
 									Performance
 							</div>
+							<div class="cell">
+									Active
+							</div>
 						</div>
+						
 						
 							  <script type="text/javascript">
       $.getJSON('../admin/student', function(data) {
           var str= "";
+          var str2= ""; 
           $.each(data,function(key,value){
-        	  var abd = localStorage["status"];
+        	  
         	  if(localStorage["branch"]==value.branchId)
         	  {
-        		  console.log(localStorage["status"]+value.status);
-        		  if(localStorage["status"]==value.status)
+        		 
+        		  if(value.status==true)
         			  {
         	  str+='<div class="row myTable">';
         	str +=  '<div class="cell" data-title="Student Id">'+value.studentId+'</div>';
@@ -110,21 +134,81 @@ $('#toggleStudent').click(function() {
         		    		}
         		}
         	str +=  '<div class="cell" data-title="Performance">'+parseFloat(obtained/total*100).toFixed(2)+'%</div>';
-        	str +=  '<div class="cell clo" data-title="Status">'+value.status+'</div>';
+        	str +=  '<div class="cell clo" data-title="Active">'+value.status+'</div>';
         	str+='</div>';
         	  }
+        		  
+        		  if(value.status==false)
+    			  {
+    	  str2+='<div class="row myTable">';
+    	str2 +=  '<div class="cell" data-title="Student Id">'+value.studentId+'</div>';
+    	str2 +=  '<div class="cell" data-title="Full Name">'+value.name+'</div>';
+    	str2 +=  '<div class="cell" data-title="Phone No">'+value.contactDetails+'</div>';
+    	str2 +=  '<div class="cell clo" data-title="Class">'+value.stuclass+'</div>';
+    	str2 +=  '<div class="cell clo1" data-title="Courses">';
+    	for(var i=0;i<value.studentbatchmapping.length;i++){
+    		str2+= value.studentbatchmapping[i].batchcoursemapping.course.details;
+    		if(i!=value.studentbatchmapping.length-1){
+    			str2+=', ';
+    		}
+    	}
+    	str2 += '</div>';
+    	var total=0;
+	    var obtained=0;
+    	for(var i = 0;i<value.resultassignment.length;i++)
+    		{ 
+    		    if(value.resultassignment[i].resultassignmentid.studentId==value.studentId)
+    		    		{
+    		    	          total = total + value.resultassignment[i].assignment.totalMarks;
+    		    	          obtained = obtained + value.resultassignment[i].obtainedMarks;
+    		    		}
+    		}
+    	str2 +=  '<div class="cell" data-title="Performance">'+parseFloat(obtained/total*100).toFixed(2)+'%</div>';
+    	str2 +=  '<div class="cell clo" data-title="Active">'+value.status+'</div>';
+    	str2+='</div>';
+    	  }
         	  }
           });
          $("#studentlist").append(str);
+         $("#studentlist2").append(str2);
        });
       </script>
 						
 					</div>
+					<div class="table hidden" id="studentlist2"> 
+
+						<div class="row header">
+							<div class="cell">
+								Student Id
+							</div>
+							<div class="cell">
+								Full Name
+							</div>
+							<div class="cell">
+								Phone No.
+							</div>
+							<div class="cell clo">
+								Class
+							</div>
+							<div class="cell clo">
+								Courses
+							</div>
+							<div class="cell">
+									Performance
+							</div>
+							<div class="cell">
+									Active
+							</div>
+						</div>
+						</div>
 			</div>
 		</div>
 	</div>
-
-<script src="table/js/Student_Table.js"></script>
+			
+	
+<script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/mobile-nav/mobile-nav.js"></script>
+  <script src="table/js/Student_Table.js"></script>
 <script src="js/Sub_Admin.js"></script>
 </body>
 </html>
