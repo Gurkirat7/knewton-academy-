@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -28,7 +29,10 @@ public class SignupController {
 	public RedirectView editEmp(Signup signup) {
 		signupserviceimpl.Enterdetails(signup);
 		return new RedirectView("/thanks");
-	
-	
-}
+		}
+	@RequestMapping(value="/signup/delete",method=RequestMethod.POST)
+	public RedirectView delsignup(@RequestParam int sno) {
+		signupserviceimpl.delsignup(sno);
+		return new RedirectView("/thanks");
+		}
 }

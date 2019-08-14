@@ -27,6 +27,10 @@ public List<Signup> ShowAllSignups() {
        it.forEach(e -> users.add(e));
        return users;
 }
+@Override
+public void delsignup(int sno) {
+	signupRepository.deleteById(sno);
+}
 
 
 }

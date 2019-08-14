@@ -23,6 +23,8 @@ public interface SubAdminService {
 	public void addbatch(@RequestParam String studentId,@RequestParam String batchId);
 	public void deletebatch(@RequestParam String studentId,@RequestParam String batchId);
 	public void addtimetable(Timetable timetable);
+	public List<Timetable> ttdisplay();
+	public void ttdelete(@RequestParam int sno);
 //	public boolean deleteFees(String id);
 //	public boolean updateFees(Fees fees,String id);
 }

@@ -119,5 +119,17 @@ public void deletebatch(String studentId, String batchId) {
 public void addtimetable(Timetable timetable) {
 	timetablerepository.save(timetable);
 }
+@Override
+public List<Timetable> ttdisplay() {
+	Iterable<Timetable> tt= timetablerepository.findAll();
+	 ArrayList<Timetable> tts = new ArrayList<Timetable>();
+     tt.forEach(e -> tts.add(e));
+     return tts;	
+}
+@Override
+public void ttdelete(int sno) {
+	timetablerepository.deleteById(sno);
+	
+}
 
 }

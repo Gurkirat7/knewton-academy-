@@ -83,6 +83,16 @@ public RedirectView deleteStu(@RequestParam String studentId) {
 		List<BatchCourseMapping> stu = subadminserviceimp.batchDisplay();
      return stu;
  }
+	@GetMapping("/subadmin/timetableshow")
+	 public List<Timetable> ttdisplay() {
+		List<Timetable> tt = subadminserviceimp.ttdisplay();
+    return tt;
+}
+	@RequestMapping(value="/subadmin/timetabledelete",method=RequestMethod.POST)
+	public RedirectView ttdelete(@RequestParam int sno) {
+		subadminserviceimp.ttdelete(sno);
+		return new RedirectView("/subadmin");
+	}
 	@RequestMapping(value="/subadmin/timetable",method=RequestMethod.POST)
 	public RedirectView addtimetable(Timetable timetable) {
 		subadminserviceimp.addtimetable(timetable);
