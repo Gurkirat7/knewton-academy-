@@ -46,9 +46,9 @@
             str+= (value.content+'<br>Date:'+value.date+'</li>');
 
           });
-			str+='</marquee></ul></div></div></div>';
+			str+='</marquee></ul></div><div class="panel-footer" data-toggle="modal" data-target="#uploadNotice"><a class="btn btn-default btn-block" > <span class="glyphicon glyphicon-level-up" ></span></a></div></div></div>';
           $("#notice").append(str);
-       });
+       });     
       </script>
       
 
@@ -606,7 +606,6 @@ $(document).ready(function(){
            		$("#edit input[name=emailId]").val(value.emailId);
            		$("#edit input[name=address]").val(value.address);
            		$("#edit select[name=branchId]").val(value.branchId);
-           		$("#edit select[name=batchId]").val(value.studentbatchmapping[0].studentbatchmappingid.batchId);
            		$("#edit input[name=totalFees]").val(value.fees.totalFees);
            		$("#edit input[name=installment1]").val(value.fees.installment1);
            		$("#edit input[name=installment2]").val(value.fees.installment2);
@@ -685,11 +684,12 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>
+</div>
 
-      <!--Notice starts-->
+      <!--Notice starts
     <div id="notice" class="row">
                 
-       </div>  <br> <br>
+       </div>  <br> <br> -->
                    <!--popup upload notice-->
     <div class="modal fade" id="uploadNotice" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
@@ -721,6 +721,7 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
+
     <!--Notice Ends-->
    
   

@@ -31,19 +31,16 @@ public class NoticeController {
 	@RequestMapping(value="/no",method=RequestMethod.POST)
 	public RedirectView addnotice(@RequestParam String title, @RequestParam String content) {
 		noticeserviceimpl.addnotice(title,content);
-		System.out.println("aaa");
 		return new RedirectView("/admin");
 	}
 	@RequestMapping(value="/nosub",method=RequestMethod.POST)
 	public RedirectView addnoticesub(@RequestParam String title, @RequestParam String content) {
 		noticeserviceimpl.addnotice(title,content);
-		System.out.println("aaa");
 		return new RedirectView("/subadmin");
 	}
 	@RequestMapping(value="/noteach",method=RequestMethod.POST)
 	public RedirectView addnoticeteach(@RequestParam String title, @RequestParam String content) {
 		noticeserviceimpl.addnotice(title,content);
-		System.out.println("aaa");
 		return new RedirectView("/teacher");
 	}
 

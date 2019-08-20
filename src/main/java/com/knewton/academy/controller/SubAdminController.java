@@ -59,7 +59,7 @@ public RedirectView deleteBatch(@RequestParam String studentId,@RequestParam Str
 	return new RedirectView("/subadmin");
 }
 @RequestMapping(value="/subadmin/edit",method=RequestMethod.POST)
-public RedirectView editStu(StudentTable student,Fees fees,TestSeriesLogin testserieslogin,@RequestParam String batchId) {
+public RedirectView editStu(StudentTable student,Fees fees,TestSeriesLogin testserieslogin) {
 	subadminserviceimp.studentEdit(student);
 	subadminserviceimp.feesAdd(fees);
 	subadminserviceimp.addtestId(testserieslogin);	
